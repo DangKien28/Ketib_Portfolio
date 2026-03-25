@@ -1,0 +1,6 @@
+@dotnet_collab_HostAddress = http://localhost:5166
+
+GET {{dotnet_collab_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

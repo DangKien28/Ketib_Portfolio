@@ -1,0 +1,29 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "frontend"
+		},
+		{
+			"path": "dotnet-collab"
+		},
+		{
+			"path": "go-chat"
+		},
+		{
+			"path": "go-notification"
+		},
+		{
+			"path": "java-project"
+		},
+		{
+			"path": "node-api_gateway"
+		},
+		{
+			"path": "python-ai"
+		}
+	],
+	"settings": {}
+}

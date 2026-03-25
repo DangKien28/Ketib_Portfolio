@@ -1,0 +1,68 @@
+
+# 1. BẢO MẬT
+.env
+*.env
+.env.*
+!*.env.example # Cho phép push file mẫu (nếu có)
+docker_data/   # Bỏ qua thư mục lưu dữ liệu database thật (nếu bạn dùng Bind Mounts)
+
+# 2. CÁC FILE CỦA HỆ ĐIỀU HÀNH & IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln.docstates
+
+# 3. NODE.JS (API Gateway & Frontend)
+node_modules/
+npm-debug.log
+yarn-error.log
+dist/
+build/
+
+# 4. JAVA SPRING BOOT (Dịch vụ Nội dung)
+target/
+*.class
+*.log
+.mvn/wrapper/maven-wrapper.jar
+
+# 5. PYTHON FASTAPI (Dịch vụ AI)
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.venv/
+pip-log.txt
+pytest_cache/
+models/*.bin   # Bỏ qua các file model AI quá nặng (nếu có tải về)
+models/*.pt
+models/*.h5
+
+# 6. GO / GOLANG (Dịch vụ Worker & Chat)
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+vendor/
+go-worker/go-worker # File build ra của Go
+go-chat/go-chat
+go-notification/go-notification
+
+# 7. C# .NET CORE (Dịch vụ Giao dịch/Hợp đồng)
+bin/
+obj/
+appsettings.Development.json
+*.user
+*.userosscache
+*.sln.rsuser
+
+# 8. C/C++ & WEBASSEMBLY (Frontend Tối ưu hóa)
+*.o
+*.out
+*.wasm
+.cache/
