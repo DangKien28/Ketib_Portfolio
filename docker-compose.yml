@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   # 1. RabbitMQ (Dành cho Go Notification Worker)
   rabbitmq:
@@ -12,6 +14,8 @@ services:
       RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_VHOST}
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - ketib_network
     restart: unless-stopped
 
   # 2. Redis (Cache dùng chung cho nhiều service)
@@ -23,6 +27,8 @@ services:
     command: redis-server --requirepass ${REDIS_PASSWORD}
     volumes:
       - redis_data:/data
+    networks:
+      - ketib_network
     restart: unless-stopped
 
   # 3. MySQL (Dành cho Java Spring Boot)
@@ -36,6 +42,10 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
     volumes:
       - mysql_data:/var/lib/mysql
+      # Ánh xạ thư mục script khởi tạo MySQL
+      - ./DatabaseScripts/mysql:/docker-entrypoint-initdb.d
+    networks:
+      - ketib_network
     restart: unless-stopped
 
   # 4. PostgreSQL (Dành cho C# .NET Core)
@@ -50,6 +60,10 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      # Ánh xạ thư mục script khởi tạo PostgreSQL
+      - ./DatabaseScripts/postgresql:/docker-entrypoint-initdb.d
+    networks:
+      - ketib_network
     restart: unless-stopped
 
   # 5. MongoDB (Dành cho Node.js Gateway, Python AI, và Go Chat)
@@ -63,6 +77,10 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
     volumes:
       - mongodb_data:/data/db
+      # Ánh xạ thư mục script khởi tạo MongoDB
+      - ./DatabaseScripts/mongodb:/docker-entrypoint-initdb.d
+    networks:
+      - ketib_network
     restart: unless-stopped
 
 # Định nghĩa các volume để dữ liệu được lưu trữ vĩnh viễn, không bị mất khi tắt Docker
@@ -72,3 +90,8 @@ volumes:
   mysql_data:
   postgres_data:
   mongodb_data:
+
+# Khai báo mạng ảo dùng chung để các container có thể gọi nhau bằng container_name
+networks:
+  ketib_network:
+    driver: bridge

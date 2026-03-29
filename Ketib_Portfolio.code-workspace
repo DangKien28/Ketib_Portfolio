@@ -25,5 +25,7 @@
 			"path": "python-ai"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"java.compile.nullAnalysis.mode": "disabled"
+	}
 }
