@@ -12,7 +12,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 
 var summaries = new[]
 {
@@ -32,6 +32,15 @@ app.MapGet("/weatherforecast", () =>
     return forecast;
 })
 .WithName("GetWeatherForecast");
+
+// Thêm đoạn này vào trước app.Run();
+app.MapGet("/api/collab/test", () => {
+    return Results.Ok(new { 
+        message = "Tuyệt vời! Kết nối từ Node.js API Gateway đến C# Microservice đã thành công rực rỡ!",
+        timestamp = DateTime.Now
+    });
+});
+
 
 app.Run();
 
