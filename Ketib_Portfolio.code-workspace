@@ -4,10 +4,10 @@
 			"path": "."
 		},
 		{
-			"path": "frontend"
+			"path": "dotnet-collab"
 		},
 		{
-			"path": "dotnet-collab"
+			"path": "frontend"
 		},
 		{
 			"path": "go-chat"
@@ -25,7 +25,5 @@
 			"path": "python-ai"
 		}
 	],
-	"settings": {
-		"java.compile.nullAnalysis.mode": "disabled"
-	}
+	"settings": {}
 }
