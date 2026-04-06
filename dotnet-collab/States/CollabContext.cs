@@ -38,13 +38,13 @@ namespace dotnet_collab.States
         {
             return status switch
             {
-                "REQUESTED" => new RequestedState(),
-                "PRICE_PROPOSED" => new PriceProposedState(),
-                "ACCEPTED" => new AcceptedState(), // SỬA DÒNG NÀY
-                "IN_PROGRESS" => new InProgressState(),
-                "CANCELLED" => throw new InvalidOperationException("Dự án đã bị hủy, không thể thao tác."),
-                "COMPLETED" => throw new InvalidOperationException("Dự án đã hoàn thành, không thể thao tác."),
-                _ => throw new Exception($"Trạng thái không hợp lệ: {status}")
+                // "REQUESTED" => new RequestedState(),
+                // "PRICE_PROPOSED" => new PriceProposedState(),
+                // "ACCEPTED" => new AcceptedState(), // SỬA DÒNG NÀY
+                // "IN_PROGRESS" => new InProgressState(),
+                // "CANCELLED" => throw new InvalidOperationException("Dự án đã bị hủy, không thể thao tác."),
+                // "COMPLETED" => throw new InvalidOperationException("Dự án đã hoàn thành, không thể thao tác."),
+                // _ => throw new Exception($"Trạng thái không hợp lệ: {status}")
             };
         }
 
