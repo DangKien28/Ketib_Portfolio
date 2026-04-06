@@ -1,0 +1,37 @@
+using System.Threading.Tasks;
+using dotnet_collab.DTOs;
+using dotnet_collab.Mappers;
+using dotnet_collab.Models;
+using dotnet_collab.Repositories;
+
+namespace dotnet_collab.Services
+{
+    public class CollabService
+    {
+        private ICollabRepository _repository;
+
+        public CollabService(ICollabRepository repo)
+        {
+            _repository = repo;
+        }
+
+        public async Task<Collaboration_Response_DTO> CreateCollab(Collaboration_Request_DTO request_dto)
+        {
+            CollaborationModel new_collab = CollabMapper.DTO_To_Model(request_dto);
+            CollaborationModel save_collab = await _repository.Create_async(new_collab);
+            Collaboration_Response_DTO response_dto = CollabMapper.Model_To_DTO(save_collab);
+            return response_dto;
+        }
+
+        public async Task<Collaboration_Response_DTO> GetCollaborationById_async(Guid id)
+        {
+            CollaborationModel collab_model = await _repository.GetById_async(id);
+            if (collab_model == null)
+            {
+                return null;
+            }
+            Collaboration_Response_DTO response_dto = CollabMapper.Model_To_DTO(collab_model);
+            return response_dto;
+        }
+    }
+}
