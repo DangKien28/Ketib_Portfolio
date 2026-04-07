@@ -15,7 +15,7 @@ namespace dotnet_collab.Services
             _repository = repo;
         }
 
-        public async Task<Collaboration_Response_DTO> CreateCollab(Collaboration_Request_DTO request_dto)
+        public async Task<Collaboration_Response_DTO> CreateCollab_async(Collaboration_Request_DTO request_dto)
         {
             CollaborationModel new_collab = CollabMapper.DTO_To_Model(request_dto);
             CollaborationModel save_collab = await _repository.Create_async(new_collab);

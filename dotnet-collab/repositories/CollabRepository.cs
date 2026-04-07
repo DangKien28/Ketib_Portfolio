@@ -124,5 +124,42 @@ namespace dotnet_collab.Repositories
             }
             return collab_model;
         }
+
+        public async Task<bool> UpdateCollabStatus_async(Guid collab_id, string new_status, decimal? proposed_price = null, string admin_note = null)
+        {
+            NpgsqlConnection connection = _db_helper.CreateConnection();
+            try
+            {
+                await connection.OpenAsync();
+                NpgsqlCommand command = new NpgsqlCommand("sp_update_collab_status", connection);
+
+                try
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.AddWithValue("id", collab_id);
+                    command.Parameters.AddWithValue("status", new_status);
+                    command.Parameters.AddWithValue("proposed_price", proposed_price.HasValue ? (object)proposed_price.Value : DBNull.Value);
+                    command.Parameters.AddWithValue("admin_notes", string.IsNullOrEmpty(admin_note) ? DBNull.Value : (object)admin_note);
+
+                    int rows_affected = await command.ExecuteNonQueryAsync();
+                    return rows_affected>0;
+                }
+                finally
+                {
+                    if (command!=null)
+                    {
+                        command.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (connection!=null)
+                {
+                    connection.Dispose();
+                }
+            }
+        }
     }
 }
