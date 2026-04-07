@@ -66,5 +66,3 @@ appsettings.Development.json
 *.out
 *.wasm
 .cache/
-
-/DatabaseScripts/
