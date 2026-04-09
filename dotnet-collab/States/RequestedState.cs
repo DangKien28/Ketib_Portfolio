@@ -5,9 +5,10 @@ namespace dotnet_collab.States
 {
     public class RequestedState : ICollabState
     {
+        public string StatusName => "REQUESTED";
         public async Task Request_async(CollabContext context)
         {
-            
+            throw new InvalidOperationException("Yêu cầu hợp tác ĐÃ ĐƯỢC TẠO");
         }
         public async Task Accept_async(CollabContext context)
         {

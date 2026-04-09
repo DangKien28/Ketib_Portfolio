@@ -13,7 +13,7 @@ namespace dotnet_collab.Mappers
             model.project_type = dto.project_type;
             model.client_email = dto.client_email;
             model.client_notes = dto.client_notes;
-            model.status = "REQUESTED";
+            
             model.create_at = DateTime.UtcNow;
 
             return model;

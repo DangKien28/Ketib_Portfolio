@@ -3,6 +3,7 @@ using dotnet_collab.DTOs;
 using dotnet_collab.Mappers;
 using dotnet_collab.Models;
 using dotnet_collab.Repositories;
+using dotnet_collab.States;
 
 namespace dotnet_collab.Services
 {
@@ -18,6 +19,8 @@ namespace dotnet_collab.Services
         public async Task<Collaboration_Response_DTO> CreateCollab_async(Collaboration_Request_DTO request_dto)
         {
             CollaborationModel new_collab = CollabMapper.DTO_To_Model(request_dto);
+            CollabContext state_context = new CollabContext(new_collab.id, "REQUESTED", _repository);
+            new_collab.status = state_context.CurrentStatusName;
             CollaborationModel save_collab = await _repository.Create_async(new_collab);
             Collaboration_Response_DTO response_dto = CollabMapper.Model_To_DTO(save_collab);
             return response_dto;
