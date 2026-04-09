@@ -1,1 +1,0 @@
-Theo gợi ý từ Gemini: Nhận đầu vào từ frontend gọi tới, giao nhiệm vụ cho services
