@@ -16,9 +16,9 @@ namespace dotnet_collab.Services
             _repository = repo;
         }
 
-        public async Task<Collaboration_Response_DTO> CreateCollab_async(Collaboration_Request_DTO request_dto)
+        public async Task<Collaboration_Response_DTO> CreateCollab_async(Collaboration_Request_DTO request_dto, Guid user_id)
         {
-            CollaborationModel new_collab = CollabMapper.DTO_To_Model(request_dto);
+            CollaborationModel new_collab = CollabMapper.DTO_To_Model(request_dto, user_id);
             CollabContext state_context = new CollabContext(new_collab.id, "REQUESTED", _repository);
             new_collab.status = state_context.CurrentStatusName;
             CollaborationModel save_collab = await _repository.Create_async(new_collab);

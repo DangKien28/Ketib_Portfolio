@@ -37,6 +37,7 @@ namespace dotnet_collab.Repositories
                             return new CollaborationModel
                             {
                                 id = reader.GetGuid(reader.GetOrdinal("id")),
+                                user_id = reader.GetGuid(reader.GetOrdinal("user_id")),
                                 project_name = reader.GetString(reader.GetOrdinal("project_name")),
                                 project_type = reader.GetString(reader.GetOrdinal("project_type")),
                                 client_email = reader.GetString(reader.GetOrdinal("client_email")),
@@ -89,6 +90,7 @@ namespace dotnet_collab.Repositories
                     command.CommandType = CommandType.StoredProcedure;
 
                     command.Parameters.AddWithValue("p_id", collab_model.id);
+                    command.Parameters.AddWithValue("p_user_id", collab_model.user_id);
                     command.Parameters.AddWithValue("p_project_name", collab_model.project_name);
                     command.Parameters.AddWithValue("p_project_type", collab_model.project_type);
                     command.Parameters.AddWithValue("p_client_email", collab_model.client_email);

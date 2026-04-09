@@ -5,10 +5,11 @@ namespace dotnet_collab.Mappers
 {
     public static class CollabMapper
     {
-        public static CollaborationModel DTO_To_Model(Collaboration_Request_DTO dto)
+        public static CollaborationModel DTO_To_Model(Collaboration_Request_DTO dto, Guid user_id)
         {
             CollaborationModel model = new CollaborationModel();
             model.id = Guid.NewGuid();
+            model.user_id = user_id;
             model.project_name = dto.project_name;
             model.project_type = dto.project_type;
             model.client_email = dto.client_email;

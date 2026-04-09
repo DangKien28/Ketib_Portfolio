@@ -19,7 +19,12 @@ namespace dotnet_collab.Controllers
         {
             try
             {
-                Collaboration_Response_DTO response_dto = await _collabService.CreateCollab_async(request_dto);
+                if (!Request.Headers.TryGetValue("X-User-Id", out var userIdString) || !Guid.TryParse(userIdString, out Guid userId))
+                {
+            // Nếu không có header này hoặc định dạng không phải UUID (Guid), từ chối luôn
+                    return Unauthorized(new { message = "Không xác định được danh tính người dùng (Missing or invalid X-User-Id)" });
+                }
+                Collaboration_Response_DTO response_dto = await _collabService.CreateCollab_async(request_dto, userId);
                 return CreatedAtAction(nameof(GetCollaborationById), new {id = response_dto.id}, response_dto);
             }
             catch (Exception ex)

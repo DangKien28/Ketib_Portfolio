@@ -4,6 +4,7 @@ namespace dotnet_collab.Models
     public class CollaborationModel
     {
         public Guid id {get; set; }
+        public Guid user_id {get; set; }
         public string project_name {get; set;} = string.Empty;
         public string project_type {get; set; } = string.Empty;
         public string client_email {get; set; } = string.Empty;
