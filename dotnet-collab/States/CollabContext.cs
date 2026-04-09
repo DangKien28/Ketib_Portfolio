@@ -19,9 +19,18 @@ namespace dotnet_collab.States
             _currentState = state;
         }
 
-        public Task AcceptPrice_async()
+        public Task Request_async()
+        {
+            return _currentState.Request_async(this);
+        }
+        public Task Accept_async()
         {
             return _currentState.Accept_async(this);
+        }
+
+        public Task Complete_async()
+        {
+            return _currentState.Complete_async(this);
         }
 
         public Task Cancel_async()

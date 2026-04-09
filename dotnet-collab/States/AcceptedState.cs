@@ -8,7 +8,7 @@ namespace dotnet_collab.States
         }
         public async Task Accept_async(CollabContext context)
         {
-            throw new InvalidOperationException("Chưa có báo giá, không thể đồng ý.");
+            
         }
         public async Task Complete_async(CollabContext context)
         {

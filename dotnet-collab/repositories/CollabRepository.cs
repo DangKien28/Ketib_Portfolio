@@ -26,7 +26,6 @@ namespace dotnet_collab.Repositories
                 {
                     command.CommandType = CommandType.StoredProcedure;
                     
-                    // SỬA LỖI 3: Map đúng tên tham số p_collab_id như trong DB script
                     command.Parameters.AddWithValue("p_collab_id", id); 
 
                     NpgsqlDataReader reader = await command.ExecuteReaderAsync();
@@ -89,7 +88,6 @@ namespace dotnet_collab.Repositories
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
-                    // SỬA LỖI 1 & 3: Thêm tiền tố p_ để khớp 100% với file SQL đã viết
                     command.Parameters.AddWithValue("p_id", collab_model.id);
                     command.Parameters.AddWithValue("p_project_name", collab_model.project_name);
                     command.Parameters.AddWithValue("p_project_type", collab_model.project_type);
