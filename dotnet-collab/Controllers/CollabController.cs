@@ -46,5 +46,26 @@ namespace dotnet_collab.Controllers
             }
         }
 
+        [HttpPatch("{id}/accept")]
+        public async Task<IActionResult> AcceptCollaboration(Guid id)
+        {
+            try
+            {
+                Collaboration_Response_DTO response_dto = await _collabService.AcceptCollaboration_async(id);
+                if (response_dto==null)
+                {
+                    return NotFound(new {message="$Không tìm thấy yêu cầu có ID ${id}"});
+                }
+                return Ok(response_dto);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new {message = "Không thể thay đổi trạng thái", error = ex.Message});
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new {message = "Lỗi máy chủ nội bộ khi cập nhật trạng thái", error = ex.Message});
+            }
+        }
     }
 }
