@@ -13,7 +13,7 @@ namespace dotnet_collab.Mappers
             model.project_type = dto.project_type;
             model.client_email = dto.client_email;
             model.client_notes = dto.client_notes;
-            model.status = "Requested";
+            model.status = "REQUESTED";
             model.create_at = DateTime.UtcNow;
 
             return model;
@@ -26,8 +26,7 @@ namespace dotnet_collab.Mappers
             dto.project_name = model.project_name;
             dto.project_type = model.project_type;
             dto.status = model.status;
-            dto.proposed_price = model.proposed_price;
-            dto.final_cost = model.final_cost;
+            dto.price = model.price;
             dto.create_at = model.create_at;
 
             return dto;

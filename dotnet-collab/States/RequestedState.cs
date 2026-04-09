@@ -1,25 +1,25 @@
+using System;
+using System.Threading.Tasks;
+
 namespace dotnet_collab.States
 {
     public class RequestedState : ICollabState
     {
-        public async Task ProposePriceAsync(CollabContext context, decimal price, string admin_note)
+        public async Task Request_async(CollabContext context)
         {
-            // TODO: Sẽ gọi context.Repository.Update... để lưu xuống DB ở đây
-            context.TransitionTo(new PriceProposedState());
+            
         }
-        public Task AcceptPriceAsync(CollabContext context)
+        public Task Accept_async(CollabContext context)
         {
             throw new InvalidOperationException("Chưa có báo giá, không thể đồng ý.");
         }
-
-        public Task StartProgressAsync(CollabContext context)
+        public async Task Complete_async(CollabContext context)
         {
-            throw new InvalidOperationException("Chưa chốt giá, không thể bắt đầu.");
+            
         }
-        public async Task CancelAsync(CollabContext context)
+        public async Task Cancel_async(CollabContext context)
         {
-            // TODO: Lưu DB
-            context.TransitionTo(new CancelledState());
+            // Lưu DB: Cập nhật trạng thái hủy
         }
     }
 }

@@ -1,6 +1,6 @@
 namespace dotnet_collab.States
 {
-    public class AcceptedState : ICollabState
+    public class CompletedState : ICollabState
     {
         public async Task Request_async(CollabContext context)
         {

@@ -8,10 +8,8 @@ namespace dotnet_collab.Models
         public string project_type {get; set; } = string.Empty;
         public string client_email {get; set; } = string.Empty;
         public string? client_notes {get; set; }
-        public decimal? proposed_price {get; set; }
-        public decimal? final_cost {get; set;}
+        public decimal? price {get; set; }
         public string status {get; set; } = "Requested";
-        public string? admin_notes {get; set; }
         public DateTime create_at {get; set; }
         public DateTime? start_at {get; set; }
         public DateTime? update_at {get; set; }
