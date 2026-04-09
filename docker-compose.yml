@@ -82,18 +82,18 @@ services:
     restart: unless-stopped
   
   # #6. dotnet-collab service
-  # dotnet-collab:
-  #   build: ./dotnet-collab
-  #   container_name: dotnet_collab_service
-  #   ports:
-  #     - "5166:5166"
-  #   environment:
-  #     - ASPNETCORE_ENVIRONMENT=Development
-  #     - ConnectionStrings__PostgresConnection=Host=postgres;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
-  #   depends_on:
-  #     - postgres
-  #   networks:
-  #     - ketib_network
+  dotnet-collab:
+    build: ./dotnet-collab
+    container_name: dotnet_collab_service
+    ports:
+      - "5166:5166"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__PostgresConnection=Host=${POSTGRES_HOST};Port=${POSTGRES_PORT};Database=${POSTGRES_DATABASE};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
+    depends_on:
+      - postgres
+    networks:
+      - ketib_network
 
 # Định nghĩa các volume để dữ liệu được lưu trữ vĩnh viễn, không bị mất khi tắt Docker
 volumes:
