@@ -1,23 +1,34 @@
+using System;
+using System.Threading.Tasks;
+
 namespace dotnet_collab.States
 {
     public class AcceptedState : ICollabState
     {
         public string StatusName => "ACCEPTED";
-        public async Task Request_async(CollabContext context)
+
+        public Task Request_async(CollabContext context)
         {
-            
+            throw new InvalidOperationException("Dự án đang thực hiện, không thể quay lại trạng thái Yêu cầu.");
         }
-        public async Task Accept_async(CollabContext context)
+
+        public Task Accept_async(CollabContext context)
         {
-            
+            throw new InvalidOperationException("Dự án ĐÃ ĐƯỢC CHẤP NHẬN trước đó.");
         }
-        public async Task Complete_async(CollabContext context)
+
+        public Task Complete_async(CollabContext context)
         {
-            
+            // Hợp lệ: Chuyển sang Completed
+            context.TransitionTo(new CompletedState());
+            return Task.CompletedTask;
         }
-        public async Task Cancel_async(CollabContext context)
+
+        public Task Cancel_async(CollabContext context)
         {
-            
+            // Hợp lệ: Đang làm nhưng hủy ngang
+            context.TransitionTo(new CancelledState());
+            return Task.CompletedTask;
         }
     }
 }

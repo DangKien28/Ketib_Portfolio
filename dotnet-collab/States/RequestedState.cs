@@ -6,21 +6,29 @@ namespace dotnet_collab.States
     public class RequestedState : ICollabState
     {
         public string StatusName => "REQUESTED";
-        public async Task Request_async(CollabContext context)
+
+        public Task Request_async(CollabContext context)
         {
-            throw new InvalidOperationException("Yêu cầu hợp tác ĐÃ ĐƯỢC TẠO");
+            throw new InvalidOperationException("Yêu cầu hợp tác ĐÃ ĐƯỢC TẠO, không thể tạo lại.");
         }
-        public async Task Accept_async(CollabContext context)
+
+        public Task Accept_async(CollabContext context)
         {
-            
+            // Hợp lệ: Chuyển sang Accepted
+            context.TransitionTo(new AcceptedState());
+            return Task.CompletedTask;
         }
-        public async Task Complete_async(CollabContext context)
+
+        public Task Complete_async(CollabContext context)
         {
-            throw new InvalidOperationException("Không thể hoàn thành khi dự án chưa được chấp nhận (ACCEPTED)");
+            throw new InvalidOperationException("Không thể hoàn thành khi dự án chưa được chấp nhận (ACCEPTED).");
         }
-        public async Task Cancel_async(CollabContext context)
+
+        public Task Cancel_async(CollabContext context)
         {
-            
+            // Hợp lệ: Chuyển sang Cancelled
+            context.TransitionTo(new CancelledState());
+            return Task.CompletedTask;
         }
     }
 }
