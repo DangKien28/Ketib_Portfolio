@@ -305,5 +305,52 @@ namespace dotnet_collab.Repositories
             }
             finally { if (connection != null) connection.Dispose(); }
         }
+
+        public async Task<bool> UpdateCollabInfo_async(CollaborationModel model)
+        {
+            NpgsqlConnection connection = _db_helper.CreateConnection();
+            try
+            {
+                await connection.OpenAsync();
+                NpgsqlCommand command = new NpgsqlCommand("sp_update_collab_info", connection);
+
+                try
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("p_id", model.id);
+                    command.Parameters.AddWithValue("p_project_name", model.project_name);
+                    command.Parameters.AddWithValue("p_project_type", model.project_type);
+                    command.Parameters.AddWithValue("p_client_email", model.client_email);
+                    command.Parameters.AddWithValue("p_client_notes", string.IsNullOrEmpty(model.client_notes) ? DBNull.Value : (object)model.client_notes);
+                    command.Parameters.AddWithValue("p_update_at", model.update_at ?? DateTime.UtcNow);
+
+                    int rows_affected = await command.ExecuteNonQueryAsync();
+                    return rows_affected > 0;
+                }
+                finally { if (command != null) command.Dispose(); }
+            }
+            finally { if (connection != null) connection.Dispose(); }
+        }
+
+        public async Task<bool> DeleteCollab_async(Guid id)
+        {
+            NpgsqlConnection connection = _db_helper.CreateConnection();
+            try
+            {
+                await connection.OpenAsync();
+                NpgsqlCommand command = new NpgsqlCommand("sp_delete_collab", connection);
+
+                try
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("p_id", id);
+
+                    int rows_affected = await command.ExecuteNonQueryAsync();
+                    return rows_affected > 0;
+                }
+                finally { if (command != null) command.Dispose(); }
+            }
+            finally { if (connection != null) connection.Dispose(); }
+        }
     }
 }

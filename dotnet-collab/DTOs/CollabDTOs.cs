@@ -33,4 +33,14 @@ namespace dotnet_collab.DTOs
         public Guid id {get; set;}
         public decimal? price {get; set;}
     }
+
+    public class Collaboration_Update_DTO
+    {
+        [StringLength(255)]
+        public string? project_name {get; set; }
+        public string? project_type {get; set; }
+        [EmailAddress(ErrorMessage = "Email không đúng định dạng")]
+        public string? client_email {get; set; }
+        public string? client_notes {get; set; }
+    }
 }

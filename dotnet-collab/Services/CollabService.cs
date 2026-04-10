@@ -165,5 +165,61 @@ namespace dotnet_collab.Services
             Collaboration_Response_DTO response_dto = CollabMapper.Model_To_DTO(collab_model);
             return response_dto;
         }
+
+        public async Task<Collaboration_Response_DTO> UpdateCollaboration_async(Guid id, Guid user_id, Collaboration_Update_DTO update_dto)
+        {
+            CollaborationModel collab_model = await _repository.GetById_async(id);
+            
+            // 1. Kiểm tra tồn tại
+            if (collab_model == null) return null;
+
+            // 2. Kiểm tra quyền sở hữu (Bảo mật)
+            if (collab_model.user_id != user_id)
+            {
+                throw new UnauthorizedAccessException("Bạn không có quyền chỉnh sửa dự án này.");
+            }
+
+            // 3. Kiểm tra trạng thái (Tính toàn vẹn)
+            if (collab_model.status.ToUpper() != "REQUESTED")
+            {
+                throw new InvalidOperationException($"Không thể chỉnh sửa dự án khi đang ở trạng thái {collab_model.status}.");
+            }
+
+            // 4. Ánh xạ dữ liệu mới (chỉ cập nhật những trường có gửi lên)
+            if (!string.IsNullOrEmpty(update_dto.project_name)) collab_model.project_name = update_dto.project_name;
+            if (!string.IsNullOrEmpty(update_dto.project_type)) collab_model.project_type = update_dto.project_type;
+            if (!string.IsNullOrEmpty(update_dto.client_email)) collab_model.client_email = update_dto.client_email;
+            if (update_dto.client_notes != null) collab_model.client_notes = update_dto.client_notes;
+            
+            collab_model.update_at = DateTime.UtcNow;
+
+            // 5. Lưu xuống DB
+            bool is_updated = await _repository.UpdateCollabInfo_async(collab_model);
+            if (!is_updated)
+            {
+                throw new InvalidOperationException("Lỗi khi cập nhật thông tin vào cơ sở dữ liệu.");
+            }
+
+            return CollabMapper.Model_To_DTO(collab_model);
+        }
+
+        public async Task<bool> DeleteCollaboration_async(Guid id, Guid user_id)
+        {
+            CollaborationModel collab_model = await _repository.GetById_async(id);
+            
+            if (collab_model == null) return false;
+
+            if (collab_model.user_id != user_id)
+            {
+                throw new UnauthorizedAccessException("Bạn không có quyền xóa dự án này.");
+            }
+
+            if (collab_model.status.ToUpper() != "REQUESTED")
+            {
+                throw new InvalidOperationException($"Không thể xóa dự án khi đang ở trạng thái {collab_model.status}. Hãy sử dụng chức năng Cancel (Hủy).");
+            }
+
+            return await _repository.DeleteCollab_async(id);
+        }
     }
 }

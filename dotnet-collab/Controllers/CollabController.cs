@@ -174,5 +174,69 @@ namespace dotnet_collab.Controllers
                 return StatusCode(500, new { message = "Lỗi máy chủ", error = e.Message });
             }
         }
+
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> UpdateCollaboration(Guid id, [FromBody] Collaboration_Update_DTO update_dto)
+        {
+            try
+            {
+                if (!Request.Headers.TryGetValue("X-User-Id", out var userIdString) || !Guid.TryParse(userIdString, out Guid userId))
+                {
+                    return Unauthorized(new { message = "Không xác định được danh tính người dùng (Missing or invalid X-User-Id)" });
+                }
+
+                Collaboration_Response_DTO response_dto = await _collabService.UpdateCollaboration_async(id, userId, update_dto);
+                if (response_dto == null)
+                {
+                    return NotFound(new { message = $"Không tìm thấy yêu cầu hợp tác với ID: {id}" });
+                }
+                
+                return Ok(response_dto);
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                return StatusCode(403, new { message = "Lỗi phân quyền", error = ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new { message = "Lỗi nghiệp vụ", error = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Lỗi nội bộ khi cập nhật yêu cầu hợp tác", error = ex.Message });
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteCollaboration(Guid id)
+        {
+            try
+            {
+                if (!Request.Headers.TryGetValue("X-User-Id", out var userIdString) || !Guid.TryParse(userIdString, out Guid userId))
+                {
+                    return Unauthorized(new { message = "Không xác định được danh tính người dùng (Missing or invalid X-User-Id)" });
+                }
+
+                bool is_deleted = await _collabService.DeleteCollaboration_async(id, userId);
+                if (!is_deleted)
+                {
+                    return NotFound(new { message = $"Không tìm thấy yêu cầu hợp tác với ID: {id}" });
+                }
+                
+                return Ok(new { message = "Xóa dự án thành công." });
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                return StatusCode(403, new { message = "Lỗi phân quyền", error = ex.Message });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new { message = "Lỗi nghiệp vụ", error = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Lỗi nội bộ khi xóa yêu cầu hợp tác", error = ex.Message });
+            }
+        }
     }
 }

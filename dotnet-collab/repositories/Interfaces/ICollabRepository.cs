@@ -11,5 +11,7 @@ namespace dotnet_collab.Repositories
         Task<List<CollaborationModel>> GetAllCollabs_async();
         Task<List<CollaborationModel>> GetAllCollabsByUserId_async(Guid user_id);
         Task<bool> UpdatePrice_async(Guid id, decimal price, DateTime update_at);
+        Task<bool> UpdateCollabInfo_async(CollaborationModel model);
+        Task<bool> DeleteCollab_async(Guid id);
     }
 }
