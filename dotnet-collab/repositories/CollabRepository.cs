@@ -282,5 +282,28 @@ namespace dotnet_collab.Repositories
             }
             finally { if (connection != null) connection.Dispose(); }
         }
+
+        public async Task<bool> UpdateToAccepted_async(Guid id, string new_status, DateTime start_at)
+        {
+            NpgsqlConnection connection = _db_helper.CreateConnection();
+            try
+            {
+                await connection.OpenAsync();
+                NpgsqlCommand command = new NpgsqlCommand("sp_update_collab_to_accepted", connection);
+
+                try
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("p_id", id);
+                    command.Parameters.AddWithValue("p_status", new_status);
+                    command.Parameters.AddWithValue("p_start_at", start_at);
+
+                    int rows_affected = await command.ExecuteNonQueryAsync();
+                    return rows_affected > 0;
+                }
+                finally { if (command != null) command.Dispose(); }
+            }
+            finally { if (connection != null) connection.Dispose(); }
+        }
     }
 }

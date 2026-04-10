@@ -29,6 +29,7 @@ namespace dotnet_collab.Mappers
             dto.status = model.status;
             dto.price = model.price;
             dto.create_at = model.create_at;
+            dto.start_at = model.start_at;
 
             return dto;
         }

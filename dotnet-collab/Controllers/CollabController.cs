@@ -95,6 +95,7 @@ namespace dotnet_collab.Controllers
             }
         }
 
+        [HttpPatch("{id}/cancel")]
         public async Task<IActionResult> CancelCollaboration(Guid id)
         {
             try

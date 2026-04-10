@@ -50,7 +50,7 @@ namespace dotnet_collab.Services
             string new_status = state_context.CurrentStatusName;
             DateTime current_time = DateTime.UtcNow;
 
-            bool is_updated = await _repository.UpdateStatus_async(collab_model.id, new_status, current_time);
+            bool is_updated = await _repository.UpdateToAccepted_async(collab_model.id, new_status, current_time);
 
             if (!is_updated)
             {
@@ -59,6 +59,7 @@ namespace dotnet_collab.Services
 
             collab_model.status = new_status;
             collab_model.update_at = current_time;
+            collab_model.start_at = current_time;
             
             Collaboration_Response_DTO response_dto = CollabMapper.Model_To_DTO(collab_model);
             return response_dto;

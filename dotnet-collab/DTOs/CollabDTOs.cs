@@ -25,6 +25,7 @@ namespace dotnet_collab.DTOs
         public string? status {get; set; }
         public decimal? price {get; set; }
         public DateTime create_at {get; set; }
+        public DateTime? start_at {get; set; }
     }
 
     public class Collab_ProposePrice_DTO
