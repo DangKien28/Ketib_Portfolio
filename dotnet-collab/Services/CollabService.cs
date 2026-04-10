@@ -53,5 +53,34 @@ namespace dotnet_collab.Services
             Collaboration_Response_DTO response_dto = CollabMapper.Model_To_DTO(collab_model);
             return response_dto;
         }
+
+        public async Task<List<Collaboration_Response_DTO>> GetAllCollaborations_async()
+        {
+            List<CollaborationModel> collabs_model_list = await _repository.GetAllCollabs_async();
+            List<Collaboration_Response_DTO> response_list = new List<Collaboration_Response_DTO>();
+            
+            if (collabs_model_list != null)
+            {
+                foreach (CollaborationModel model in collabs_model_list)
+                {
+                    response_list.Add(CollabMapper.Model_To_DTO(model));
+                }
+            }
+            return response_list;
+        }
+
+        public async Task<List<Collaboration_Response_DTO>> GetAllCollabsByUserId_async(Guid id)
+        {
+            List<CollaborationModel> collab_models = await _repository.GetAllCollabsByUserId_async(id);
+            List<Collaboration_Response_DTO> response_list = new List<Collaboration_Response_DTO>();
+            if (collab_models != null && collab_models.Any())
+            {
+                foreach (var model in collab_models)
+                {
+                    response_list.Add(CollabMapper.Model_To_DTO(model));
+                }
+            }
+            return response_list;
+        }
     }
 }

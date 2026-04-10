@@ -150,5 +150,115 @@ namespace dotnet_collab.Repositories
                 if (connection != null) connection.Dispose();
             }
         }
+
+        public async Task<List<CollaborationModel>> GetAllCollabs_async()
+        {
+            List<CollaborationModel> collab_list = new List<CollaborationModel>();
+            NpgsqlConnection connection = _db_helper.CreateConnection();
+            try
+            {
+                await connection.OpenAsync();
+                NpgsqlCommand command = new NpgsqlCommand("sp_get_all_collabs", connection);
+                try
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    NpgsqlDataReader reader = await command.ExecuteReaderAsync();
+                    try
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            CollaborationModel model = new CollaborationModel
+                            {
+                                id = reader.GetGuid(reader.GetOrdinal("id")),
+                                user_id = reader.GetGuid(reader.GetOrdinal("user_id")),
+                                project_name = reader.GetString(reader.GetOrdinal("project_name")),
+                                project_type = reader.GetString(reader.GetOrdinal("project_type")),
+                                client_email = reader.GetString(reader.GetOrdinal("client_email")),
+                                client_notes = reader.IsDBNull(reader.GetOrdinal("client_notes")) ? null : reader.GetString(reader.GetOrdinal("client_notes")),
+                                price = reader.IsDBNull(reader.GetOrdinal("price")) ? null : reader.GetDecimal(reader.GetOrdinal("price")),
+                                status = reader.GetString(reader.GetOrdinal("status")),
+                                create_at = reader.GetDateTime(reader.GetOrdinal("created_at")),
+                                start_at = reader.IsDBNull(reader.GetOrdinal("started_at")) ? null : reader.GetDateTime(reader.GetOrdinal("started_at")),
+                                update_at = reader.IsDBNull(reader.GetOrdinal("updated_at")) ? null : reader.GetDateTime(reader.GetOrdinal("updated_at"))  
+                            };
+                            collab_list.Add(model);
+                        }
+                    }
+                    finally
+                    {
+                        if (reader != null)
+                        {
+                            await reader.DisposeAsync();
+                        }
+                    }
+                }
+                finally
+                {
+                    if (command != null)
+                    {
+                        command.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (connection != null)
+                {
+                    connection.Dispose();
+                }
+            }
+            return collab_list;
+        }
+
+        public async Task<List<CollaborationModel>> GetAllCollabsByUserId_async(Guid user_id)
+        {
+            List<CollaborationModel> user_collabs_list = new List<CollaborationModel>();
+            NpgsqlConnection connection = _db_helper.CreateConnection();
+            try
+            {
+                await connection.OpenAsync();
+                NpgsqlCommand command = new NpgsqlCommand("sp_get_collabs_by_user_id", connection);
+                try
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("p_user_id", user_id);
+
+                    NpgsqlDataReader reader = await command.ExecuteReaderAsync();
+                    try
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            user_collabs_list.Add(new CollaborationModel
+                            {
+                                id = reader.GetGuid(reader.GetOrdinal("id")),
+                                user_id = reader.GetGuid(reader.GetOrdinal("user_id")),
+                                project_name = reader.GetString(reader.GetOrdinal("project_name")),
+                                project_type = reader.GetString(reader.GetOrdinal("project_type")),
+                                client_email = reader.GetString(reader.GetOrdinal("client_email")),
+                                client_notes = reader.IsDBNull(reader.GetOrdinal("client_notes")) ? null : reader.GetString(reader.GetOrdinal("client_notes")),
+                                price = reader.IsDBNull(reader.GetOrdinal("price")) ? null : reader.GetDecimal(reader.GetOrdinal("price")),
+                                status = reader.GetString(reader.GetOrdinal("status")),
+                                create_at = reader.GetDateTime(reader.GetOrdinal("created_at")),
+                                start_at = reader.IsDBNull(reader.GetOrdinal("started_at")) ? null : reader.GetDateTime(reader.GetOrdinal("started_at")),
+                                update_at = reader.IsDBNull(reader.GetOrdinal("updated_at")) ? null : reader.GetDateTime(reader.GetOrdinal("updated_at"))
+                            });
+                        }
+                    }
+                    finally
+                    {
+                        if (reader != null) await reader.DisposeAsync();
+                    }
+                }
+                finally
+                {
+                    if (command != null) command.Dispose();
+                }
+            }
+            finally
+            {
+                if (connection != null) connection.Dispose();
+            }
+            return user_collabs_list;
+        }
     }
 }

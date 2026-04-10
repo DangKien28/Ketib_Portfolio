@@ -13,7 +13,7 @@ namespace dotnet_collab.Controllers
         {
             _collabService = collab_service;
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> CreateCollaboration([FromBody] Collaboration_Request_DTO request_dto)
         {
@@ -70,6 +70,38 @@ namespace dotnet_collab.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, new {message = "Lỗi máy chủ nội bộ khi cập nhật trạng thái", error = ex.Message});
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllCollaborations()
+        {
+            try
+            {
+                List<Collaboration_Response_DTO> response_list = await _collabService.GetAllCollaborations_async();
+                return Ok(response_list);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, new {message="Lỗi khi lấy danh sách", error = e.Message});
+            }
+        }
+
+        [HttpGet("my-collabs")]
+        public async Task<IActionResult> GetMyCollabs()
+        {
+            try
+            {
+                if (!Request.Headers.TryGetValue("X-User-Id", out var userIdString) ||!Guid.TryParse(userIdString, out Guid userId))
+                {
+                    return Unauthorized(new { message = "Không xác định được danh tính người dùng (Missing or invalid X-User-Id)" });
+                }
+                List<Collaboration_Response_DTO> response_list = await _collabService.GetAllCollabsByUserId_async(userId);
+                return Ok(response_list);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, new { message = "Lỗi nội bộ khi lấy danh sách hợp tác", error = e.Message });
             }
         }
     }
