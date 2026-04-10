@@ -260,5 +260,27 @@ namespace dotnet_collab.Repositories
             }
             return user_collabs_list;
         }
+
+        public async Task<bool> UpdatePrice_async(Guid id, decimal price, DateTime update_at)
+        {
+            NpgsqlConnection connection = _db_helper.CreateConnection();
+            try
+            {
+                await connection.OpenAsync();
+                NpgsqlCommand command = new NpgsqlCommand("sp_update_collab_price", connection);
+                try
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("p_id", id);
+                    command.Parameters.AddWithValue("p_price", price);
+                    command.Parameters.AddWithValue("p_update_at", update_at);
+
+                    int rows_affected = await command.ExecuteNonQueryAsync();
+                    return rows_affected > 0;
+                }
+                finally { if (command != null) command.Dispose(); }
+            }
+            finally { if (connection != null) connection.Dispose(); }
+        }
     }
 }

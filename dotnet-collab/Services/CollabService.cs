@@ -91,6 +91,33 @@ namespace dotnet_collab.Services
             return response_dto;
         }
 
+        public async Task<Collaboration_Response_DTO> CancelCollaboration_async(Guid id)
+        {
+            CollaborationModel collab_model = await _repository.GetById_async(id);
+            if (collab_model==null)
+            {
+                return null;
+            }
+            CollabContext state_context = new CollabContext(collab_model.id, collab_model.status);
+            await state_context.Cancel_async();
+
+            string new_status = state_context.CurrentStatusName;
+            DateTime current_time = DateTime.UtcNow;
+
+            bool is_updated = await _repository.UpdateStatus_async(collab_model.id, new_status, current_time);
+
+            if (!is_updated)
+            {
+                throw new InvalidOperationException("Không thể cập nhật trạng thái vào cơ sở dữ liệu.");
+            }
+
+            collab_model.status = new_status;
+            collab_model.update_at = current_time;
+            
+            Collaboration_Response_DTO response_dto = CollabMapper.Model_To_DTO(collab_model);
+            return response_dto;
+        }
+
         public async Task<List<Collaboration_Response_DTO>> GetAllCollaborations_async()
         {
             List<CollaborationModel> collabs_model_list = await _repository.GetAllCollabs_async();
@@ -118,6 +145,24 @@ namespace dotnet_collab.Services
                 }
             }
             return response_list;
+        }
+
+        public async Task<Collaboration_Response_DTO> UpdateCollabPrice_async(Guid id, decimal price)
+        {
+            CollaborationModel collab_model = await _repository.GetById_async(id);
+            if (collab_model==null) return null;
+            if (collab_model.status == "CANCELLED" || collab_model.status == "COMPLETED")
+            {
+                throw new InvalidOperationException($"Không thể cập nhật giá cho dự án đang ở trạng thái {collab_model.status}.");
+            }
+            DateTime current_time = DateTime.UtcNow;
+            bool is_updated = await _repository.UpdatePrice_async(collab_model.id, price, current_time);
+            if (!is_updated) throw new InvalidOperationException("Lỗi khi cập nhật giá vào cơ sở dữ liệu.");
+
+            collab_model.price = price;
+            collab_model.update_at = current_time;
+            Collaboration_Response_DTO response_dto = CollabMapper.Model_To_DTO(collab_model);
+            return response_dto;
         }
     }
 }

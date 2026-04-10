@@ -95,6 +95,27 @@ namespace dotnet_collab.Controllers
             }
         }
 
+        public async Task<IActionResult> CancelCollaboration(Guid id)
+        {
+            try
+            {
+                Collaboration_Response_DTO response_dto = await _collabService.CancelCollaboration_async(id);
+                if (response_dto==null)
+                {
+                    return NotFound(new {message="$Không tìm thấy yêu cầu có ID ${id}"});
+                }
+                return Ok(response_dto);
+            }
+            catch (InvalidOperationException e)
+            {
+                return BadRequest(new {message = "Không thể thay đổi trạng thái", error = e.Message});
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, new {message = "Lỗi máy chủ nội bộ khi cập nhật trạng thái", error = e.Message});
+            }
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetAllCollaborations()
         {
@@ -124,6 +145,32 @@ namespace dotnet_collab.Controllers
             catch (Exception e)
             {
                 return StatusCode(500, new { message = "Lỗi nội bộ khi lấy danh sách hợp tác", error = e.Message });
+            }
+        }
+
+        [HttpPatch("{id}/price")]
+        public async Task<IActionResult> UpdatePrice(Guid id, [FromBody] Collab_ProposePrice_DTO dto)
+        {
+            try
+            {
+        // TODO: Cần kiểm tra Role Admin trong tương lai
+                if (!dto.price.HasValue || dto.price <= 0)
+                {
+                    return BadRequest(new { message = "Giá trị không hợp lệ." });
+                }
+
+                Collaboration_Response_DTO response_dto = await _collabService.UpdateCollabPrice_async(id, dto.price.Value);
+                if (response_dto == null) return NotFound(new { message = $"Không tìm thấy dự án ID: {id}" });
+
+                return Ok(response_dto);
+            }
+            catch (InvalidOperationException e)
+            {
+                return BadRequest(new { message = "Lỗi nghiệp vụ", error = e.Message });
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, new { message = "Lỗi máy chủ", error = e.Message });
             }
         }
     }

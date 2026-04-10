@@ -1,5 +1,3 @@
-using dotnet_collab.Repositories;
-
 namespace dotnet_collab.States
 {
     public class CollabContext
@@ -47,7 +45,7 @@ namespace dotnet_collab.States
                     return new AcceptedState();
                 case "CANCELLED":
                     return new CancelledState();
-                case "COMPLETE":
+                case "COMPLETED":
                     return new CompletedState();
                 default:
                     throw new ArgumentException($"Không nhận diện được trạng thái");
