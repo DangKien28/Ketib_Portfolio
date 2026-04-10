@@ -12,9 +12,7 @@ namespace dotnet_collab.States
         }
         public async Task Accept_async(CollabContext context)
         {
-            DateTime current_time = DateTime.UtcNow;
-            await context.Repository.UpdateStatus_async(context.CollabId, "ACCEPTED", current_time);
-            context.TransitionTo(new AcceptedState());
+            
         }
         public async Task Complete_async(CollabContext context)
         {
@@ -22,9 +20,7 @@ namespace dotnet_collab.States
         }
         public async Task Cancel_async(CollabContext context)
         {
-            DateTime current_time = DateTime.UtcNow;
-            await context.Repository.UpdateStatus_async(context.CollabId, "CANCELLED", current_time);
-            context.TransitionTo(new CancelledState());
+            
         }
     }
 }

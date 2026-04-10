@@ -5,13 +5,11 @@ namespace dotnet_collab.States
     public class CollabContext
     {
         public Guid CollabId {get;}
-        public ICollabRepository Repository {get;} 
         private ICollabState _currentState;
         public string CurrentStatusName => _currentState.StatusName;
-        public CollabContext(Guid collab_id, string initial_status, ICollabRepository repo)
+        public CollabContext(Guid collab_id, string initial_status)
         {
             CollabId = collab_id;
-            Repository = repo;
             TransitionTo(GetStateFromName(initial_status));
         }
 
