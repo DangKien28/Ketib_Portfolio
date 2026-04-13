@@ -1,42 +1,61 @@
 require('dotenv').config();
 const http = require('http');
 const { handleRoute } = require('./router');
+const { connectDB } = require('./db'); // Import logic kết nối từ file db.js
 
 const PORT = process.env.GATEWAY_PORT || 3000;
 
-// DANH SÁCH TRẮNG: Chỉ định chính xác Frontend nào được phép gọi API
-const ALLOWED_ORIGINS = [
-    'http://127.0.0.1:5500', // Port của Live Server (Frontend Vanilla JS)
-    'http://localhost:5500', 
-    'https://ten-mien-that-cua-ban.com'
-];
+// Các domain được phép truy cập (Giữ nguyên theo project hiện tại)
+const ALLOWED_ORIGINS = ['http://localhost:5500', 'http://127.0.0.1:5500'];
 
 const server = http.createServer(async (req, res) => {
-    // 1. Kiểm tra Origin (Nguồn gốc request)
     const origin = req.headers.origin;
+    
+    // Thiết lập CORS
     if (ALLOWED_ORIGINS.includes(origin)) {
         res.setHeader('Access-Control-Allow-Origin', origin);
-    } else {
-        // Nếu không có origin (ví dụ gọi từ Postman) thì cho phép tạm lúc dev
-        // Trên Production, có thể chặn luôn bằng cách set cứng 1 origin
-        res.setHeader('Access-Control-Allow-Origin', ALLOWED_ORIGINS[0]); 
     }
-
-    // 2. Chỉ định rõ những Method và Header nào được phép
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    // Quan trọng nếu sau này bạn dùng cookie thay vì gửi Token qua header
-    res.setHeader('Access-Control-Allow-Credentials', 'true'); 
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
 
+    // Xử lý Preflight request
     if (req.method === 'OPTIONS') {
         res.writeHead(204);
         res.end();
         return;
     }
 
-    await handleRoute(req, res);
+    // Điều hướng request sang router
+    try {
+        await handleRoute(req, res);
+    } catch (error) {
+        console.error("❌ Gateway Error:", error);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: "Internal Server Error at Gateway" }));
+    }
 });
 
-server.listen(PORT, () => {
-    console.log(`API Gateway is running securely on port ${PORT}`);
-});
+/**
+ * PHƯƠNG PHÁP CỦA KỸ SƯ CHUYÊN NGHIỆP:
+ * Chúng ta không gọi server.listen() ngay lập tức. 
+ * Thay vào đó, chúng ta đợi kết nối MongoDB Atlas thành công trước.
+ */
+async function startServer() {
+    try {
+        // 1. Kết nối Database trung tâm
+        await connectDB();
+        
+        // 2. Sau khi DB sẵn sàng, mới mở port nhận request
+        server.listen(PORT, () => {
+            console.log(`🚀 API Gateway is running securely on port ${PORT}`);
+            console.log(`🔗 MongoDB Atlas is connected and ready.`);
+        });
+    } catch (error) {
+        console.error("🛑 Lỗi nghiêm trọng: Không thể khởi động Gateway do lỗi kết nối Database.");
+        console.error(error);
+        process.exit(1); // Dừng tiến trình nếu DB "chết"
+    }
+}
+
+startServer();

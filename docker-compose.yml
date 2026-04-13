@@ -3,9 +3,7 @@ services:
   rabbitmq:
     image: rabbitmq:3-management-alpine
     container_name: ketib_rabbitmq
-    ports:
-      - "5672:5672"
-      - "15672:15672"
+    # Đã ẩn ports để bảo vệ nội bộ
     environment:
       RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
       RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
@@ -20,8 +18,7 @@ services:
   redis:
     image: redis:7-alpine
     container_name: ketib_redis
-    ports:
-      - "6379:6379"
+    # Đã ẩn ports để bảo vệ nội bộ
     command: redis-server --requirepass ${REDIS_PASSWORD}
     volumes:
       - redis_data:/data
@@ -33,8 +30,7 @@ services:
   mysql:
     image: mysql:8.0
     container_name: ketib_mysql
-    ports:
-      - "3306:3306"
+    # Đã ẩn ports để bảo vệ nội bộ
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -50,8 +46,7 @@ services:
   postgres:
     image: postgres:15-alpine
     container_name: ketib_postgres
-    ports:
-      - "5432:5432"
+    # Đã ẩn ports để bảo vệ nội bộ
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -68,8 +63,7 @@ services:
   mongodb:
     image: mongo:6.0
     container_name: ketib_mongodb
-    ports:
-      - "27017:27017"
+    # Đã ẩn ports để bảo vệ nội bộ
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
@@ -85,13 +79,60 @@ services:
   dotnet-collab:
     build: ./dotnet-collab
     container_name: dotnet_collab_service
-    ports:
-      - "5166:5166"
+    # Đã ẩn ports để bảo vệ nội bộ
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__PostgresConnection=Host=${POSTGRES_HOST};Port=${POSTGRES_PORT};Database=${POSTGRES_DATABASE};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
     depends_on:
       - postgres
+    networks:
+      - ketib_network
+
+  # 7. Node.js API Gateway (Điểm truy cập duy nhất)
+  node-api-gateway:
+    build: ./node-api_gateway
+    container_name: ketib_node_api_gateway
+    ports:
+      - "${GATEWAY_PORT:-8080}:${GATEWAY_PORT:-8080}" # Public gateway port
+    env_file:
+      - .env
+    networks:
+      - ketib_network
+    restart: unless-stopped
+
+  # 8. Java Project (.jar) Microservice (Quản lý Project)
+  java-project:
+    build: ./java-project
+    container_name: ketib_java_project
+    # Port 8080 internal chỉ giao tiếp qua mạng nội bộ, Node.js sẽ trỏ tới container này.
+    # Trong application.properties ta đã đặt port 8080 cho Spring
+    env_file:
+      - .env
+    depends_on:
+      - mysql
+      - mongodb
+    networks:
+      - ketib_network
+
+  # 9. Python AI (Xử lý NLP)
+  python-ai:
+    build: ./python-ai
+    container_name: ketib_python_ai
+    # Port 8000 nội bộ
+    env_file:
+      - .env
+    networks:
+      - ketib_network
+
+  # 10. Go Worker (AMQP Consumer)
+  go-worker:
+    build: ./go-worker
+    container_name: ketib_go_worker
+    env_file:
+      - .env
+    depends_on:
+      - rabbitmq
+      - python-ai
     networks:
       - ketib_network
 

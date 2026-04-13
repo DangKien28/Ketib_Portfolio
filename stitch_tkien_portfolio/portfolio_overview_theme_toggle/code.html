@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KINETIC_ARCHITECT | Console Overview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-fixed-variant": "#2b48ac",
+                        "inverse-on-surface": "#555555",
+                        "error-dim": "#d7383b",
+                        "on-error": "#490006",
+                        "outline-variant": "#484848",
+                        "primary-fixed-dim": "#5091ff",
+                        "on-tertiary": "#6a1f77",
+                        "inverse-surface": "#f9f9f9",
+                        "on-primary-container": "#00214e",
+                        "tertiary-container": "#f39cfb",
+                        "surface-dim": "#0e0e0e",
+                        "surface-container-low": "#131313",
+                        "error": "#ff716c",
+                        "surface-tint": "#84adff",
+                        "surface": "#0e0e0e",
+                        "on-tertiary-container": "#60136d",
+                        "on-surface": "#ffffff",
+                        "surface-variant": "#262626",
+                        "surface-container": "#191919",
+                        "inverse-primary": "#005bc1",
+                        "primary": "#84adff",
+                        "on-error-container": "#ffa8a3",
+                        "outline": "#757575",
+                        "secondary-fixed-dim": "#b3c1ff",
+                        "error-container": "#9f0519",
+                        "on-primary-fixed-variant": "#002a60",
+                        "tertiary-fixed-dim": "#e48fed",
+                        "on-secondary": "#00185d",
+                        "tertiary-dim": "#e48fed",
+                        "surface-bright": "#2c2c2c",
+                        "primary-dim": "#0070ea",
+                        "tertiary": "#fab0ff",
+                        "on-primary": "#002d64",
+                        "on-background": "#ffffff",
+                        "secondary-container": "#1e3da1",
+                        "primary-fixed": "#6c9fff",
+                        "on-secondary-fixed": "#00298b",
+                        "primary-container": "#6c9fff",
+                        "on-secondary-container": "#c4ceff",
+                        "on-tertiary-fixed-variant": "#6a1f77",
+                        "secondary": "#7e98ff",
+                        "on-surface-variant": "#ababab",
+                        "secondary-fixed": "#c6cfff",
+                        "on-tertiary-fixed": "#41004d",
+                        "secondary-dim": "#7e98ff",
+                        "on-primary-fixed": "#000000",
+                        "surface-container-highest": "#262626",
+                        "tertiary-fixed": "#f39cfb",
+                        "background": "#0e0e0e",
+                        "surface-container-lowest": "#000000",
+                        "surface-container-high": "#1f1f1f"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0e0e0e;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(14, 14, 14, 0.7);
+            backdrop-filter: blur(12px);
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #84adff 0%, #0070ea 100%);
+        }
+        .ghost-border {
+            border-top: 1px solid rgba(72, 72, 72, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-black/70 backdrop-blur-md shadow-[0_20px_40px_rgba(0,123,255,0.08)] flex items-center justify-between px-6 h-16 w-full font-space-grotesk tracking-tight">
+<div class="flex items-center gap-10">
+<div class="text-xl font-bold tracking-tighter text-blue-400">KINETIC_ARCHITECT</div>
+<nav class="hidden md:flex items-center gap-6">
+<div class="relative group">
+<button class="text-neutral-400 hover:text-neutral-200 transition-colors flex items-center gap-1 text-sm">Features <span class="material-symbols-outlined text-[16px]">expand_more</span></button>
+<div class="absolute top-full left-0 mt-2 w-56 glass-panel border border-outline-variant/20 rounded-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all p-2 shadow-2xl z-[60]">
+<a class="block px-4 py-2 hover:bg-neutral-800/50 text-on-surface-variant text-sm" href="#">Project nổi bật</a>
+<a class="block px-4 py-2 hover:bg-neutral-800/50 text-on-surface-variant text-sm" href="#">AI Assistant</a>
+<a class="block px-4 py-2 hover:bg-neutral-800/50 text-on-surface-variant text-sm" href="#">Test độ phù hợp với TKien</a>
+</div>
+</div>
+<a class="text-neutral-400 hover:text-neutral-200 transition-colors text-sm" href="#">About Me</a>
+<div class="relative group">
+<button class="text-neutral-400 hover:text-neutral-200 transition-colors flex items-center gap-1 text-sm">Contact <span class="material-symbols-outlined text-[16px]">expand_more</span></button>
+<div class="absolute top-full left-0 mt-2 w-48 glass-panel border border-outline-variant/20 rounded-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all p-2 shadow-2xl z-[60]">
+<a class="block px-4 py-2 hover:bg-neutral-800/50 text-on-surface-variant text-sm" href="#">Chat with AI</a>
+<a class="block px-4 py-2 hover:bg-neutral-800/50 text-on-surface-variant text-sm" href="#">Chat with TKien</a>
+</div>
+</div>
+<a class="text-neutral-400 hover:text-neutral-200 transition-colors text-sm" href="#">Projects</a>
+</nav>
+<!-- Search Bar -->
+</div><div class="hidden lg:flex flex-1 justify-center px-8">
+<div class="flex items-center bg-neutral-900/50 border border-outline-variant/20 rounded-lg px-4 py-2 focus-within:border-primary/40 focus-within:bg-neutral-900 transition-all w-full max-w-md group">
+<span class="material-symbols-outlined text-neutral-500 text-lg group-focus-within:text-primary transition-colors" data-icon="search">search</span>
+<input class="bg-transparent border-none text-sm text-on-surface placeholder:text-neutral-600 focus:ring-0 w-full ml-3 font-body" placeholder="Search projects..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4 border-outline-variant/20">
+<button class="p-2 text-on-surface-variant hover:bg-neutral-800/50 rounded-sm active:scale-95 duration-200 transition-all">
+<span class="material-symbols-outlined" data-icon="light_mode">light_mode</span>
+</button><button class="p-2 text-on-surface-variant hover:bg-neutral-800/50 rounded-sm active:scale-95 duration-200 transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-neutral-800/50 rounded-sm active:scale-95 duration-200 transition-all">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-neutral-800/50 rounded-sm active:scale-95 duration-200 transition-all">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-16 border-r border-neutral-800/20 bg-neutral-950 flex flex-col py-4 z-40 hidden md:flex">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-1">
+<div class="w-8 h-8 rounded-sm overflow-hidden bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-sm">terminal</span>
+</div>
+<div>
+<h3 class="text-blue-400 font-black font-inter text-xs uppercase tracking-widest">CONSOLE_ROOT</h3>
+<p class="text-[10px] text-on-surface-variant font-label opacity-60">v2.4.0-stable</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 bg-blue-500/10 text-blue-400 border-r-4 border-blue-500 px-4 py-3 font-inter text-xs uppercase tracking-widest transition-all duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Overview</span>
+</a>
+<a class="flex items-center gap-3 text-neutral-500 px-4 py-3 hover:bg-neutral-900 font-inter text-xs uppercase tracking-widest transition-all duration-150 ease-in-out hover:text-neutral-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Collaborator</span>
+</a>
+</nav>
+<!-- Trace Logs Area -->
+<div class="mt-auto px-4 pb-4">
+<div class="bg-surface-container-lowest p-3 rounded-sm border border-outline-variant/10 font-mono text-[10px] h-32 overflow-y-auto">
+<div class="text-primary opacity-80 mb-1 flex items-center gap-2">
+<span class="material-symbols-outlined text-[12px]">terminal</span>
+<span>TRACE_LOGS_ACTIVE</span>
+</div>
+<div class="text-on-surface-variant space-y-1">
+<p><span class="text-primary-dim">[09:21:44]</span> HANDSHAKE_INIT</p>
+<p><span class="text-primary-dim">[09:21:45]</span> SESSION_AUTH_OK</p>
+<p><span class="text-tertiary">[09:22:01]</span> CACHE_READY_0x44</p>
+<p><span class="text-primary-dim">[09:22:15]</span> ARCH_READY</p>
+</div>
+</div>
+<button class="w-full mt-4 primary-gradient text-on-primary-fixed font-bold text-[10px] py-2 tracking-widest uppercase rounded-sm active:scale-95 transition-all">
+                DEPLOY_SH
+            </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="md:ml-64 pt-24 pb-12 px-6 md:px-12 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<section class="mb-16 relative overflow-hidden bg-surface-container rounded-sm p-12 ghost-border">
+<div class="relative z-10 max-w-2xl">
+<h1 class="font-headline text-5xl md:text-7xl font-bold tracking-tighter mb-6 leading-tight">
+                    ENGINEERING <span class="text-primary">KINETIC</span> INFRASTRUCTURE
+                </h1>
+<p class="text-on-surface-variant mb-8 text-lg font-light leading-relaxed">
+                    Collaborate with a backend specialist focused on high-availability systems and AI-integrated architectural design.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<input class="bg-surface-container-highest border-none text-on-surface px-6 py-4 flex-1 focus:ring-1 focus:ring-primary rounded-none placeholder:text-neutral-600 font-label" placeholder="ENTER_EMAIL_FOR_SYNC" type="email"/>
+<button class="primary-gradient px-8 py-4 font-bold text-on-primary-fixed uppercase tracking-widest text-sm rounded-sm active:scale-95 transition-all">
+                        Send Link
+                    </button>
+</div>
+</div>
+<!-- Decorative Element -->
+<div class="absolute -right-24 -bottom-24 w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
+</section>
+<!-- AI Section -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+<!-- Left Column: Project Estimate -->
+<div class="bg-surface-container p-8 ghost-border">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="bolt">bolt</span>
+<h2 class="font-headline text-xl font-bold uppercase tracking-widest">AI Project Estimator</h2>
+</div>
+<label class="block text-on-surface-variant text-[10px] uppercase tracking-widest mb-2 opacity-60">Input Architecture Description</label>
+<textarea class="w-full bg-surface-container-highest border-none text-on-surface p-4 focus:ring-1 focus:ring-primary rounded-none mb-6 resize-none font-body text-sm" placeholder="Define modules, estimated traffic, and required integrations..." rows="6"></textarea>
+<div class="flex justify-between items-center bg-surface-container-low p-4 mb-6">
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest mb-1">Estimated Time</p>
+<p class="font-headline font-bold text-primary">--:-- HRS</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest mb-1">Resource Cost</p>
+<p class="font-headline font-bold text-primary">--.-- UNIT</p>
+</div>
+</div>
+<button class="w-full bg-surface-container-highest hover:bg-neutral-800 text-primary py-4 font-bold uppercase tracking-widest text-xs rounded-sm active:scale-95 transition-all border border-primary/20">
+                    Run Estimate Model
+                </button>
+</div>
+<!-- Right Column: Fit Analysis -->
+<div class="bg-surface-container p-8 ghost-border">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-tertiary" data-icon="analytics">analytics</span>
+<h2 class="font-headline text-xl font-bold uppercase tracking-widest">Architect Compatibility</h2>
+</div>
+<label class="block text-on-surface-variant text-[10px] uppercase tracking-widest mb-2 opacity-60">Upload Job Requirements (PDF/JSON)</label>
+<div class="border-2 border-dashed border-outline-variant/30 h-40 flex flex-col items-center justify-center bg-surface-container-low mb-6 group cursor-pointer hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-4xl text-neutral-600 mb-2 group-hover:text-primary transition-colors">upload_file</span>
+<p class="text-sm text-on-surface-variant">Drop technical specification here</p>
+</div>
+<div class="bg-surface-container-low p-4 flex items-center justify-between mb-6">
+<p class="text-xs text-on-surface-variant">Fit Analysis Result:</p>
+<span class="bg-tertiary-container text-on-tertiary-container text-[10px] px-2 py-1 font-bold uppercase tracking-tighter">Waiting for data</span>
+</div>
+<button class="w-full bg-surface-container-highest hover:bg-neutral-800 text-tertiary py-4 font-bold uppercase tracking-widest text-xs rounded-sm active:scale-95 transition-all border border-tertiary/20">
+                    Analyze Fit Profile
+                </button>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="mb-16 flex justify-center">
+<button class="primary-gradient px-12 py-6 rounded-sm shadow-[0_0_50px_rgba(132,173,255,0.2)] hover:shadow-[0_0_70px_rgba(132,173,255,0.3)] transition-all group active:scale-95">
+<div class="flex items-center gap-4">
+<span class="font-headline text-2xl font-bold text-on-primary-fixed tracking-tight">Hợp tác cùng TKien ngay</span>
+<span class="material-symbols-outlined text-on-primary-fixed group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+</button>
+</section>
+<!-- Featured Projects Section -->
+<section>
+<div class="flex items-baseline justify-between mb-8">
+<h2 class="font-headline text-3xl font-bold tracking-tighter">Project nổi bật</h2>
+<div class="h-px bg-outline-variant/20 flex-1 mx-8 hidden md:block"></div>
+<a class="text-primary text-xs uppercase font-bold tracking-widest hover:underline" href="#">View All Node_Logs</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Project Card 1 -->
+<div class="bg-surface-container rounded-sm overflow-hidden group">
+<div class="h-48 bg-neutral-900 overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100" data-alt="Data center server racks with blue glowing lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyzZFEM54JjT4LKoV0PR41b7Neffc7cH3mlzIRHlOlGEVRSVotwgNsOIoEkImYNAqRvwxnB4KBn--pAcbnJlHiYDYSYuCTyZQ1f8xcNv2ZEBkrze7isuDn-T-dEHgkQQOOnYS0PnEBjT4PLkdjxV7-Dq_lndex3dSYWQriLBU7a0prI0ZMiJqRygLeaHiybqObHud0DzLkfM28mUqysmQMC9Ua2Ij2woHIxIP_JVE5kniS6CReltyQK_FiZfcJQx1w6-rVrMQfrENP"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline font-bold text-lg">NEURAL_NET_V1</h3>
+<span class="text-[10px] bg-primary/10 text-primary px-2 py-0.5 font-bold uppercase">Active</span>
+</div>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">Scalable microservices architecture handling over 1M requests per second with sub-10ms latency.</p>
+<div class="flex gap-2">
+<span class="text-[9px] border border-outline-variant px-2 py-1 text-on-surface-variant font-mono">GO_LANG</span>
+<span class="text-[9px] border border-outline-variant px-2 py-1 text-on-surface-variant font-mono">K8S</span>
+<span class="text-[9px] border border-outline-variant px-2 py-1 text-on-surface-variant font-mono">GRPC</span>
+</div>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="bg-surface-container rounded-sm overflow-hidden group">
+<div class="h-48 bg-neutral-900 overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100" data-alt="Abstract 3D digital landscape with geometric shapes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkxDBHjqdKMABu-oSI7AxTwJSyJPvv3ulob7JeSZJ1uyKVvTHW0tHPMcfPKWnfnqFtm1CRjFr-RuanVSUlsczDKhLYqwToc4D4RO6xs9aVPui5CzKqDwjbqOWaMAa6qA5pXxWqfdEtqvL63IifL-ctBGTLGeDhtSTRcgMVQNBWHTAmXRj7eK8b92GkunEa1OzjdOLes5ZeQzrEqCKMPw2eRIWz1HN2_7uVknTIFt745CPSEtWmX3R9D4ZDbY26n-_cQxvScxS779NT"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline font-bold text-lg">VOID_DB_ENGINE</h3>
+<span class="text-[10px] bg-tertiary/10 text-tertiary px-2 py-0.5 font-bold uppercase">Staging</span>
+</div>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">Custom high-performance key-value store optimized for low-memory environments.</p>
+<div class="flex gap-2">
+<span class="text-[9px] border border-outline-variant px-2 py-1 text-on-surface-variant font-mono">RUST</span>
+<span class="text-[9px] border border-outline-variant px-2 py-1 text-on-surface-variant font-mono">DOCKER</span>
+</div>
+</div>
+</div>
+<!-- Project Card 3 -->
+<div class="bg-surface-container rounded-sm overflow-hidden group">
+<div class="h-48 bg-neutral-900 overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100" data-alt="Satellite view of Earth with digital communication lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSkQjpsHkXmxYwB33O0TALWlfwNPi2spuLaoED5SULDSWaJ86MkP-caPG7pcsBwoeseLDB3vgpuF_FvR58pLxh5q2yeqm6_GgEfQMMXqDIoG8SMYC07BkSTPgg2ZX1jzWODOyx1KnjBPrUeoNJWZi12l4WKMC5ZZ4EMEGTsGXlMbQerLdi--C-Rl7_xpp2JdtCEr9UxiWkaeHWuIvQeTI9cUiH3iGczNpoVe36_bQMPNzEz5K_n5OCI55KvNBzXWW1KPUCtj7w7MX8"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline font-bold text-lg">GEO_SYNC_API</h3>
+<span class="text-[10px] bg-primary/10 text-primary px-2 py-0.5 font-bold uppercase">Deployed</span>
+</div>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">Global real-time data synchronization across multi-region cloud clusters.</p>
+<div class="flex gap-2">
+<span class="text-[9px] border border-outline-variant px-2 py-1 text-on-surface-variant font-mono">NODE_JS</span>
+<span class="text-[9px] border border-outline-variant px-2 py-1 text-on-surface-variant font-mono">AWS</span>
+<span class="text-[9px] border border-outline-variant px-2 py-1 text-on-surface-variant font-mono">REDIS</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Action Button Cluster -->
+<div class="fixed bottom-8 right-8 z-[100] group">
+<div class="flex flex-col-reverse items-end gap-3">
+<!-- Main FAB -->
+<button class="primary-gradient w-14 h-14 rounded-full flex items-center justify-center shadow-2xl active:scale-95 transition-all">
+<span class="material-symbols-outlined text-on-primary-fixed text-2xl" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+<!-- Hidden options (shown on group hover) -->
+<div class="flex flex-col gap-3 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all pointer-events-none group-hover:pointer-events-auto">
+<button class="bg-surface-container-highest hover:bg-neutral-800 text-tertiary px-4 py-3 rounded-sm text-xs font-bold uppercase tracking-widest flex items-center gap-3 border border-tertiary/20 shadow-xl">
+<span class="material-symbols-outlined text-sm">smart_toy</span>
+                    Chat with AI
+                </button>
+<button class="bg-surface-container-highest hover:bg-neutral-800 text-primary px-4 py-3 rounded-sm text-xs font-bold uppercase tracking-widest flex items-center gap-3 border border-primary/20 shadow-xl">
+<span class="material-symbols-outlined text-sm">person</span>
+                    Chat with TKien
+                </button>
+</div>
+</div>
+</div>
+</body></html>

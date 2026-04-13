@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ROOT@PORTFOLIO:~ PROJECTS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-on-surface": "#555555",
+              "on-secondary-fixed-variant": "#2b48ac",
+              "tertiary-fixed": "#f39cfb",
+              "tertiary-dim": "#e48fed",
+              "primary-dim": "#0070ea",
+              "on-tertiary-container": "#60136d",
+              "error-dim": "#d7383b",
+              "on-tertiary-fixed-variant": "#6a1f77",
+              "surface-bright": "#2c2c2c",
+              "primary-container": "#6c9fff",
+              "primary-fixed": "#6c9fff",
+              "surface-container-lowest": "#000000",
+              "on-surface-variant": "#ababab",
+              "tertiary-fixed-dim": "#e48fed",
+              "on-surface": "#ffffff",
+              "surface-container-highest": "#262626",
+              "primary": "#84adff",
+              "on-primary-fixed": "#000000",
+              "on-secondary-fixed": "#00298b",
+              "tertiary": "#fab0ff",
+              "on-secondary-container": "#c4ceff",
+              "secondary-dim": "#7e98ff",
+              "on-tertiary": "#6a1f77",
+              "on-primary-fixed-variant": "#002a60",
+              "surface-tint": "#84adff",
+              "outline-variant": "#484848",
+              "inverse-surface": "#f9f9f9",
+              "surface-container-low": "#131313",
+              "tertiary-container": "#f39cfb",
+              "background": "#0e0e0e",
+              "secondary-fixed-dim": "#b3c1ff",
+              "on-error-container": "#ffa8a3",
+              "on-background": "#ffffff",
+              "secondary-container": "#1e3da1",
+              "surface-variant": "#262626",
+              "on-secondary": "#00185d",
+              "on-error": "#490006",
+              "primary-fixed-dim": "#5091ff",
+              "outline": "#757575",
+              "error-container": "#9f0519",
+              "surface-container": "#191919",
+              "error": "#ff716c",
+              "inverse-primary": "#005bc1",
+              "on-tertiary-fixed": "#41004d",
+              "on-primary": "#002d64",
+              "surface-container-high": "#1f1f1f",
+              "surface-dim": "#0e0e0e",
+              "secondary": "#7e98ff",
+              "on-primary-container": "#00214e",
+              "secondary-fixed": "#c6cfff",
+              "surface": "#0e0e0e"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-nav {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(12px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ghost-border {
+            border-top: 1px solid rgba(72, 72, 72, 0.15);
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #84adff 0%, #0070ea 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-black/70 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,123,255,0.08)]">
+<div class="flex justify-between items-center w-full px-6 py-3">
+<div class="text-xl font-bold text-[#84adff] tracking-tighter font-headline">
+                ROOT@PORTFOLIO:~
+            </div>
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex items-center gap-6 font-headline tracking-tight text-sm">
+<div class="relative group cursor-pointer">
+<span class="text-[#ababab] hover:text-[#84adff] transition-colors flex items-center gap-1">Features <span class="material-symbols-outlined text-xs">expand_more</span></span>
+</div>
+<a class="text-[#ababab] hover:text-[#84adff] transition-colors" href="#">About Me</a>
+<div class="relative group cursor-pointer">
+<span class="text-[#ababab] hover:text-[#84adff] transition-colors flex items-center gap-1">Contact <span class="material-symbols-outlined text-xs">expand_more</span></span>
+</div>
+<a class="text-[#84adff] border-b-2 border-[#84adff] pb-1" href="#">Projects</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="bg-surface-container-highest border-none rounded-none text-xs px-10 py-2 w-48 focus:ring-1 focus:ring-primary transition-all" placeholder="Search manifest..." type="text"/>
+</div>
+<button class="p-2 hover:bg-[#262626] transition-all duration-200 active:scale-95 text-[#84adff]">
+<span class="material-symbols-outlined">lightbulb</span>
+</button>
+<button class="p-2 hover:bg-[#262626] transition-all duration-200 active:scale-95 text-[#ababab]">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-sm overflow-hidden border border-outline-variant/20">
+<img alt="User Terminal Profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgjIaefg8jp5gGmLGhuHu1W65AX9eTwNLZftjh7XVemgwBB9tTwHh1d7o-yX8xneBKgsa6_ccj6oskgmvA3gXRRmaWRVVdwr33EFR30nYJWUyGI-HRxRNLNunVzm7aQjUuBGCp1xpR5hrX5BNwyHmXQ7G4W4sVfU0Hbo3Kv-VI2hqBqrwXQdvdC6LkrSd_C4KEAQzPLl9naowavLqE7_xrilANFnVSorYpuuEaCYhHm2CQWwBgXlEXjqvOa5ZsbpX-cHFjV-aprscE"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-[#484848]/20 bg-[#0e0e0e] hidden md:flex flex-col pt-20">
+<div class="px-6 mb-8">
+<div class="text-lg font-black text-[#84adff] font-headline mb-1">ARCHITECT_V1</div>
+<div class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-medium">Status: Online</div>
+</div>
+<nav class="flex-1 flex flex-col font-['Inter'] font-medium text-xs uppercase tracking-widest">
+<a class="bg-[#191919] text-[#84adff] border-l-4 border-[#84adff] py-3 px-6 flex items-center gap-3 active:translate-x-1" href="#">
+<span class="material-symbols-outlined text-primary">terminal</span>
+                Overview
+            </a>
+<a class="text-[#ababab] py-3 px-6 flex items-center gap-3 hover:bg-[#131313] hover:text-white transition-colors active:translate-x-1" href="#">
+<span class="material-symbols-outlined text-primary">group</span>
+                Collaboration
+            </a>
+<div class="mt-8 px-6">
+<button class="w-full primary-gradient text-on-primary-fixed font-bold py-3 text-[10px] tracking-widest rounded-sm active:scale-95 transition-transform">
+                    NEW_PROJECT
+                </button>
+</div>
+</nav>
+<div class="p-6 border-t border-outline-variant/10 font-['Inter'] font-medium text-xs uppercase tracking-widest">
+<a class="text-[#ababab] py-2 flex items-center gap-3 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">settings</span>
+                Settings
+            </a>
+<a class="text-[#ababab] py-2 flex items-center gap-3 hover:text-white transition-colors mt-2" href="#">
+<span class="material-symbols-outlined text-sm">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 pt-24 pb-12 px-8 min-h-screen">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+<div class="max-w-2xl">
+<div class="text-primary-dim text-xs font-mono mb-2 tracking-[0.3em]">LOCAL_STORAGE / PROJECTS</div>
+<h1 class="text-5xl md:text-7xl font-bold font-headline tracking-tighter leading-none">PROJECTS_MANIFEST</h1>
+</div>
+<div class="text-right">
+<div class="text-on-surface-variant text-[10px] font-mono leading-relaxed">
+                    TOTAL_COMMITS: 12,402<br/>
+                    UPTIME: 99.98%<br/>
+                    LAST_SYNC: 2023.10.24_14:02:55
+                </div>
+</div>
+</header>
+<!-- FEATURED_PROJECTS Section -->
+<section class="mb-20">
+<div class="flex items-center gap-4 mb-8">
+<h2 class="text-xl font-bold font-headline tracking-tight uppercase">FEATURED_PROJECTS</h2>
+<div class="h-px flex-1 bg-outline-variant/20"></div>
+<div class="text-[10px] text-on-surface-variant font-mono">[01/04]</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+<!-- Large Featured Card -->
+<div class="group relative bg-surface-container rounded-sm overflow-hidden ghost-border flex flex-col md:flex-row h-full lg:h-96">
+<div class="md:w-1/2 relative h-64 md:h-auto overflow-hidden">
+<img alt="Cloud Infrastructure Project" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYW5Q2RE9gfagJkUH6t3vakIdOEUhq64hzmdrOvVfxulIIj-uoNOVpIy4tLeitNYdrS9Axcx4OFQDCVF6vn6xIwGHf0Tnml6e4ZbtGD7TCSpFS7YIujjHg19lcje1eHJ-8hDxX-2-EBVpH7PpeWX-Dfizz5HR-G2KpXsQRknWXDaHGULP1fN7In7TKnPbSeDovaFubM4xBqwEdlmzPj78I26htdZLbBWQcoBls3qCfG842aTZV_3qsyU1CpGFHarX5aWpO5Vr-kfqB"/>
+<div class="absolute inset-0 bg-primary-dim/10 mix-blend-overlay"></div>
+</div>
+<div class="md:w-1/2 p-8 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-4">
+<span class="text-[10px] px-2 py-0.5 bg-primary/10 text-primary border border-primary/20">V.2.4.0</span>
+<div class="flex gap-2 text-on-surface-variant text-xs">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">favorite</span> 128</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">star</span> 5.0</span>
+</div>
+</div>
+<h3 class="text-2xl font-bold font-headline mb-3 text-white">NEURAL_EDGE_API</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">High-concurrency GraphQL gateway designed for microsecond latency in distributed edge clusters. Handles 2M+ requests per second.</p>
+</div>
+<div class="flex flex-wrap gap-3">
+<button class="px-4 py-2 primary-gradient text-on-primary-fixed text-[10px] font-bold tracking-widest uppercase hover:opacity-90 transition-opacity">VIEW_PRODUCTION</button>
+<button class="px-4 py-2 bg-surface-container-highest text-primary text-[10px] font-bold tracking-widest uppercase hover:bg-surface-bright transition-colors">GITHUB_REPO</button>
+</div>
+</div>
+</div>
+<!-- Bento Grid Sub-items -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+<div class="bg-surface-container p-6 ghost-border flex flex-col justify-between group hover:bg-surface-container-high transition-all">
+<div>
+<div class="flex justify-between mb-4">
+<span class="material-symbols-outlined text-primary-fixed-dim">database</span>
+<div class="text-[10px] text-on-surface-variant">2.4k STARS</div>
+</div>
+<h3 class="text-lg font-bold font-headline mb-2">DB_SHARD_ENGINE</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed">Automated horizontal scaling middleware for PostgreSQL instances.</p>
+</div>
+<div class="mt-6 flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border-2 border-surface bg-surface-container-highest flex items-center justify-center text-[8px]">JS</div>
+<div class="w-6 h-6 rounded-full border-2 border-surface bg-surface-container-highest flex items-center justify-center text-[8px]">PY</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors cursor-pointer">arrow_forward</span>
+</div>
+</div>
+<div class="bg-surface-container p-6 ghost-border flex flex-col justify-between group hover:bg-surface-container-high transition-all">
+<div>
+<div class="flex justify-between mb-4">
+<span class="material-symbols-outlined text-primary-fixed-dim">security</span>
+<div class="text-[10px] text-on-surface-variant">988 LIKES</div>
+</div>
+<h3 class="text-lg font-bold font-headline mb-2">VAULT_LOCK_V2</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed">End-to-end encrypted secret management service with biometric auth.</p>
+</div>
+<div class="mt-6 flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border-2 border-surface bg-surface-container-highest flex items-center justify-center text-[8px]">GO</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors cursor-pointer">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SYSTEM_ACHIEVEMENTS (Stats focus) -->
+<section class="mb-20">
+<div class="flex items-center gap-4 mb-8">
+<h2 class="text-xl font-bold font-headline tracking-tight uppercase">SYSTEM_ACHIEVEMENTS</h2>
+<div class="h-px flex-1 bg-outline-variant/20"></div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-surface-container-low p-8 ghost-border text-center">
+<div class="text-primary text-3xl font-headline font-bold mb-1">0.42ms</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-widest">AVG_LATENCY</div>
+</div>
+<div class="bg-surface-container-low p-8 ghost-border text-center">
+<div class="text-primary text-3xl font-headline font-bold mb-1">15+</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-widest">CLOUD_DEPLOYS</div>
+</div>
+<div class="bg-surface-container-low p-8 ghost-border text-center">
+<div class="text-primary text-3xl font-headline font-bold mb-1">99.9%</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-widest">UNIT_TEST_COV</div>
+</div>
+<div class="bg-surface-container-low p-8 ghost-border text-center">
+<div class="text-primary text-3xl font-headline font-bold mb-1">4.2PB</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-widest">DATA_PROCESSED</div>
+</div>
+</div>
+</section>
+<!-- PERSONAL_PROJECTS -->
+<section class="mb-20">
+<div class="flex items-center gap-4 mb-8">
+<h2 class="text-xl font-bold font-headline tracking-tight uppercase">PERSONAL_PROJECTS</h2>
+<div class="h-px flex-1 bg-outline-variant/20"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="bg-surface-container rounded-sm overflow-hidden flex flex-col hover:translate-y-[-4px] transition-transform duration-300">
+<div class="h-40 bg-surface-container-highest relative">
+<img alt="Electronic Circuit" class="w-full h-full object-cover opacity-50 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBn-rgDDwcxF1jrrGDBB0KYZhbC8R7JWnpZUxKgh0PLcof0_ZnvmRp-6zOWJfANftJGM-PGmmRsEghVvg-AVUN3FKygvAWUOoM5zADxA43J2Wr97Qv00UxRQuwVJTe7ykFRR9_cig84CERS7k44iRRn3vi7KwXKP4QALkboTYi3h7gqsIHngVjv1eGjpMvXLSCSx16eyD5fHTR9YEj1MbDF8cdfnZY7LNJXdiQD34ID3k9iDBBNHJv1hGxgC-I2jR9j3uoxOGqi7w8X"/>
+<div class="absolute bottom-4 left-4">
+<span class="text-[9px] px-2 py-0.5 bg-black/60 backdrop-blur-md text-white border border-white/10 uppercase font-mono">Kernel_Module</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col justify-between">
+<div>
+<h3 class="text-lg font-bold font-headline mb-2 uppercase">HYPER_THREAD_JS</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed mb-4">Experimental JS engine optimization for multi-core processing at the OS level.</p>
+</div>
+<div>
+<div class="flex items-center justify-between mb-4 text-[10px] text-on-surface-variant font-mono">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">favorite</span> 42</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">star</span> 4.8</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">chat_bubble</span> 12</span>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2 bg-surface-container-highest text-[9px] font-bold tracking-tighter uppercase text-center hover:bg-surface-bright transition-colors">PROD_URL</button>
+<button class="py-2 bg-surface-container-highest text-[9px] font-bold tracking-tighter uppercase text-center hover:bg-surface-bright transition-colors">REPOS_GIT</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container rounded-sm overflow-hidden flex flex-col hover:translate-y-[-4px] transition-transform duration-300">
+<div class="h-40 bg-surface-container-highest relative">
+<img alt="Global Network" class="w-full h-full object-cover opacity-50 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiAxy1EpUYqizwWaYWY1aWX9kehYflccsrafVImssTx5FwfRnOI2iYA12UKXjOpD1Mvc2QFDLbQwODxhX-WF1xp4EAsv3vSzgVONt0zxDVNXTdhVJN3m4sA_X-NHvSMXiKyyJi0qkp3mF59B92C5L9W6k4EEgt7rLOzMhCGCK8Idih4lRKWiVSihvyFjWL-wL-6XptKbvYdngrMQ0hd3VpMjE1a4zb9GsCVUumX__Mclt9BYcBNr5tiC3h9zAg784J01uLrSV0dmLt"/>
+<div class="absolute bottom-4 left-4">
+<span class="text-[9px] px-2 py-0.5 bg-black/60 backdrop-blur-md text-white border border-white/10 uppercase font-mono">Net_Protocol</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col justify-between">
+<div>
+<h3 class="text-lg font-bold font-headline mb-2 uppercase">Z_WAVE_ROUTING</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed mb-4">Custom mesh network routing protocol for low-power IoT devices in dense urban areas.</p>
+</div>
+<div>
+<div class="flex items-center justify-between mb-4 text-[10px] text-on-surface-variant font-mono">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">favorite</span> 89</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">star</span> 4.2</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">chat_bubble</span> 04</span>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2 bg-surface-container-highest text-[9px] font-bold tracking-tighter uppercase text-center hover:bg-surface-bright transition-colors">PROD_URL</button>
+<button class="py-2 bg-surface-container-highest text-[9px] font-bold tracking-tighter uppercase text-center hover:bg-surface-bright transition-colors">REPOS_GIT</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container rounded-sm overflow-hidden flex flex-col hover:translate-y-[-4px] transition-transform duration-300">
+<div class="h-40 bg-surface-container-highest relative">
+<img alt="Matrix Code" class="w-full h-full object-cover opacity-50 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJQiRKcw53-HEeyIMY8cw9Ic51G9HXbXwQttoie4XKBUZnU7na__CCbnFE049Do1TK_zLMnhwiBnliMpMKcA8yd7S6i5PJCWvN_mYn0GVg48C077W_XjrqH59ar9yfYgTAslao1En2yUCt9YZnDelqfGhkbZzRyu0vfOnbqj0kqMPSNITRL3vm_HIDtgp3I9TigbtfU0dDTzK_SgHgOPneqqavS8UIY_YC_bQvi_c-J4s01zMBJNNnJrVS-Idv-6iqNscsuUF7wTXT"/>
+<div class="absolute bottom-4 left-4">
+<span class="text-[9px] px-2 py-0.5 bg-black/60 backdrop-blur-md text-white border border-white/10 uppercase font-mono">Encryption</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col justify-between">
+<div>
+<h3 class="text-lg font-bold font-headline mb-2 uppercase">CYPHER_TEXT_CLI</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed mb-4">Command line interface for fast PGP-key rotation and multi-party secret sharing.</p>
+</div>
+<div>
+<div class="flex items-center justify-between mb-4 text-[10px] text-on-surface-variant font-mono">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">favorite</span> 156</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">star</span> 4.9</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">chat_bubble</span> 22</span>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2 bg-surface-container-highest text-[9px] font-bold tracking-tighter uppercase text-center hover:bg-surface-bright transition-colors">PROD_URL</button>
+<button class="py-2 bg-surface-container-highest text-[9px] font-bold tracking-tighter uppercase text-center hover:bg-surface-bright transition-colors">REPOS_GIT</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- TEAM_COLLABORATIONS -->
+<section class="mb-20">
+<div class="flex items-center gap-4 mb-8">
+<h2 class="text-xl font-bold font-headline tracking-tight uppercase">TEAM_COLLABORATIONS</h2>
+<div class="h-px flex-1 bg-outline-variant/20"></div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/10">
+<table class="w-full text-left font-mono text-[10px]">
+<thead class="bg-surface-container-high text-on-surface-variant uppercase tracking-widest">
+<tr>
+<th class="px-6 py-4">COLLECTIVE_ID</th>
+<th class="px-6 py-4">ROLE_MANIFEST</th>
+<th class="px-6 py-4">CONTRIBUTION_LOAD</th>
+<th class="px-6 py-4">STATUS</th>
+<th class="px-6 py-4 text-right">METRICS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-6 py-5 font-headline text-sm font-bold text-white group-hover:text-primary">KUBE_MESH_INITIATIVE</td>
+<td class="px-6 py-5">Core Infra Architect</td>
+<td class="px-6 py-5">
+<div class="w-32 h-1 bg-surface-container-highest">
+<div class="bg-primary h-full w-[85%]"></div>
+</div>
+</td>
+<td class="px-6 py-5"><span class="px-2 py-0.5 bg-tertiary-container text-on-tertiary-container font-bold uppercase text-[8px]">Running</span></td>
+<td class="px-6 py-5 text-right font-bold text-on-surface-variant">1.2k COMMITS</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-6 py-5 font-headline text-sm font-bold text-white group-hover:text-primary">REDIS_SYNC_PROTOCOL</td>
+<td class="px-6 py-5">Contributor</td>
+<td class="px-6 py-5">
+<div class="w-32 h-1 bg-surface-container-highest">
+<div class="bg-primary h-full w-[40%]"></div>
+</div>
+</td>
+<td class="px-6 py-5"><span class="px-2 py-0.5 bg-surface-container-highest text-on-surface-variant font-bold uppercase text-[8px]">Archived</span></td>
+<td class="px-6 py-5 text-right font-bold text-on-surface-variant">45 PRs</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-6 py-5 font-headline text-sm font-bold text-white group-hover:text-primary">QUANTUM_SEC_JS</td>
+<td class="px-6 py-5">Security Lead</td>
+<td class="px-6 py-5">
+<div class="w-32 h-1 bg-surface-container-highest">
+<div class="bg-primary h-full w-[65%]"></div>
+</div>
+</td>
+<td class="px-6 py-5"><span class="px-2 py-0.5 bg-error-container text-on-error-container font-bold uppercase text-[8px]">Patching</span></td>
+<td class="px-6 py-5 text-right font-bold text-on-surface-variant">12 ALERTS</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+<!-- Footer Terminal -->
+<footer class="md:ml-64 bg-surface-container-lowest px-8 py-4 border-t border-outline-variant/10 flex justify-between items-center text-[10px] font-mono text-on-surface-variant">
+<div>© 2024 SYSTEM_ARCHITECT_PORTFOLIO // ALL_RIGHTS_RESERVED</div>
+<div class="flex gap-4">
+<span class="flex items-center gap-1"><div class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></div> SYSTEM_HEALTH: OPTIMAL</span>
+<span>BUILD_V_8.4.1</span>
+</div>
+</footer>
+</body></html>

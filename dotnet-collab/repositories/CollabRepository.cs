@@ -12,345 +12,118 @@ namespace dotnet_collab.Repositories
         {
             _db_helper = db_helper;
         }
+
+        // Tách hàm Mapping chung để không lặp lại code
+        private CollaborationModel MapToCollaborationModel(NpgsqlDataReader reader)
+        {
+            return new CollaborationModel
+            {
+                id = reader.GetGuid(reader.GetOrdinal("id")),
+                user_id = reader.GetGuid(reader.GetOrdinal("user_id")),
+                project_name = reader.GetString(reader.GetOrdinal("project_name")),
+                project_type = reader.GetString(reader.GetOrdinal("project_type")),
+                client_email = reader.GetString(reader.GetOrdinal("client_email")),
+                client_notes = reader.IsDBNull(reader.GetOrdinal("client_notes")) ? null : reader.GetString(reader.GetOrdinal("client_notes")),
+                price = reader.IsDBNull(reader.GetOrdinal("price")) ? null : reader.GetDecimal(reader.GetOrdinal("price")),
+                status = reader.GetString(reader.GetOrdinal("status")),
+                create_at = reader.GetDateTime(reader.GetOrdinal("created_at")),
+                start_at = reader.IsDBNull(reader.GetOrdinal("started_at")) ? null : reader.GetDateTime(reader.GetOrdinal("started_at")),
+                update_at = reader.IsDBNull(reader.GetOrdinal("updated_at")) ? null : reader.GetDateTime(reader.GetOrdinal("updated_at"))
+            };
+        }
+
         public async Task<CollaborationModel> GetById_async(Guid id)
         {
-            NpgsqlConnection connection = _db_helper.CreateConnection();
-
-            try
-            {
-                await connection.OpenAsync();
-
-                NpgsqlCommand command = new NpgsqlCommand("sp_get_collab_by_id", connection);
-
-                try
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    
-                    command.Parameters.AddWithValue("p_collab_id", id); 
-
-                    NpgsqlDataReader reader = await command.ExecuteReaderAsync();
-
-                    try
-                    {
-                        if (await reader.ReadAsync())
-                        {
-                            return new CollaborationModel
-                            {
-                                id = reader.GetGuid(reader.GetOrdinal("id")),
-                                user_id = reader.GetGuid(reader.GetOrdinal("user_id")),
-                                project_name = reader.GetString(reader.GetOrdinal("project_name")),
-                                project_type = reader.GetString(reader.GetOrdinal("project_type")),
-                                client_email = reader.GetString(reader.GetOrdinal("client_email")),
-                                client_notes = reader.IsDBNull(reader.GetOrdinal("client_notes")) ? null : reader.GetString(reader.GetOrdinal("client_notes")),
-                                price = reader.IsDBNull(reader.GetOrdinal("price")) ? null : reader.GetDecimal(reader.GetOrdinal("price")),
-                                status = reader.GetString(reader.GetOrdinal("status")),
-                                create_at = reader.GetDateTime(reader.GetOrdinal("created_at")),
-                                start_at = reader.IsDBNull(reader.GetOrdinal("started_at")) ? null : reader.GetDateTime(reader.GetOrdinal("started_at")),
-                                update_at = reader.IsDBNull(reader.GetOrdinal("updated_at")) ? null : reader.GetDateTime(reader.GetOrdinal("updated_at"))
-                            };
-                        }
-                    }
-                    finally
-                    {
-                        if (reader != null)
-                        {
-                            await reader.DisposeAsync();
-                        }
-                    }
-                }
-                finally
-                {
-                    if (command != null)
-                    {
-                        command.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (connection != null)
-                {
-                    connection.Dispose();
-                }
-            }
-            return null;
+            var parameters = new Dictionary<string, object> { { "p_collab_id", id } };
+            var results = await _db_helper.GetDataAsync("sp_get_collab_by_id", MapToCollaborationModel, parameters, CommandType.StoredProcedure);
+            return results.FirstOrDefault();
         }
 
         public async Task<CollaborationModel> Create_async(CollaborationModel collab_model)
         {
-            NpgsqlConnection connection = _db_helper.CreateConnection();
-
-            try
+            var parameters = new Dictionary<string, object>
             {
-                await connection.OpenAsync();
-                NpgsqlCommand command = new NpgsqlCommand("sp_create_collab_request", connection);
+                { "p_id", collab_model.id },
+                { "p_user_id", collab_model.user_id },
+                { "p_project_name", collab_model.project_name },
+                { "p_project_type", collab_model.project_type },
+                { "p_client_email", collab_model.client_email },
+                { "p_client_notes", collab_model.client_notes ?? (object)DBNull.Value },
+                { "p_status", collab_model.status },
+                { "p_created_at", collab_model.create_at }
+            };
 
-                try
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-
-                    command.Parameters.AddWithValue("p_id", collab_model.id);
-                    command.Parameters.AddWithValue("p_user_id", collab_model.user_id);
-                    command.Parameters.AddWithValue("p_project_name", collab_model.project_name);
-                    command.Parameters.AddWithValue("p_project_type", collab_model.project_type);
-                    command.Parameters.AddWithValue("p_client_email", collab_model.client_email);
-                    
-                    // Xử lý an toàn nếu client_notes bị null
-                    command.Parameters.AddWithValue("p_client_notes", string.IsNullOrEmpty(collab_model.client_notes) ? DBNull.Value : (object)collab_model.client_notes);
-                    
-                    command.Parameters.AddWithValue("p_status", collab_model.status);
-                    command.Parameters.AddWithValue("p_created_at", collab_model.create_at);
-
-                    await command.ExecuteNonQueryAsync();
-
-                }
-                finally
-                {
-                    if (command != null)
-                    {
-                        command.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (connection != null)
-                {
-                    connection.Dispose();
-                }
-            }
+            await _db_helper.ExecuteNonQueryAsync("sp_create_collab_request", parameters, CommandType.StoredProcedure);
             return collab_model;
         }
 
         public async Task<bool> UpdateStatus_async(Guid id, string new_status, DateTime update_at)
         {
-            NpgsqlConnection connection = _db_helper.CreateConnection();
-            try
+            var parameters = new Dictionary<string, object>
             {
-                await connection.OpenAsync();
-                NpgsqlCommand command = new NpgsqlCommand("sp_update_collab_status", connection);
-
-                try
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("p_id", id);
-                    command.Parameters.AddWithValue("p_status", new_status);
-                    command.Parameters.AddWithValue("p_update_at", update_at);
-
-                    int rows_affected = await command.ExecuteNonQueryAsync();
-                    return rows_affected>0;
-                }
-                finally
-                {
-                    if (command != null) command.Dispose();
-                }
-            }
-            finally
-            {
-                if (connection != null) connection.Dispose();
-            }
+                { "p_id", id },
+                { "p_status", new_status },
+                { "p_update_at", update_at }
+            };
+            int rows_affected = await _db_helper.ExecuteNonQueryAsync("sp_update_collab_status", parameters, CommandType.StoredProcedure);
+            return rows_affected > 0;
         }
 
         public async Task<List<CollaborationModel>> GetAllCollabs_async()
         {
-            List<CollaborationModel> collab_list = new List<CollaborationModel>();
-            NpgsqlConnection connection = _db_helper.CreateConnection();
-            try
-            {
-                await connection.OpenAsync();
-                NpgsqlCommand command = new NpgsqlCommand("sp_get_all_collabs", connection);
-                try
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    NpgsqlDataReader reader = await command.ExecuteReaderAsync();
-                    try
-                    {
-                        while (await reader.ReadAsync())
-                        {
-                            CollaborationModel model = new CollaborationModel
-                            {
-                                id = reader.GetGuid(reader.GetOrdinal("id")),
-                                user_id = reader.GetGuid(reader.GetOrdinal("user_id")),
-                                project_name = reader.GetString(reader.GetOrdinal("project_name")),
-                                project_type = reader.GetString(reader.GetOrdinal("project_type")),
-                                client_email = reader.GetString(reader.GetOrdinal("client_email")),
-                                client_notes = reader.IsDBNull(reader.GetOrdinal("client_notes")) ? null : reader.GetString(reader.GetOrdinal("client_notes")),
-                                price = reader.IsDBNull(reader.GetOrdinal("price")) ? null : reader.GetDecimal(reader.GetOrdinal("price")),
-                                status = reader.GetString(reader.GetOrdinal("status")),
-                                create_at = reader.GetDateTime(reader.GetOrdinal("created_at")),
-                                start_at = reader.IsDBNull(reader.GetOrdinal("started_at")) ? null : reader.GetDateTime(reader.GetOrdinal("started_at")),
-                                update_at = reader.IsDBNull(reader.GetOrdinal("updated_at")) ? null : reader.GetDateTime(reader.GetOrdinal("updated_at"))  
-                            };
-                            collab_list.Add(model);
-                        }
-                    }
-                    finally
-                    {
-                        if (reader != null)
-                        {
-                            await reader.DisposeAsync();
-                        }
-                    }
-                }
-                finally
-                {
-                    if (command != null)
-                    {
-                        command.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (connection != null)
-                {
-                    connection.Dispose();
-                }
-            }
-            return collab_list;
+            return await _db_helper.GetDataAsync("sp_get_all_collabs", MapToCollaborationModel, null, CommandType.StoredProcedure);
         }
 
         public async Task<List<CollaborationModel>> GetAllCollabsByUserId_async(Guid user_id)
         {
-            List<CollaborationModel> user_collabs_list = new List<CollaborationModel>();
-            NpgsqlConnection connection = _db_helper.CreateConnection();
-            try
-            {
-                await connection.OpenAsync();
-                NpgsqlCommand command = new NpgsqlCommand("sp_get_collabs_by_user_id", connection);
-                try
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("p_user_id", user_id);
-
-                    NpgsqlDataReader reader = await command.ExecuteReaderAsync();
-                    try
-                    {
-                        while (await reader.ReadAsync())
-                        {
-                            user_collabs_list.Add(new CollaborationModel
-                            {
-                                id = reader.GetGuid(reader.GetOrdinal("id")),
-                                user_id = reader.GetGuid(reader.GetOrdinal("user_id")),
-                                project_name = reader.GetString(reader.GetOrdinal("project_name")),
-                                project_type = reader.GetString(reader.GetOrdinal("project_type")),
-                                client_email = reader.GetString(reader.GetOrdinal("client_email")),
-                                client_notes = reader.IsDBNull(reader.GetOrdinal("client_notes")) ? null : reader.GetString(reader.GetOrdinal("client_notes")),
-                                price = reader.IsDBNull(reader.GetOrdinal("price")) ? null : reader.GetDecimal(reader.GetOrdinal("price")),
-                                status = reader.GetString(reader.GetOrdinal("status")),
-                                create_at = reader.GetDateTime(reader.GetOrdinal("created_at")),
-                                start_at = reader.IsDBNull(reader.GetOrdinal("started_at")) ? null : reader.GetDateTime(reader.GetOrdinal("started_at")),
-                                update_at = reader.IsDBNull(reader.GetOrdinal("updated_at")) ? null : reader.GetDateTime(reader.GetOrdinal("updated_at"))
-                            });
-                        }
-                    }
-                    finally
-                    {
-                        if (reader != null) await reader.DisposeAsync();
-                    }
-                }
-                finally
-                {
-                    if (command != null) command.Dispose();
-                }
-            }
-            finally
-            {
-                if (connection != null) connection.Dispose();
-            }
-            return user_collabs_list;
+            var parameters = new Dictionary<string, object> { { "p_user_id", user_id } };
+            return await _db_helper.GetDataAsync("sp_get_collabs_by_user_id", MapToCollaborationModel, parameters, CommandType.StoredProcedure);
         }
 
         public async Task<bool> UpdatePrice_async(Guid id, decimal price, DateTime update_at)
         {
-            NpgsqlConnection connection = _db_helper.CreateConnection();
-            try
+            var parameters = new Dictionary<string, object>
             {
-                await connection.OpenAsync();
-                NpgsqlCommand command = new NpgsqlCommand("sp_update_collab_price", connection);
-                try
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("p_id", id);
-                    command.Parameters.AddWithValue("p_price", price);
-                    command.Parameters.AddWithValue("p_update_at", update_at);
-
-                    int rows_affected = await command.ExecuteNonQueryAsync();
-                    return rows_affected > 0;
-                }
-                finally { if (command != null) command.Dispose(); }
-            }
-            finally { if (connection != null) connection.Dispose(); }
+                { "p_id", id },
+                { "p_price", price },
+                { "p_update_at", update_at }
+            };
+            int rows_affected = await _db_helper.ExecuteNonQueryAsync("sp_update_collab_price", parameters, CommandType.StoredProcedure);
+            return rows_affected > 0;
         }
 
         public async Task<bool> UpdateToAccepted_async(Guid id, string new_status, DateTime start_at)
         {
-            NpgsqlConnection connection = _db_helper.CreateConnection();
-            try
+            var parameters = new Dictionary<string, object>
             {
-                await connection.OpenAsync();
-                NpgsqlCommand command = new NpgsqlCommand("sp_update_collab_to_accepted", connection);
-
-                try
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("p_id", id);
-                    command.Parameters.AddWithValue("p_status", new_status);
-                    command.Parameters.AddWithValue("p_start_at", start_at);
-
-                    int rows_affected = await command.ExecuteNonQueryAsync();
-                    return rows_affected > 0;
-                }
-                finally { if (command != null) command.Dispose(); }
-            }
-            finally { if (connection != null) connection.Dispose(); }
+                { "p_id", id },
+                { "p_status", new_status },
+                { "p_start_at", start_at }
+            };
+            int rows_affected = await _db_helper.ExecuteNonQueryAsync("sp_update_collab_to_accepted", parameters, CommandType.StoredProcedure);
+            return rows_affected > 0;
         }
 
         public async Task<bool> UpdateCollabInfo_async(CollaborationModel model)
         {
-            NpgsqlConnection connection = _db_helper.CreateConnection();
-            try
+            var parameters = new Dictionary<string, object>
             {
-                await connection.OpenAsync();
-                NpgsqlCommand command = new NpgsqlCommand("sp_update_collab_info", connection);
-
-                try
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("p_id", model.id);
-                    command.Parameters.AddWithValue("p_project_name", model.project_name);
-                    command.Parameters.AddWithValue("p_project_type", model.project_type);
-                    command.Parameters.AddWithValue("p_client_email", model.client_email);
-                    command.Parameters.AddWithValue("p_client_notes", string.IsNullOrEmpty(model.client_notes) ? DBNull.Value : (object)model.client_notes);
-                    command.Parameters.AddWithValue("p_update_at", model.update_at ?? DateTime.UtcNow);
-
-                    int rows_affected = await command.ExecuteNonQueryAsync();
-                    return rows_affected > 0;
-                }
-                finally { if (command != null) command.Dispose(); }
-            }
-            finally { if (connection != null) connection.Dispose(); }
+                { "p_id", model.id },
+                { "p_project_name", model.project_name },
+                { "p_project_type", model.project_type },
+                { "p_client_email", model.client_email },
+                { "p_client_notes", model.client_notes ?? (object)DBNull.Value },
+                { "p_update_at", model.update_at ?? DateTime.UtcNow }
+            };
+            int rows_affected = await _db_helper.ExecuteNonQueryAsync("sp_update_collab_info", parameters, CommandType.StoredProcedure);
+            return rows_affected > 0;
         }
 
         public async Task<bool> DeleteCollab_async(Guid id)
         {
-            NpgsqlConnection connection = _db_helper.CreateConnection();
-            try
-            {
-                await connection.OpenAsync();
-                NpgsqlCommand command = new NpgsqlCommand("sp_delete_collab", connection);
-
-                try
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("p_id", id);
-
-                    int rows_affected = await command.ExecuteNonQueryAsync();
-                    return rows_affected > 0;
-                }
-                finally { if (command != null) command.Dispose(); }
-            }
-            finally { if (connection != null) connection.Dispose(); }
+            var parameters = new Dictionary<string, object> { { "p_id", id } };
+            int rows_affected = await _db_helper.ExecuteNonQueryAsync("sp_delete_collab", parameters, CommandType.StoredProcedure);
+            return rows_affected > 0;
         }
     }
 }

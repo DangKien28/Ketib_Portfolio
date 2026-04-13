@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KINETIC_ARCHITECT - Collaborator Console</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-fixed-variant": "#2b48ac",
+                        "inverse-on-surface": "#555555",
+                        "error-dim": "#d7383b",
+                        "on-error": "#490006",
+                        "outline-variant": "#484848",
+                        "primary-fixed-dim": "#5091ff",
+                        "on-tertiary": "#6a1f77",
+                        "inverse-surface": "#f9f9f9",
+                        "on-primary-container": "#00214e",
+                        "tertiary-container": "#f39cfb",
+                        "surface-dim": "#0e0e0e",
+                        "surface-container-low": "#131313",
+                        "error": "#ff716c",
+                        "surface-tint": "#84adff",
+                        "surface": "#0e0e0e",
+                        "on-tertiary-container": "#60136d",
+                        "on-surface": "#ffffff",
+                        "surface-variant": "#262626",
+                        "surface-container": "#191919",
+                        "inverse-primary": "#005bc1",
+                        "primary": "#84adff",
+                        "on-error-container": "#ffa8a3",
+                        "outline": "#757575",
+                        "secondary-fixed-dim": "#b3c1ff",
+                        "error-container": "#9f0519",
+                        "on-primary-fixed-variant": "#002a60",
+                        "tertiary-fixed-dim": "#e48fed",
+                        "on-secondary": "#00185d",
+                        "tertiary-dim": "#e48fed",
+                        "surface-bright": "#2c2c2c",
+                        "primary-dim": "#0070ea",
+                        "tertiary": "#fab0ff",
+                        "on-primary": "#002d64",
+                        "on-background": "#ffffff",
+                        "secondary-container": "#1e3da1",
+                        "primary-fixed": "#6c9fff",
+                        "on-secondary-fixed": "#00298b",
+                        "primary-container": "#6c9fff",
+                        "on-secondary-container": "#c4ceff",
+                        "on-tertiary-fixed-variant": "#6a1f77",
+                        "secondary": "#7e98ff",
+                        "on-surface-variant": "#ababab",
+                        "secondary-fixed": "#c6cfff",
+                        "on-tertiary-fixed": "#41004d",
+                        "secondary-dim": "#7e98ff",
+                        "on-primary-fixed": "#000000",
+                        "surface-container-highest": "#262626",
+                        "tertiary-fixed": "#f39cfb",
+                        "background": "#0e0e0e",
+                        "surface-container-lowest": "#000000",
+                        "surface-container-high": "#1f1f1f"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0e0e0e;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-nav {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(12px);
+        }
+        .ghost-border-bottom {
+            border-bottom: 1px solid rgba(72, 72, 72, 0.15);
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #84adff 0%, #0070ea 100%);
+        }
+        .terminal-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .terminal-scroll::-webkit-scrollbar-track {
+            background: rgba(25, 25, 25, 0.5);
+        }
+        .terminal-scroll::-webkit-scrollbar-thumb {
+            background: #84adff;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 glass-nav shadow-[0_20px_40px_rgba(0,123,255,0.08)] flex items-center justify-between px-6 h-16 w-full">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-blue-400 font-headline">KINETIC_ARCHITECT</span>
+<div class="hidden md:flex items-center gap-6 font-space-grotesk tracking-tight">
+<a class="text-neutral-400 hover:text-neutral-200 transition-colors" href="#">Features</a>
+<a class="text-neutral-400 hover:text-neutral-200 transition-colors" href="#">About Me</a>
+<a class="text-neutral-400 hover:text-neutral-200 transition-colors" href="#">Contact</a>
+<a class="text-neutral-400 hover:text-neutral-200 transition-colors" href="#">Projects</a>
+</div>
+</div><div class="hidden lg:flex flex-1 justify-center px-8">
+<div class="relative w-full max-w-md group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-neutral-500 text-sm group-focus-within:text-blue-400 transition-colors">search</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-1.5 bg-neutral-900/50 border border-neutral-800 text-neutral-300 text-xs rounded-sm focus:ring-1 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all placeholder-neutral-600 focus:bg-neutral-900 font-inter" placeholder="SEARCH_PROJECTS_OR_COLLABS..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-neutral-400 hover:bg-neutral-800/50 transition-all active:scale-95 duration-200 rounded-sm">
+<span class="material-symbols-outlined" data-icon="lightbulb">lightbulb</span>
+</button>
+<button class="p-2 text-neutral-400 hover:bg-neutral-800/50 transition-all active:scale-95 duration-200 rounded-sm">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-neutral-400 hover:bg-neutral-800/50 transition-all active:scale-95 duration-200 rounded-sm">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</button>
+<div class="h-8 w-8 rounded-sm bg-neutral-800 flex items-center justify-center overflow-hidden border border-outline-variant/20">
+<span class="material-symbols-outlined text-blue-400" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</nav>
+<div class="flex pt-16 h-screen">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-16 border-r border-neutral-800/20 bg-neutral-950 flex flex-col py-4 hidden md:flex">
+<div class="px-6 mb-8 flex flex-col gap-1">
+<span class="text-blue-400 font-black font-headline">CONSOLE_ROOT</span>
+<span class="font-inter text-[10px] uppercase tracking-widest text-on-surface-variant">v2.4.0-stable</span>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 text-neutral-500 px-4 py-3 hover:bg-neutral-900 transition-all duration-150 ease-in-out font-inter text-xs uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Overview</span>
+</a>
+<a class="flex items-center gap-3 bg-blue-500/10 text-blue-400 border-r-4 border-blue-500 px-4 py-3 transition-all duration-150 ease-in-out font-inter text-xs uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined" data-icon="group" style="font-variation-settings: 'FILL' 1;">group</span>
+<span>Collaborator</span>
+</a>
+</nav>
+<div class="mt-auto px-4 pb-4 flex flex-col gap-2">
+<button class="primary-gradient text-on-primary-fixed font-bold py-2 rounded-sm text-xs tracking-widest active:scale-95 transition-all">
+                    DEPLOY_SH
+                </button>
+<div class="mt-4 space-y-1">
+<a class="flex items-center gap-3 text-neutral-500 px-4 py-2 hover:bg-neutral-900 transition-all font-inter text-xs uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 text-neutral-500 px-4 py-2 hover:bg-neutral-900 transition-all font-inter text-xs uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="help_outline">help_outline</span>
+<span>Support</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 bg-surface p-8 overflow-y-auto">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div class="space-y-1">
+<h1 class="text-5xl font-bold font-headline tracking-tighter text-on-surface">Collaboration</h1>
+<p class="text-on-surface-variant font-body text-sm max-w-xl">
+                        Manage active architectural partnerships, review deployment pipelines, and synchronize cross-functional engineering efforts.
+                    </p>
+</div>
+<button class="primary-gradient text-on-primary-fixed px-6 py-3 rounded-sm font-bold flex items-center gap-2 active:scale-95 transition-all shadow-lg shadow-blue-500/10">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+<span>New collaboration</span>
+</button>
+</header>
+<!-- Table Container with Tonal Separation -->
+<div class="bg-surface-container rounded-sm overflow-hidden ring-1 ring-outline-variant/10">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high border-b border-outline-variant/20">
+<th class="px-6 py-4 text-[10px] uppercase tracking-widest font-bold text-blue-400">Collab ID</th>
+<th class="px-6 py-4 text-[10px] uppercase tracking-widest font-bold text-on-surface-variant">Project Name</th>
+<th class="px-6 py-4 text-[10px] uppercase tracking-widest font-bold text-on-surface-variant">Ngày gửi yêu cầu</th>
+<th class="px-6 py-4 text-[10px] uppercase tracking-widest font-bold text-on-surface-variant">Ngày bắt đầu thực thi</th>
+<th class="px-6 py-4 text-[10px] uppercase tracking-widest font-bold text-on-surface-variant text-center">Trạng thái</th>
+<th class="px-6 py-4 text-[10px] uppercase tracking-widest font-bold text-on-surface-variant text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<!-- Wait Status -->
+<tr class="hover:bg-surface-bright/5 transition-colors">
+<td class="px-6 py-4 font-mono text-xs text-blue-400">#CLB-8821</td>
+<td class="px-6 py-4 font-body font-medium">Neural_Mesh_v4</td>
+<td class="px-6 py-4 text-xs text-on-surface-variant">Oct 24, 2023</td>
+<td class="px-6 py-4 text-xs text-on-surface-variant">—</td>
+<td class="px-6 py-4 text-center">
+<span class="px-3 py-1 bg-surface-container-highest text-[10px] font-bold uppercase text-on-surface-variant rounded-none border border-outline-variant/30">Wait</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-1.5 hover:bg-blue-500/10 text-blue-400 transition-colors" title="View"><span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span></button>
+<button class="p-1.5 hover:bg-blue-500/10 text-on-surface-variant transition-colors" title="Edit"><span class="material-symbols-outlined text-sm" data-icon="edit">edit</span></button>
+<button class="p-1.5 hover:bg-error-container/20 text-error transition-colors" title="Delete"><span class="material-symbols-outlined text-sm" data-icon="delete">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Approved / In Progress Status -->
+<tr class="bg-surface-container-low hover:bg-surface-bright/5 transition-colors">
+<td class="px-6 py-4 font-mono text-xs text-blue-400">#CLB-7740</td>
+<td class="px-6 py-4 font-body font-medium">Quantum_Ledger_API</td>
+<td class="px-6 py-4 text-xs text-on-surface-variant">Oct 20, 2023</td>
+<td class="px-6 py-4 text-xs text-on-surface-variant">Oct 22, 2023</td>
+<td class="px-6 py-4 text-center">
+<span class="px-3 py-1 bg-blue-500/10 text-[10px] font-bold uppercase text-blue-400 rounded-none border border-blue-500/20">In Progress</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-1.5 hover:bg-blue-500/10 text-blue-400 transition-colors" title="View"><span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span></button>
+</div>
+</td>
+</tr>
+<!-- Done Status -->
+<tr class="hover:bg-surface-bright/5 transition-colors">
+<td class="px-6 py-4 font-mono text-xs text-blue-400">#CLB-6501</td>
+<td class="px-6 py-4 font-body font-medium">Core_Identity_v2</td>
+<td class="px-6 py-4 text-xs text-on-surface-variant">Oct 12, 2023</td>
+<td class="px-6 py-4 text-xs text-on-surface-variant">Oct 14, 2023</td>
+<td class="px-6 py-4 text-center">
+<span class="px-3 py-1 bg-tertiary-container/20 text-[10px] font-bold uppercase text-tertiary rounded-none border border-tertiary/20">Done</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-3 items-center">
+<button class="p-1.5 hover:bg-blue-500/10 text-blue-400 transition-colors" title="View"><span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span></button>
+<button class="text-[10px] font-bold uppercase text-primary border border-primary/40 px-3 py-1 hover:bg-primary hover:text-on-primary transition-all">Pay</button>
+</div>
+</td>
+</tr>
+<!-- Paid Status -->
+<tr class="bg-surface-container-low hover:bg-surface-bright/5 transition-colors">
+<td class="px-6 py-4 font-mono text-xs text-blue-400">#CLB-6498</td>
+<td class="px-6 py-4 font-body font-medium">Titan_Auth_Gateway</td>
+<td class="px-6 py-4 text-xs text-on-surface-variant">Oct 05, 2023</td>
+<td class="px-6 py-4 text-xs text-on-surface-variant">Oct 06, 2023</td>
+<td class="px-6 py-4 text-center">
+<span class="px-3 py-1 bg-green-500/10 text-[10px] font-bold uppercase text-green-400 rounded-none border border-green-500/20">Paid</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-1.5 hover:bg-blue-500/10 text-blue-400 transition-colors" title="View"><span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span></button>
+</div>
+</td>
+</tr>
+<!-- Cancelled Status -->
+<tr class="hover:bg-surface-bright/5 transition-colors">
+<td class="px-6 py-4 font-mono text-xs text-blue-400">#CLB-5512</td>
+<td class="px-6 py-4 font-body font-medium">Legacy_Migration_X</td>
+<td class="px-6 py-4 text-xs text-on-surface-variant">Sep 28, 2023</td>
+<td class="px-6 py-4 text-xs text-on-surface-variant">—</td>
+<td class="px-6 py-4 text-center">
+<span class="px-3 py-1 bg-error-container/20 text-[10px] font-bold uppercase text-error rounded-none border border-error/20">Cancelled</span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-2">
+<button class="p-1.5 hover:bg-blue-500/10 text-blue-400 transition-colors" title="View"><span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Pagination & Meta -->
+<div class="mt-6 flex justify-between items-center text-on-surface-variant">
+<div class="flex items-center gap-4 text-[10px] font-mono">
+<span class="flex items-center gap-1"><span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span> SYSTEM ONLINE</span>
+</div>
+<div class="flex gap-2">
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant/30 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant/30 bg-surface-container-highest text-blue-400">1</button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant/30 hover:bg-surface-container-high transition-colors">2</button>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant/30 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Trace Logs Section -->
+<section class="mt-12">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-blue-400 text-lg" data-icon="terminal">terminal</span>
+<h2 class="text-xs font-bold uppercase tracking-[0.2em] text-on-surface-variant">Trace Logs / System_Output</h2>
+</div>
+<span class="text-[10px] font-mono text-neutral-600">LAST_SYNC: 12:44:01 UTC</span>
+</div>
+<div class="bg-black border border-outline-variant/20 rounded-sm p-4 font-mono text-[11px] leading-relaxed terminal-scroll h-48 overflow-y-auto shadow-2xl">
+<div class="space-y-1">
+<p class="text-neutral-500"><span class="text-blue-400/60">[09:21:40]</span> <span class="text-neutral-300">SYSTEM_INIT_SEQUENCER_START</span></p>
+<p class="text-neutral-500"><span class="text-blue-400/60">[09:21:42]</span> <span class="text-neutral-300">LOADING_ENCRYPTED_KERNELS... DONE</span></p>
+<p class="text-neutral-500"><span class="text-blue-400/60">[09:21:44]</span> <span class="text-blue-400">HANDSHAKE_INIT</span> <span class="text-neutral-500">:: REMOTE_HOST=192.168.1.104</span></p>
+<p class="text-neutral-500"><span class="text-blue-400/60">[09:21:45]</span> <span class="text-green-400">CONNECTION_ESTABLISHED</span> <span class="text-neutral-500">:: SECURE_TUNNEL_01</span></p>
+<p class="text-neutral-500"><span class="text-blue-400/60">[09:21:48]</span> <span class="text-neutral-300">SYNCING_COLLABORATION_METRICS...</span></p>
+<p class="text-neutral-500"><span class="text-blue-400/60">[09:21:50]</span> <span class="text-neutral-300">FETCHING_PROJECT_MANIFEST: Neural_Mesh_v4</span></p>
+<p class="text-neutral-500"><span class="text-blue-400/60">[09:22:01]</span> <span class="text-amber-400">WARNING:</span> <span class="text-neutral-400">LATENCY_DETECTED_IN_CLUSTER_C4</span></p>
+<p class="text-neutral-500"><span class="text-blue-400/60">[09:22:05]</span> <span class="text-neutral-300">RE-ROUTING_TRAFFIC_TO_SECONDARY_NODE</span></p>
+<p class="text-neutral-500"><span class="text-blue-400/60">[12:44:01]</span> <span class="text-blue-400">HEARTBEAT_STABLE</span> <span class="text-neutral-500">:: ALL_SYSTEMS_GO</span></p>
+<p class="text-neutral-500 animate-pulse"><span class="text-blue-400/60">[12:44:02]</span> <span class="text-neutral-300">_</span></p>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Floating Action Button -->
+<button class="fixed bottom-8 right-8 w-14 h-14 primary-gradient text-on-primary-fixed shadow-[0_0_30px_rgba(132,173,255,0.4)] flex items-center justify-center active:scale-90 transition-all z-50 rounded-sm">
+<span class="material-symbols-outlined text-2xl" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</button>
+</body></html>

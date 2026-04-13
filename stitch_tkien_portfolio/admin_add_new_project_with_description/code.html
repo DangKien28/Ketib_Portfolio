@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TERMINAL_HORIZON - ADD NEW PROJECT</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-background": "#ffffff",
+              "on-tertiary-container": "#60136d",
+              "inverse-primary": "#005bc1",
+              "primary": "#84adff",
+              "inverse-surface": "#f9f9f9",
+              "primary-dim": "#0070ea",
+              "on-secondary-container": "#c4ceff",
+              "secondary-fixed-dim": "#b3c1ff",
+              "secondary": "#7e98ff",
+              "on-secondary": "#00185d",
+              "background": "#0e0e0e",
+              "surface-container-lowest": "#000000",
+              "on-error-container": "#ffa8a3",
+              "primary-fixed": "#6c9fff",
+              "on-surface-variant": "#ababab",
+              "tertiary-fixed-dim": "#e48fed",
+              "surface": "#0e0e0e",
+              "secondary-fixed": "#c6cfff",
+              "on-primary-container": "#00214e",
+              "error": "#ff716c",
+              "on-tertiary-fixed-variant": "#6a1f77",
+              "on-secondary-fixed-variant": "#2b48ac",
+              "error-container": "#9f0519",
+              "on-error": "#490006",
+              "primary-container": "#6c9fff",
+              "surface-container-high": "#1f1f1f",
+              "outline-variant": "#484848",
+              "surface-container": "#191919",
+              "outline": "#757575",
+              "tertiary": "#fab0ff",
+              "on-tertiary": "#6a1f77",
+              "surface-dim": "#0e0e0e",
+              "surface-container-highest": "#262626",
+              "secondary-dim": "#7e98ff",
+              "tertiary-fixed": "#f39cfb",
+              "on-surface": "#ffffff",
+              "surface-tint": "#84adff",
+              "on-tertiary-fixed": "#41004d",
+              "primary-fixed-dim": "#5091ff",
+              "on-primary": "#002d64",
+              "inverse-on-surface": "#555555",
+              "tertiary-container": "#f39cfb",
+              "surface-bright": "#2c2c2c",
+              "on-primary-fixed": "#000000",
+              "error-dim": "#d7383b",
+              "tertiary-dim": "#e48fed",
+              "surface-container-low": "#131313",
+              "surface-variant": "#262626",
+              "secondary-container": "#1e3da1",
+              "on-primary-fixed-variant": "#002a60",
+              "on-secondary-fixed": "#00298b"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        background-color: #0e0e0e;
+        color: #ffffff;
+        font-family: 'Inter', sans-serif;
+      }
+      .glass-panel {
+        background: rgba(14, 14, 14, 0.7);
+        backdrop-filter: blur(12px);
+      }
+      .ghost-border {
+        border-top: 1px solid rgba(72, 72, 72, 0.15);
+      }
+    </style>
+</head>
+<body class="bg-background text-on-background selection:bg-primary/30">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-screen w-64 z-[60] bg-[#131313] flex flex-col py-8 gap-2">
+<div class="px-6 mb-8">
+<h1 class="font-['Space_Grotesk'] font-black text-primary text-xl tracking-tighter uppercase">ARCHITECT_OS</h1>
+<p class="font-['Inter'] text-[0.6875rem] tracking-wider uppercase text-on-surface-variant">v4.0.1-stable</p>
+</div>
+<nav class="flex-grow">
+<!-- Navigation Mapping -->
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-[#191919] hover:text-white transition-all cursor-pointer font-['Inter'] text-[0.6875rem] tracking-wider uppercase" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Overview</span>
+</a>
+<a class="flex items-center gap-3 text-primary bg-[#191919] px-4 py-3 border-r-2 border-primary transition-all cursor-pointer font-['Inter'] text-[0.6875rem] tracking-wider uppercase" href="#">
+<span class="material-symbols-outlined" data-icon="code" style="font-variation-settings: 'FILL' 1;">code</span>
+<span>My Project</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-[#191919] hover:text-white transition-all cursor-pointer font-['Inter'] text-[0.6875rem] tracking-wider uppercase" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Collab Management</span>
+</a>
+</nav>
+<div class="px-4 mt-auto space-y-2">
+<button class="w-full py-3 bg-gradient-to-r from-primary to-primary-dim text-on-primary-fixed font-bold text-[0.6875rem] tracking-widest rounded-sm uppercase active:translate-x-1 duration-150">
+                DEPLOY NEW
+            </button>
+<div class="pt-4 border-t border-outline-variant/10">
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-2 hover:bg-[#191919] transition-all font-['Inter'] text-[0.6875rem] tracking-wider uppercase" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-2 hover:bg-[#191919] transition-all font-['Inter'] text-[0.6875rem] tracking-wider uppercase" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="terminal">terminal</span>
+<span>Logs</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 bg-[#0e0e0e] border-b border-[#484848]/20 flex justify-between items-center px-6 h-16 ml-64 max-w-[calc(100%-16rem)] glass-panel shadow-[0_20px_40px_rgba(0,123,255,0.08)]">
+<div class="flex items-center gap-4">
+<span class="font-['Space_Grotesk'] font-bold tracking-tighter text-primary uppercase text-xl">TERMINAL_HORIZON</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
+<input class="bg-surface-container-highest/50 border-none rounded-none pl-10 pr-4 py-1.5 text-xs font-['Inter'] tracking-wider focus:ring-1 focus:ring-primary w-64 transition-all" placeholder="QUERY_SYSTEM..." type="text"/>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<button class="hover:bg-[#262626] hover:text-primary transition-colors p-2 rounded-sm active:scale-95">
+<span class="material-symbols-outlined" data-icon="lightbulb">lightbulb</span>
+</button>
+<button class="hover:bg-[#262626] hover:text-primary transition-colors p-2 rounded-sm active:scale-95 relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<div class="h-8 w-8 bg-surface-container-highest rounded-sm flex items-center justify-center overflow-hidden border border-outline-variant/30">
+<img alt="User Profile Console" class="w-full h-full object-cover" data-alt="User profile avatar with technical background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDipqUSrK7aDOqANcBN8ey4V9tlxgd-wiSO5G6T7ucm2sMmu6puAjt8m8LD16GejfCzoxjEmUs4uhFl3nBLq0ME7LFWTwXa75bQ2x_blZRmQ7YFcFdGSzalAuYc0YJ3TGpuFKEUCVLLEPCRDMwYC_sPIBN1femrvjLOURQv0WiK3EJbj8UkadeOj64jdm3ViEm4giHVuyWQHMi37kuVHpiPAFRhJzpeDBy927G7MepKatRgggFOXzOZuT3sigsMjLsQNq4gefQuvscx"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-64 pt-24 pb-12 px-12 min-h-screen">
+<div class="max-w-5xl mx-auto">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 mb-8 font-['Inter'] text-[0.6875rem] tracking-wider uppercase text-on-surface-variant">
+<span class="hover:text-primary cursor-pointer">Projects</span>
+<span class="material-symbols-outlined text-[10px]">arrow_forward_ios</span>
+<span class="text-primary font-bold">New Module</span>
+</div>
+<section class="grid grid-cols-12 gap-8">
+<!-- Header Column -->
+<div class="col-span-12 lg:col-span-4">
+<h2 class="font-['Space_Grotesk'] text-4xl font-bold leading-tight tracking-tighter mb-4">
+                        ADD NEW <span class="text-primary">PROJECT</span>
+</h2>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+                        Deploy a new architectural module to the Terminal Horizon ecosystem. Initialize repositories, production links, and visual documentation.
+                    </p>
+<div class="p-4 bg-surface-container-low border-l-2 border-primary-dim">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="info">info</span>
+<p class="text-[0.6875rem] uppercase tracking-widest text-on-surface-variant">All inputs are sanitized through the Architect-OS core engine.</p>
+</div>
+</div>
+</div>
+<!-- Form Column -->
+<div class="col-span-12 lg:col-span-8 space-y-6">
+<div class="bg-surface-container p-8 relative overflow-hidden ghost-border">
+<!-- Form Section: Basic Info -->
+<div class="space-y-8">
+<div>
+<label class="block font-['Inter'] text-[0.6875rem] tracking-widest uppercase text-on-surface-variant mb-3">Tên Project</label>
+<input class="w-full bg-surface-container-highest border-none rounded-none px-4 py-4 text-sm focus:ring-2 focus:ring-primary/50 transition-all font-mono tracking-tight" placeholder="e.g. NEURAL_NETWORK_V1" type="text"/>
+</div>
+<div>
+<label class="block font-['Inter'] text-[0.6875rem] tracking-widest uppercase text-on-surface-variant mb-4">Loại Project</label>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+<button class="flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-highest hover:bg-primary/10 border border-outline-variant/30 hover:border-primary transition-all text-[0.6875rem] uppercase tracking-widest font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="terminal">terminal</span>
+                                        Backend
+                                    </button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 bg-primary/20 border border-primary text-primary transition-all text-[0.6875rem] uppercase tracking-widest font-bold">
+<span class="material-symbols-outlined text-sm" data-icon="web">web</span>
+                                        Frontend
+                                    </button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-highest hover:bg-primary/10 border border-outline-variant/30 hover:border-primary transition-all text-[0.6875rem] uppercase tracking-widest font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="layers">layers</span>
+                                        Fullstack
+                                    </button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-highest hover:bg-primary/10 border border-outline-variant/30 hover:border-primary transition-all text-[0.6875rem] uppercase tracking-widest font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="smartphone">smartphone</span>
+                                        Mobile
+                                    </button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-highest hover:bg-primary/10 border border-outline-variant/30 hover:border-primary transition-all text-[0.6875rem] uppercase tracking-widest font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="cloud">cloud</span>
+                                        Infrastructure
+                                    </button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-highest hover:bg-primary/10 border border-outline-variant/30 hover:border-primary transition-all text-[0.6875rem] uppercase tracking-widest font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="more_horiz">more_horiz</span>
+                                        Other
+                                    </button>
+</div>
+</div>
+<div>
+<label class="block font-['Inter'] text-[0.6875rem] tracking-widest uppercase text-on-surface-variant mb-3">Mô tả Project</label>
+<textarea class="w-full bg-surface-container-highest border-none rounded-none px-4 py-4 text-sm focus:ring-2 focus:ring-primary/50 transition-all font-mono tracking-tight min-h-[120px] resize-none" placeholder="Enter architectural specifications and project mission statement..."></textarea>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block font-['Inter'] text-[0.6875rem] tracking-widest uppercase text-on-surface-variant mb-3">Link GitHub</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="code">code</span>
+<input class="w-full bg-surface-container-highest border-none rounded-none pl-12 pr-4 py-4 text-sm focus:ring-2 focus:ring-primary/50 transition-all font-mono" placeholder="https://github.com/..." type="text"/>
+</div>
+</div>
+<div>
+<label class="block font-['Inter'] text-[0.6875rem] tracking-widest uppercase text-on-surface-variant mb-3">Link Production</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="rocket_launch">rocket_launch</span>
+<input class="w-full bg-surface-container-highest border-none rounded-none pl-12 pr-4 py-4 text-sm focus:ring-2 focus:ring-primary/50 transition-all font-mono" placeholder="https://live-app.io/..." type="text"/>
+</div>
+</div>
+</div>
+<div>
+<label class="block font-['Inter'] text-[0.6875rem] tracking-widest uppercase text-on-surface-variant mb-3">Upload Ảnh</label>
+<div class="border-2 border-dashed border-outline-variant/30 bg-surface-container-low hover:bg-surface-container-highest transition-all p-12 text-center group cursor-pointer relative">
+<div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] pointer-events-none"></div>
+<span class="material-symbols-outlined text-4xl text-primary/50 group-hover:text-primary mb-4 transition-colors" data-icon="cloud_upload">cloud_upload</span>
+<p class="text-[0.6875rem] uppercase tracking-[0.2em] font-bold mb-1">Drag and Drop Visuals</p>
+<p class="text-on-surface-variant text-xs">Maximum payload: 12MB. Accepted types: .PNG, .JPG, .WEBP</p>
+<input class="absolute inset-0 opacity-0 cursor-pointer" type="file"/>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="mt-12 pt-8 border-t border-outline-variant/20 flex items-center justify-between">
+<button class="px-8 py-3 bg-surface-container-highest text-on-surface-variant hover:text-white transition-all text-[0.6875rem] uppercase tracking-widest font-bold">
+                                Hủy Bỏ
+                            </button>
+<button class="px-10 py-4 bg-gradient-to-r from-primary to-primary-dim text-on-primary-fixed text-[0.6875rem] uppercase tracking-[0.2em] font-black rounded-sm shadow-[0_4px_20px_rgba(132,173,255,0.3)] hover:scale-[1.02] active:scale-95 transition-all">
+                                Lưu Project
+                            </button>
+</div>
+</div>
+<!-- System Status Log -->
+<div class="bg-surface-container-lowest p-6 border-l-2 border-secondary font-mono">
+<div class="flex items-center gap-3 mb-4">
+<span class="w-2 h-2 bg-secondary rounded-full animate-pulse"></span>
+<span class="text-[0.625rem] text-secondary uppercase tracking-widest">Architect_Log_Buffer</span>
+</div>
+<div class="space-y-1">
+<p class="text-[0.6875rem] text-on-surface-variant"><span class="text-secondary">[14:22:01]</span> INITIALIZING_FORM_LISTENER...</p>
+<p class="text-[0.6875rem] text-on-surface-variant"><span class="text-secondary">[14:22:04]</span> AWAITING_USER_INPUT_PARAMETERS...</p>
+<p class="text-[0.6875rem] text-primary"><span class="text-secondary">[14:22:05]</span> SESSION_STABLE: READY_FOR_DEPLOYMENT</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Visual Accents -->
+<div class="fixed bottom-0 right-0 p-8 pointer-events-none opacity-20 overflow-hidden">
+<h1 class="text-[12rem] font-black font-['Space_Grotesk'] text-outline-variant leading-none select-none -mb-16 -mr-16">
+            DEPLOY
+        </h1>
+</div>
+</body></html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#191919",
+                        "primary-fixed": "#6c9fff",
+                        "tertiary": "#fab0ff",
+                        "tertiary-fixed": "#f39cfb",
+                        "on-tertiary-container": "#60136d",
+                        "error-dim": "#d7383b",
+                        "tertiary-container": "#f39cfb",
+                        "inverse-surface": "#f9f9f9",
+                        "surface-container-lowest": "#000000",
+                        "surface-container-high": "#1f1f1f",
+                        "surface-bright": "#2c2c2c",
+                        "on-secondary": "#00185d",
+                        "primary": "#84adff",
+                        "on-surface": "#ffffff",
+                        "secondary-container": "#1e3da1",
+                        "on-error": "#490006",
+                        "surface": "#0e0e0e",
+                        "inverse-primary": "#005bc1",
+                        "secondary-dim": "#7e98ff",
+                        "on-secondary-container": "#c4ceff",
+                        "secondary": "#7e98ff",
+                        "outline-variant": "#484848",
+                        "on-primary": "#002d64",
+                        "on-tertiary-fixed-variant": "#6a1f77",
+                        "on-surface-variant": "#ababab",
+                        "primary-dim": "#0070ea",
+                        "tertiary-dim": "#e48fed",
+                        "surface-variant": "#262626",
+                        "surface-tint": "#84adff",
+                        "on-primary-container": "#00214e",
+                        "surface-dim": "#0e0e0e",
+                        "secondary-fixed": "#c6cfff",
+                        "primary-fixed-dim": "#5091ff",
+                        "surface-container-highest": "#262626",
+                        "secondary-fixed-dim": "#b3c1ff",
+                        "on-tertiary-fixed": "#41004d",
+                        "on-primary-fixed-variant": "#002a60",
+                        "tertiary-fixed-dim": "#e48fed",
+                        "surface-container-low": "#131313",
+                        "primary-container": "#6c9fff",
+                        "on-tertiary": "#6a1f77",
+                        "error": "#ff716c",
+                        "on-secondary-fixed-variant": "#2b48ac",
+                        "on-secondary-fixed": "#00298b",
+                        "error-container": "#9f0519",
+                        "outline": "#757575",
+                        "background": "#0e0e0e",
+                        "on-primary-fixed": "#000000",
+                        "inverse-on-surface": "#555555",
+                        "on-background": "#ffffff",
+                        "on-error-container": "#ffa8a3"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0e0e0e;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full flex flex-col h-screen w-64 border-r border-zinc-800/20 bg-zinc-950 z-50">
+<div class="p-6">
+<div class="text-blue-400 font-black text-xl tracking-tighter mb-1">CONSOLE_V1</div>
+<div class="font-['Inter'] text-[10px] uppercase tracking-widest text-zinc-500">Backend Architect</div>
+</div>
+<nav class="flex-1 mt-4">
+<!-- Overview -->
+<a class="flex items-center gap-3 px-6 py-4 text-zinc-500 hover:bg-zinc-900/50 transition-all font-['Inter'] text-xs uppercase tracking-widest active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined text-zinc-500">dashboard</span>
+<span>Overview</span>
+</a>
+<!-- My Projects (Active) -->
+<a class="flex items-center gap-3 px-6 py-4 text-blue-400 bg-blue-500/5 border-r-2 border-blue-500 font-['Inter'] text-xs uppercase tracking-widest active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined text-blue-400">code</span>
+<span>My Projects</span>
+</a>
+<!-- Collab Management -->
+<a class="flex items-center gap-3 px-6 py-4 text-zinc-500 hover:bg-zinc-900/50 transition-all font-['Inter'] text-xs uppercase tracking-widest active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined text-zinc-500">group</span>
+<span>Collab Management</span>
+</a>
+</nav>
+<div class="mt-auto p-6 space-y-4">
+<button class="w-full bg-gradient-to-r from-primary to-primary-dim text-on-primary-fixed font-bold py-3 rounded-sm text-xs tracking-widest uppercase hover:opacity-90 transition-opacity">
+                DEPLOY NEW
+            </button>
+<div class="pt-4 border-t border-zinc-800/20 space-y-2">
+<a class="flex items-center gap-3 px-0 py-2 text-zinc-500 hover:text-zinc-200 transition-all font-['Inter'] text-[10px] uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined text-sm">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-0 py-2 text-zinc-500 hover:text-zinc-200 transition-all font-['Inter'] text-[10px] uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined text-sm">terminal</span>
+<span>Logs</span>
+</a>
+</div>
+</div>
+</aside>
+<div class="ml-64 flex flex-col min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="bg-black/70 backdrop-blur-xl sticky top-0 z-40 flex justify-between items-center w-full px-8 py-4 shadow-[0_20px_40px_rgba(0,123,255,0.08)]">
+<div class="flex items-center gap-6">
+<h1 class="font-['Space_Grotesk'] text-xl font-bold tracking-tighter text-blue-400">TERMINAL_HORIZON</h1>
+<div class="hidden md:flex items-center bg-zinc-900 px-4 py-2 rounded-sm border border-outline-variant/20">
+<span class="material-symbols-outlined text-zinc-500 text-sm mr-2">search</span>
+<input class="bg-transparent border-none text-xs focus:ring-0 text-on-surface-variant w-48 font-['Inter']" placeholder="Search system assets..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-zinc-500">
+<span class="material-symbols-outlined hover:text-blue-400 cursor-pointer transition-colors">lightbulb</span>
+<span class="material-symbols-outlined hover:text-blue-400 cursor-pointer transition-colors">notifications</span>
+<span class="material-symbols-outlined hover:text-blue-400 cursor-pointer transition-colors">mail</span>
+</div>
+<div class="flex items-center gap-3 pl-6 border-l border-zinc-800">
+<div class="text-right">
+<p class="text-[10px] text-zinc-500 font-bold uppercase tracking-tighter leading-none">Status</p>
+<p class="text-xs text-primary font-bold">OPTIMIZED</p>
+</div>
+<img alt="Developer Profile" class="w-8 h-8 rounded-sm grayscale hover:grayscale-0 transition-all" data-alt="Close up profile portrait of a software engineer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4AwuzSEsqYOQOpIc2Nujk9udzajBcGtPUA8Yf2zwlF5hqBg9ApeQvmmceD7mMBVkdWqyHbeDqqJdGaMLwG-njgSSFrUAuxY9ZlChTnVH16AwZ5kOLOHAVasJr42PuyiHbk8t6b6dOAlGOOZQPR-LdSRrfqL9VOEoUIpO70Q4qNjg1zIVxJV7sdBpFjX15DyLF1QhxU4Bpg7Gu9ObJDYGVtxaB8vzasWGSgy-sV5KU91TTolrFy6E81IBsQaIb_xCP03rmaNlgL-of"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="p-10 flex-1 bg-surface-dim">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-12">
+<div class="space-y-1">
+<div class="flex items-center gap-2 text-primary-fixed-dim">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+<span class="text-[10px] font-['Inter'] font-bold tracking-[0.2em] uppercase">System Repository</span>
+</div>
+<h2 class="font-['Space_Grotesk'] text-4xl font-bold tracking-tight text-on-surface">MY PROJECTS</h2>
+</div>
+<button class="flex items-center gap-2 bg-gradient-to-br from-primary to-primary-dim text-on-primary-fixed px-6 py-3 rounded-sm font-['Inter'] font-bold text-xs tracking-widest uppercase hover:opacity-90 active:scale-95 transition-all shadow-[0_4px_20px_rgba(132,173,255,0.2)]">
+<span class="material-symbols-outlined text-sm">add_circle</span>
+                    Thêm Project
+                </button>
+</div>
+<!-- Kinetic Data Table Component -->
+<div class="relative group">
+<!-- Decorative element -->
+<div class="absolute -top-4 -left-4 w-24 h-24 bg-primary/5 blur-3xl rounded-full"></div>
+<div class="bg-surface-container rounded-sm border-t border-outline-variant/10 overflow-hidden shadow-2xl">
+<div class="overflow-x-auto no-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high border-b border-outline-variant/20">
+<th class="px-6 py-5 text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.15em] font-['Inter']">Project ID</th>
+<th class="px-6 py-5 text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.15em] font-['Inter']">Tên Project</th>
+<th class="px-6 py-5 text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.15em] font-['Inter']">Loại Project</th>
+<th class="px-6 py-5 text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.15em] font-['Inter']">Link Github</th>
+<th class="px-6 py-5 text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.15em] font-['Inter']">Production</th>
+<th class="px-6 py-5 text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.15em] font-['Inter'] text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-highest transition-colors group/row">
+<td class="px-6 py-6 font-mono text-xs text-primary-fixed-dim">#PROJ-8821</td>
+<td class="px-6 py-6">
+<div class="font-bold text-sm font-['Space_Grotesk'] text-on-surface">Neural Nexus API</div>
+</td>
+<td class="px-6 py-6">
+<span class="bg-surface-container-low px-2 py-1 text-[9px] font-bold text-tertiary uppercase tracking-widest border border-tertiary/20">Backend</span>
+</td>
+<td class="px-6 py-6 text-xs text-zinc-500 font-mono hover:text-blue-400 transition-colors">
+<div class="flex items-center gap-1 cursor-pointer">
+<span class="material-symbols-outlined text-sm">link</span>
+                                            github.com/arch/neural-api
+                                        </div>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_rgba(132,173,255,0.6)]"></span>
+<span class="text-xs font-['Inter'] text-on-surface-variant">nexus.v1.prod</span>
+</div>
+</td>
+<td class="px-6 py-6">
+<div class="flex justify-end gap-3">
+<button class="p-2 bg-surface-container-low hover:bg-primary/10 text-zinc-400 hover:text-primary transition-all rounded-sm" title="Xem">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2 bg-surface-container-low hover:bg-primary/10 text-zinc-400 hover:text-primary transition-all rounded-sm" title="Sửa">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-2 bg-surface-container-low hover:bg-error-container/20 text-zinc-400 hover:text-error transition-all rounded-sm" title="Xóa">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="bg-surface-container-low hover:bg-surface-container-highest transition-colors group/row">
+<td class="px-6 py-6 font-mono text-xs text-primary-fixed-dim">#PROJ-4412</td>
+<td class="px-6 py-6">
+<div class="font-bold text-sm font-['Space_Grotesk'] text-on-surface">Cyber-Shield IDS</div>
+</td>
+<td class="px-6 py-6">
+<span class="bg-surface-container-low px-2 py-1 text-[9px] font-bold text-tertiary uppercase tracking-widest border border-tertiary/20">Security</span>
+</td>
+<td class="px-6 py-6 text-xs text-zinc-500 font-mono hover:text-blue-400 transition-colors">
+<div class="flex items-center gap-1 cursor-pointer">
+<span class="material-symbols-outlined text-sm">link</span>
+                                            github.com/arch/shield-ids
+                                        </div>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-outline-variant"></span>
+<span class="text-xs font-['Inter'] text-on-surface-variant">Not Deployed</span>
+</div>
+</td>
+<td class="px-6 py-6">
+<div class="flex justify-end gap-3">
+<button class="p-2 bg-surface-container-low hover:bg-primary/10 text-zinc-400 hover:text-primary transition-all rounded-sm" title="Xem">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2 bg-surface-container-low hover:bg-primary/10 text-zinc-400 hover:text-primary transition-all rounded-sm" title="Sửa">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-2 bg-surface-container-low hover:bg-error-container/20 text-zinc-400 hover:text-error transition-all rounded-sm" title="Xóa">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-highest transition-colors group/row">
+<td class="px-6 py-6 font-mono text-xs text-primary-fixed-dim">#PROJ-3310</td>
+<td class="px-6 py-6">
+<div class="font-bold text-sm font-['Space_Grotesk'] text-on-surface">Data Horizon ETL</div>
+</td>
+<td class="px-6 py-6">
+<span class="bg-surface-container-low px-2 py-1 text-[9px] font-bold text-tertiary uppercase tracking-widest border border-tertiary/20">Infrastructure</span>
+</td>
+<td class="px-6 py-6 text-xs text-zinc-500 font-mono hover:text-blue-400 transition-colors">
+<div class="flex items-center gap-1 cursor-pointer">
+<span class="material-symbols-outlined text-sm">link</span>
+                                            github.com/arch/etl-engine
+                                        </div>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_rgba(132,173,255,0.6)]"></span>
+<span class="text-xs font-['Inter'] text-on-surface-variant">etl.cloud.io</span>
+</div>
+</td>
+<td class="px-6 py-6">
+<div class="flex justify-end gap-3">
+<button class="p-2 bg-surface-container-low hover:bg-primary/10 text-zinc-400 hover:text-primary transition-all rounded-sm" title="Xem">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2 bg-surface-container-low hover:bg-primary/10 text-zinc-400 hover:text-primary transition-all rounded-sm" title="Sửa">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-2 bg-surface-container-low hover:bg-error-container/20 text-zinc-400 hover:text-error transition-all rounded-sm" title="Xóa">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="bg-surface-container-low hover:bg-surface-container-highest transition-colors group/row">
+<td class="px-6 py-6 font-mono text-xs text-primary-fixed-dim">#PROJ-9905</td>
+<td class="px-6 py-6">
+<div class="font-bold text-sm font-['Space_Grotesk'] text-on-surface">Terminal Portfolio</div>
+</td>
+<td class="px-6 py-6">
+<span class="bg-surface-container-low px-2 py-1 text-[9px] font-bold text-tertiary uppercase tracking-widest border border-tertiary/20">Frontend</span>
+</td>
+<td class="px-6 py-6 text-xs text-zinc-500 font-mono hover:text-blue-400 transition-colors">
+<div class="flex items-center gap-1 cursor-pointer">
+<span class="material-symbols-outlined text-sm">link</span>
+                                            github.com/arch/terminal-ui
+                                        </div>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_rgba(132,173,255,0.6)]"></span>
+<span class="text-xs font-['Inter'] text-on-surface-variant">terminal.horizon.dev</span>
+</div>
+</td>
+<td class="px-6 py-6">
+<div class="flex justify-end gap-3">
+<button class="p-2 bg-surface-container-low hover:bg-primary/10 text-zinc-400 hover:text-primary transition-all rounded-sm" title="Xem">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+<button class="p-2 bg-surface-container-low hover:bg-primary/10 text-zinc-400 hover:text-primary transition-all rounded-sm" title="Sửa">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="p-2 bg-surface-container-low hover:bg-error-container/20 text-zinc-400 hover:text-error transition-all rounded-sm" title="Xóa">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Pagination / Metadata -->
+<div class="mt-6 flex justify-between items-center text-on-surface-variant font-['Inter']">
+<div class="text-[10px] uppercase tracking-widest flex items-center gap-4">
+<span>Showing 4 of 24 deployments</span>
+<span class="text-zinc-700">|</span>
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary-fixed-dim"></span>
+<span>System Healthy</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant/30 text-zinc-500 hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<div class="px-3 py-1 bg-surface-container-highest border border-primary/50 text-primary text-[10px] font-bold">01</div>
+<button class="w-8 h-8 flex items-center justify-center border border-outline-variant/30 text-zinc-500 hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Asymmetric Tech Stack Summary -->
+<section class="mt-20 grid grid-cols-12 gap-6">
+<div class="col-span-12 md:col-span-4 bg-surface-container-low p-6 border-l-2 border-primary">
+<h3 class="font-['Space_Grotesk'] text-sm font-bold text-on-surface mb-4 uppercase tracking-widest">Active Runtime</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-mono text-zinc-500">Node.js Engine</span>
+<span class="text-[10px] font-mono text-primary">v20.1.0</span>
+</div>
+<div class="w-full bg-zinc-900 h-1">
+<div class="bg-primary h-full w-[85%]"></div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[10px] font-mono text-zinc-500">Memory Usage</span>
+<span class="text-[10px] font-mono text-tertiary">422 MB</span>
+</div>
+<div class="w-full bg-zinc-900 h-1">
+<div class="bg-tertiary h-full w-[35%]"></div>
+</div>
+</div>
+</div>
+<div class="col-span-12 md:col-span-8 bg-surface-container border border-outline-variant/10 p-6 flex flex-col justify-between">
+<div>
+<h3 class="font-['Space_Grotesk'] text-sm font-bold text-on-surface mb-2 uppercase tracking-widest">Architectural Insights</h3>
+<p class="text-xs text-on-surface-variant max-w-lg leading-relaxed">
+                            Infrastructure is currently scaling horizontally across 3 availability zones. Project ID generation follows the kinetic sequencing protocol v2.1. Github integration webhooks are 100% active.
+                        </p>
+</div>
+<div class="flex gap-4 mt-6">
+<div class="flex -space-x-2">
+<img class="w-6 h-6 rounded-full border border-surface" data-alt="Team member profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJoq3O7_DmI9Kf75pBCnIxkKLxa9XKQiFnxgQcpdpyRY7edvdkbTqyHwTDN_R3eymwKOqLW86WOwfCJTW2gz0qccERaJyGm5P7dZxZkriuXQz16StI5BC_okJ7ntSC53yNcs2NXiBYN5mGGpTCIeEpo1zYg2pmg3lM0xT99sQqqeuv3DRR85WxddrIQXxOMcL3FElQPMd0vh-HCYM3RQvwrnI7gyPMcStxwJ_fJ6o_Ziy8eXCDAeEChnOwvBmApACoACf_vkR2Br9s"/>
+<img class="w-6 h-6 rounded-full border border-surface" data-alt="Team member profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGnRRIk_fFyTPwHKNC4vIFfrZHlthUTloCsdbIt2SiK8Qywfj8rbDTVFdER6DVTUeMdoU8VzplqlnyBB3pxqlrCyNV3r3q3acnHsEobBZkVnC7jeBppGsHGHtuTo_721amKqAYkATRN8N8ETdZXDvut1qzMLoh0jmsyrF1TmrQwTC1ghreMQjzXO1arnkmP2xLqN-LLAauW1hfRh_fSi6ZSxYHMfBCfvYei5ngC7oUiINUgv-4Ui3t0w4r0Mb7j6skfaHoghW0bfUS"/>
+<div class="w-6 h-6 rounded-full border border-surface bg-zinc-800 flex items-center justify-center text-[8px] text-zinc-400 font-bold">+12</div>
+</div>
+<span class="text-[10px] text-zinc-500 uppercase tracking-tighter flex items-center">Collaborators Active</span>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

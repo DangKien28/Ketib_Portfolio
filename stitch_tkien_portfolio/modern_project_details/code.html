@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ARCHITECT_OS | Project Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error-container": "#9f0519",
+                        "secondary-dim": "#7e98ff",
+                        "tertiary-container": "#f39cfb",
+                        "tertiary-fixed-dim": "#e48fed",
+                        "on-secondary": "#00185d",
+                        "on-primary": "#002d64",
+                        "surface-container": "#191919",
+                        "outline": "#757575",
+                        "on-secondary-fixed": "#00298b",
+                        "primary": "#84adff",
+                        "on-tertiary-fixed": "#41004d",
+                        "primary-fixed-dim": "#5091ff",
+                        "tertiary": "#fab0ff",
+                        "surface": "#0e0e0e",
+                        "on-primary-container": "#00214e",
+                        "on-tertiary": "#6a1f77",
+                        "on-surface-variant": "#ababab",
+                        "surface-container-low": "#131313",
+                        "tertiary-fixed": "#f39cfb",
+                        "background": "#0e0e0e",
+                        "on-tertiary-fixed-variant": "#6a1f77",
+                        "secondary-fixed": "#c6cfff",
+                        "surface-bright": "#2c2c2c",
+                        "surface-variant": "#262626",
+                        "primary-fixed": "#6c9fff",
+                        "primary-dim": "#0070ea",
+                        "on-primary-fixed": "#000000",
+                        "secondary-container": "#1e3da1",
+                        "inverse-on-surface": "#555555",
+                        "on-error": "#490006",
+                        "on-surface": "#ffffff",
+                        "tertiary-dim": "#e48fed",
+                        "surface-container-lowest": "#000000",
+                        "secondary-fixed-dim": "#b3c1ff",
+                        "secondary": "#7e98ff",
+                        "outline-variant": "#484848",
+                        "on-error-container": "#ffa8a3",
+                        "on-background": "#ffffff",
+                        "surface-container-high": "#1f1f1f",
+                        "surface-container-highest": "#262626",
+                        "inverse-surface": "#f9f9f9",
+                        "on-tertiary-container": "#60136d",
+                        "error-dim": "#d7383b",
+                        "primary-container": "#6c9fff",
+                        "surface-tint": "#84adff",
+                        "on-primary-fixed-variant": "#002a60",
+                        "surface-dim": "#0e0e0e",
+                        "on-secondary-container": "#c4ceff",
+                        "on-secondary-fixed-variant": "#2b48ac",
+                        "error": "#ff716c",
+                        "inverse-primary": "#005bc1"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(14, 14, 14, 0.7);
+            backdrop-filter: blur(12px);
+        }
+        .glow-blue {
+            box-shadow: 0 0 20px rgba(132, 173, 255, 0.15);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 selection:text-primary min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-black/70 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,123,255,0.08)]">
+<div class="flex justify-between items-center px-8 h-16 w-full max-w-screen-2xl mx-auto">
+<div class="text-xl font-bold tracking-tighter text-blue-400 font-headline">ARCHITECT_OS</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-['Space_Grotesk'] tracking-tight text-sm uppercase text-neutral-400 hover:text-white transition-colors" href="#">Features</a>
+<a class="font-['Space_Grotesk'] tracking-tight text-sm uppercase text-neutral-400 hover:text-white transition-colors" href="#">About Me</a>
+<a class="font-['Space_Grotesk'] tracking-tight text-sm uppercase text-neutral-400 hover:text-white transition-colors" href="#">Contact</a>
+<a class="font-['Space_Grotesk'] tracking-tight text-sm uppercase text-blue-400 border-b-2 border-blue-400 pb-1" href="#">Projects</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-neutral-400 hover:bg-white/5 p-2 rounded-sm transition-all duration-300 active:scale-95">lightbulb</button>
+<button class="material-symbols-outlined text-neutral-400 hover:bg-white/5 p-2 rounded-sm transition-all duration-300 active:scale-95">notifications</button>
+</div>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 border-r border-white/5 tonal-shift bg-neutral-900/80 hidden lg:flex flex-col py-6 gap-2">
+<div class="px-6 mb-8">
+<div class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-bold mb-1">Status</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+<span class="font-['Inter'] text-xs font-medium tracking-widest text-primary">v2.0.4-stable</span>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-4 px-6 py-3 bg-blue-500/10 text-blue-400 border-r-2 border-blue-400 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-['Inter'] text-xs font-medium tracking-widest uppercase">Overview</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-neutral-500 hover:text-neutral-200 hover:bg-neutral-800/50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-['Inter'] text-xs font-medium tracking-widest uppercase">Collaboration</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:pl-64 pt-16 min-h-screen bg-surface-dim">
+<div class="max-w-6xl mx-auto p-8 space-y-12">
+<!-- Hero Project Section -->
+<section class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+<div class="xl:col-span-7 space-y-6">
+<!-- Glassmorphic Image Card -->
+<div class="relative group rounded-sm overflow-hidden bg-surface-container-high glow-blue border border-outline-variant/20 aspect-video">
+<img alt="Server infrastructure visualization" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" data-alt="Abstract server racks with glowing blue light trails" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbhgKC1cYQ3bNRwYpYz3tHopaxMqU9-8eoPh1SaZt_8V8tjxtd5McnmK9CraJ_wJecluBpC-Zb3BWP94j4k3HgmW7D86Iy7nHvmHvYdfCtQNdz6g8emxs6X427flhZHqAGfu8rhkAw9NPzWCr39ShXPODRnrCBejq1oQCqncdseK-TlrMfMT2tMD-GBamcjY8eAX2RqBMxcto7guwzGu-TcEGnV8WtgINtbHtmW5uGah-ObmJJA3ncCS29Tf6FeRCfUXIygBd0Y9AE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-6 left-6 right-6">
+<div class="flex gap-2 mb-3">
+<span class="px-2 py-1 bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-wider rounded-none">High-Throughput</span>
+<span class="px-2 py-1 bg-tertiary/10 border border-tertiary/20 text-tertiary text-[10px] font-bold uppercase tracking-wider rounded-none">Event-Driven</span>
+</div>
+</div>
+</div>
+<!-- Engagement Stats -->
+<div class="flex items-center gap-1 justify-between bg-surface-container-low p-4 border border-outline-variant/10">
+<div class="flex flex-col items-center flex-1 border-r border-outline-variant/10">
+<span class="text-primary-fixed-dim font-headline text-xl font-bold">1.2k</span>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">favorite</span> Hearts
+                            </span>
+</div>
+<div class="flex flex-col items-center flex-1 border-r border-outline-variant/10">
+<span class="text-on-surface font-headline text-xl font-bold">4.9/5</span>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span> Stars
+                            </span>
+</div>
+<div class="flex flex-col items-center flex-1">
+<span class="text-on-surface font-headline text-xl font-bold">42</span>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">chat_bubble</span> Comments
+                            </span>
+</div>
+</div>
+</div>
+<div class="xl:col-span-5 space-y-8">
+<header>
+<h1 class="text-4xl lg:text-5xl font-bold font-headline tracking-tighter text-on-surface mb-4 leading-none">HyperScale Event Streamer</h1>
+<p class="text-on-surface-variant font-body leading-relaxed text-sm">
+                            A distributed, fault-tolerant event streaming platform engineered for microsecond latency. Built on a custom Rust-based storage engine with multi-region replication capabilities. Designed to handle 5M+ events per second without sacrificing ordering guarantees.
+                        </p>
+</header>
+<div class="space-y-4">
+<div class="text-[10px] uppercase tracking-[0.25em] text-primary font-bold">Project Integration</div>
+<div class="flex flex-col gap-3">
+<a class="group flex items-center justify-between p-4 bg-gradient-to-r from-primary to-primary-dim text-on-primary-fixed rounded-sm font-bold text-sm tracking-tight transition-all active:scale-95" href="#">
+<span class="flex items-center gap-3">
+<span class="material-symbols-outlined">rocket_launch</span>
+                                    Visit Production
+                                </span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+<a class="flex items-center justify-between p-4 bg-surface-container-highest text-primary rounded-sm font-bold text-sm tracking-tight hover:bg-surface-variant transition-all active:scale-95" href="#">
+<span class="flex items-center gap-3">
+<span class="material-symbols-outlined">code</span>
+                                    GitHub Repository
+                                </span>
+<span class="material-symbols-outlined">open_in_new</span>
+</a>
+</div>
+</div>
+<div class="p-6 border-l-2 border-primary/30 bg-surface-container-low">
+<div class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-2">Technical Stack</div>
+<div class="flex flex-wrap gap-2">
+<span class="text-xs font-mono text-secondary-dim">Rust</span>
+<span class="text-xs font-mono text-outline">•</span>
+<span class="text-xs font-mono text-secondary-dim">gRPC</span>
+<span class="text-xs font-mono text-outline">•</span>
+<span class="text-xs font-mono text-secondary-dim">Kubernetes</span>
+<span class="text-xs font-mono text-outline">•</span>
+<span class="text-xs font-mono text-secondary-dim">PostgreSQL</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Discussion_Log Section -->
+<section class="space-y-8">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<h2 class="text-2xl font-bold font-headline tracking-tight uppercase">Discussion_Log</h2>
+<span class="px-2 py-0.5 bg-neutral-800 text-neutral-400 text-[10px] font-mono">STABLE_CHANNEL</span>
+</div>
+<div class="text-xs text-on-surface-variant font-mono">Last updated: 04:12:09 UTC</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<div class="lg:col-span-8 space-y-6">
+<!-- Comment Item -->
+<div class="flex gap-4 p-6 bg-surface-container border-l border-outline-variant/10">
+<img alt="Alex profile" class="w-10 h-10 rounded-sm object-cover filter grayscale hover:grayscale-0 transition-all" data-alt="Portrait of a young man with glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbjTE7xvdBKx9l-WgmoF7equO4HgoAUSmnFaZL2fleW86WhcVTNNITewLcKaeIgCVsn7Hi7YHQ7TnDZoLwM3C-xjq988ZenJFJ3AAcv46q7A5KKY3SQMvw621EinSNQUlqZT3qjEieMeGT2xEOcU7EfIbI8LghMDKpIOQQwU79atPgUjr0Y3RvtXxW83ZPC6c0xrcYtVNdZmEygZKH9wD4OYK5OreKxpcnImfKakhT1OZoWI3X6uC8SbK4Rd3JGREKxDkPsdOKOdOQ"/>
+<div class="space-y-2 flex-1">
+<div class="flex items-center justify-between">
+<span class="text-sm font-bold text-primary">Alex</span>
+<span class="text-[10px] font-mono text-on-surface-variant">2h ago</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                                    Impressive architecture on the custom storage engine. Are you using <code class="text-secondary bg-secondary-container/20 px-1">io_uring</code> for the disk I/O operations or sticking with standard async syscalls?
+                                </p>
+<div class="flex items-center gap-4 pt-2">
+<button class="text-[10px] uppercase font-bold text-on-surface-variant hover:text-primary transition-colors">Reply</button>
+<button class="text-[10px] uppercase font-bold text-on-surface-variant hover:text-primary transition-colors">Upvote (12)</button>
+</div>
+</div>
+</div>
+<!-- Comment Item -->
+<div class="flex gap-4 p-6 bg-surface-container border-l border-outline-variant/10">
+<img alt="Sarah profile" class="w-10 h-10 rounded-sm object-cover filter grayscale hover:grayscale-0 transition-all" data-alt="Portrait of a woman smiling professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWVDh5iSt0xXynB5OyU29EzEAQKsd68AyXqxbYnSAUmNpn2ouQof6sK0-B9JU7NYSZV2Nr40OfYbXxVTLKmKEq2TrRKF0A-CYeKSKqqXFCgwcazLgs5j7jhFAnMoSbFKQi-5JcdSoXy0hhMtGgBmLLh9reI_n0BphO8x1OJBIKU6tpP_WwAimNwHYJlOsomIHjk5HThqt3zJCJdAwSJgoRk76aY5xB-gvlobEhEbFCEpq8cP8GlvaOcQ1rwfpn14eZ9CRo9P64y0ME"/>
+<div class="space-y-2 flex-1">
+<div class="flex items-center justify-between">
+<span class="text-sm font-bold text-primary">Sarah</span>
+<span class="text-[10px] font-mono text-on-surface-variant">5h ago</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                                    The replication lag monitoring dashboard is a game changer. I'd love to see more documentation on the quorum consensus mechanism used for the leader election.
+                                </p>
+<div class="flex items-center gap-4 pt-2">
+<button class="text-[10px] uppercase font-bold text-on-surface-variant hover:text-primary transition-colors">Reply</button>
+<button class="text-[10px] uppercase font-bold text-on-surface-variant hover:text-primary transition-colors">Upvote (8)</button>
+</div>
+</div>
+</div>
+<!-- Comment Item -->
+<div class="flex gap-4 p-6 bg-surface-container border-l border-outline-variant/10">
+<img alt="Marcus profile" class="w-10 h-10 rounded-sm object-cover filter grayscale hover:grayscale-0 transition-all" data-alt="Portrait of a middle aged man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYuT8zD400ZvEz5KP2j0U5obS19QFgHsEfnacVkfZXtGe1GvPntu7vFw3z8vklrhdJ1pnJFpFKPYwZJKiAETOb4iTvQ7XQ5YspviprRKEEAVHFBuj4Uoq0LN9el43ZALw8REkDMsiZyAkv7ymNWerYByTI4O4-ZdXVb6MDpjj29plHp0Gtk6YW5KMwT2utWbZrJ5U2mzEqtErLhcgc_y6Xkkk-41OWPneeahL_xbCGcOlP7lAWAmomuWCABzXzCmzrCPI8ygQpfvlL"/>
+<div class="space-y-2 flex-1">
+<div class="flex items-center justify-between">
+<span class="text-sm font-bold text-primary">Marcus</span>
+<span class="text-[10px] font-mono text-on-surface-variant">1d ago</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                                    Finally, a stream processor that doesn't buckle under high backpressure. The throughput benchmarks are spot on.
+                                </p>
+<div class="flex items-center gap-4 pt-2">
+<button class="text-[10px] uppercase font-bold text-on-surface-variant hover:text-primary transition-colors">Reply</button>
+<button class="text-[10px] uppercase font-bold text-on-surface-variant hover:text-primary transition-colors">Upvote (24)</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="lg:col-span-4">
+<div class="sticky top-24 bg-surface-container p-6 border border-outline-variant/20 space-y-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface">New Entry</span>
+<div class="flex gap-2">
+<button class="material-symbols-outlined text-sm text-on-surface-variant hover:text-primary">code</button>
+<button class="material-symbols-outlined text-sm text-on-surface-variant hover:text-primary">link</button>
+<button class="material-symbols-outlined text-sm text-on-surface-variant hover:text-primary">image</button>
+</div>
+</div>
+<textarea class="w-full h-32 bg-surface-container-lowest border-none focus:ring-1 focus:ring-primary/50 text-sm font-body text-on-surface placeholder:text-neutral-700 p-4 resize-none" placeholder="Initialize new comment thread..."></textarea>
+<button class="w-full py-3 bg-primary text-on-primary-fixed font-bold text-xs uppercase tracking-[0.2em] hover:bg-primary-fixed transition-colors active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">send</span>
+                                Execute Send
+                            </button>
+<div class="pt-4 border-t border-outline-variant/10">
+<p class="text-[10px] text-neutral-600 leading-tight">
+                                    By submitting, you agree to the protocol standards of the ARCHITECT_OS network. Use markdown for technical snippets.
+                                </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer Visual Spacer -->
+<div class="h-32 bg-gradient-to-t from-black to-transparent"></div>
+</main>
+<!-- Mobile Navigation (BottomNavBar) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-surface-container/90 backdrop-blur-lg flex items-center justify-around z-50 px-4 border-t border-outline-variant/10">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] uppercase font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span class="text-[10px] uppercase font-bold">Projects</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] uppercase font-bold">About</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">mail</span>
+<span class="text-[10px] uppercase font-bold">Contact</span>
+</a>
+</nav>
+</body></html>

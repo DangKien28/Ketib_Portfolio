@@ -1,46 +1,95 @@
 const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
+const { getDB } = require('./db');
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your-super-secret-key';
+const JWT_SECRET = process.env.JWT_SECRET;
+const TOKEN_EXPIRATION = '7d'; // Token sống 7 ngày
 
-function verifyToken(req) {
-    // Đọc token từ header Authorization: Bearer <token>
+/**
+ * 1. TẠO MAGIC LINK (Lưu trạng thái vào MongoDB)
+ * @param {string} email - Email người dùng yêu cầu đăng nhập
+ */
+async function createMagicLink(email) {
+    if (!email) throw new Error("Email là bắt buộc");
+
+    const db = getDB();
+    const sessions = db.collection('auth_sessions');
+
+    // Tạo một chuỗi ngẫu nhiên 32 bytes (64 ký tự hex)
+    const magicToken = crypto.randomBytes(32).toString('hex');
+
+    // Lưu vào MongoDB để kiểm soát Replay Attack
+    await sessions.insertOne({
+        email: email,
+        magic_token: magicToken,
+        status: 'pending',
+        created_at: new Date(),
+        expires_at: new Date(Date.now() + 15 * 60000) // Hết hạn sau 15 phút
+    });
+
+    // LƯU Ý: Ở dự án thực tế, bạn sẽ đưa magicToken này vào RabbitMQ để go-notification gửi email.
+    // Hiện tại Gateway sẽ trả về để hiển thị tạm trên log/response.
+    return magicToken;
+}
+
+/**
+ * 2. XÁC THỰC MAGIC LINK & CẤP JWT
+ * @param {string} token - Chuỗi magic token từ URL người dùng click
+ */
+async function verifyMagicLinkAndIssueJWT(token) {
+    const db = getDB();
+    const sessions = db.collection('auth_sessions');
+
+    // Tìm token trong DB
+    const session = await sessions.findOne({ magic_token: token });
+
+    if (!session) {
+        throw new Error("Magic Link không tồn tại hoặc không hợp lệ.");
+    }
+    if (session.status !== 'pending') {
+        throw new Error("Magic Link này đã được sử dụng.");
+    }
+    if (new Date() > session.expires_at) {
+        throw new Error("Magic Link đã hết hạn (quá 15 phút).");
+    }
+
+    // Đánh dấu là đã sử dụng (Vô hiệu hóa link cũ)
+    await sessions.updateOne(
+        { _id: session._id },
+        { $set: { status: 'used', used_at: new Date() } }
+    );
+
+    // Cấp phát JWT chính thức
+    const payload = {
+        userId: session.email, // Dùng email làm ID định danh tạm thời
+        role: session.email === 'admin@tkien.tech' ? 'ADMIN' : 'USER'
+    };
+
+    const accessToken = jwt.sign(payload, JWT_SECRET, { expiresIn: TOKEN_EXPIRATION });
+    return accessToken;
+}
+
+/**
+ * 3. KIỂM TRA JWT (Middleware cho các API cần bảo mật)
+ * @param {Object} req - HTTP Request
+ */
+function validateJWT(req) {
     const authHeader = req.headers['authorization'];
-    if (!authHeader) return false;
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        throw new Error("Missing or invalid Authorization header");
+    }
 
     const token = authHeader.split(' ')[1];
     try {
         const decoded = jwt.verify(token, JWT_SECRET);
-        // Có thể gán thông tin user vào req để dùng về sau
-        req.user = decoded; 
-        return true;
+        return decoded; // Trả về payload (userId, role) để các service khác dùng
     } catch (err) {
-        return false;
+        throw new Error("Token đã hết hạn hoặc không hợp lệ");
     }
 }
 
-function handleLoginRequest(req, res) {
-    // Logic đọc stream body thuần để lấy email khách hàng
-    let body = '';
-    req.on('data', chunk => {
-        body += chunk.toString();
-    });
-    
-    req.on('end', () => {
-        try {
-            const data = JSON.parse(body);
-            const userEmail = data.email; // Ví dụ: client_email trong hệ thống
-
-            // TẠM THỜI: In ra console. Sau này sẽ gọi qua Go/Sendgrid để gửi email
-            const magicToken = jwt.sign({ email: userEmail, role: 'client' }, JWT_SECRET, { expiresIn: '15m' });
-            console.log(`[Giả lập gửi Email] Magic Link: http://your-frontend.com/verify?token=${magicToken}`);
-
-            res.writeHead(200, { 'Content-Type': 'application/json' });
-            res.end(JSON.stringify({ message: 'Magic link sent to your email' }));
-        } catch (e) {
-            res.writeHead(400);
-            res.end(JSON.stringify({ message: 'Invalid JSON body' }));
-        }
-    });
-}
-
-module.exports = { verifyToken, handleLoginRequest };
+module.exports = {
+    createMagicLink,
+    verifyMagicLinkAndIssueJWT,
+    validateJWT
+};

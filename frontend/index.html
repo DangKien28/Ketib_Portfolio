@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architect OS | Terminal Horizon</title>
+    <!-- MỚI: Liên kết CSS vừa tạo -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">ARCHITECT_OS</div>
+            <div class="sidebar-subtitle">v4.0.1-stable</div>
+        </div>
+        
+        <!-- MODULE NAVIGATION -->
+        <ul class="nav-menu">
+            <li><div class="nav-section-title">SYSTEM REPOSITORY</div></li>    
+            <!-- Dùng thuộc tính data-view để Vanilla JS Router biết sẽ đổi sang màn nào -->
+            <li><div class="nav-item active" data-view="overview">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg>
+                Overview
+            </div></li>
+            <li><div class="nav-item" data-view="projects">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                My Projects
+            </div></li>
+            <li><div class="nav-item" data-view="collabs">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                Collab Management
+            </div></li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <button class="btn-deploy" data-view="deploy">DEPLOY NEW</button>
+            <div style="margin-top:20px;">
+                <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg> Settings</div>
+                <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg> Logs</div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN APP SHELL -->
+    <div class="main-content">
+        <header class="topbar">
+            <div class="topbar-brand">TERMINAL_HORIZON</div>
+            <input type="text" class="search-bar" placeholder="QUERY_SYSTEM_ASSETS...">
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <span style="font-size: 0.75rem; color: #86efac;">STATUS: OPTIMIZED</span>
+                <div style="width: 32px; height: 32px; background: #333; border-radius: 50%;"></div>
+            </div>
+        </header>
+
+        <!-- CONTAINER HIỂN THỊ CÁC VIEW (Router tiêm HTML vào đây) -->
+        <main class="view-container" id="router-view">
+            <!-- Mặc định tải Overview -->
+        </main>
+    </div>
+
+    <!-- CÁC TEMPLATES HTML (Bị ẩn) ĐƯỢC LOAD BỞI JAVASCRIPT ĐỂ MÔ PHỎNG REACT COMPONENT -->
+    
+    <!-- Template 1: OVERVIEW SCREEN -->
+    <template id="tpl-overview">
+        <h2 style="margin-bottom: 5px;">SYSTEM_SNAPSHOT</h2>
+        <p class="text-muted font-mono" style="margin-bottom: 30px;">REAL-TIME INFRASTRUCTURE METRICS</p>
+        
+        <div class="overview-top-stats">
+            <div class="glass-card glow-hover">
+                <span class="stat-label">Total Active Projects</span>
+                <div class="stat-value">12 <span>+2 THIS_WEEK</span></div>
+            </div>
+            <div class="glass-card glow-hover">
+                <span class="stat-label">Pending Collaborations</span>
+                <div class="stat-value">08 <span>REQUIRES_AUTH</span></div>
+            </div>
+            <div class="glass-card glow-hover">
+                <span class="stat-label">System Uptime</span>
+                <div class="stat-value text-accent" style="color:var(--accent-blue)">99.9 <span style="font-size:1.5rem">%</span> <span>STABLE</span></div>
+            </div>
+        </div>
+        
+        <h3 style="margin-bottom: 20px;">PROJECTS IN PROGRESS</h3>
+        <div class="glass-card" style="margin-bottom: 30px;">
+            <p class="font-mono text-muted">BUILD_ID: #4402 <span class="badge badge-tech" style="float:right;">DEVELOPMENT</span></p>
+            <h3 style="margin-top: 10px;">API Gateway v2</h3>
+            <div style="margin-top: 20px; font-size: 0.8rem; display:flex; justify-content:space-between; color:var(--text-muted)">
+                <span>COMPLETION</span> <span>65%</span>
+            </div>
+            <div style="height: 4px; background: #333; margin-top: 5px; border-radius: 2px;">
+                <div style="height: 100%; width: 65%; background: var(--accent-blue); border-radius: 2px;"></div>
+            </div>
+        </div>
+
+        <div class="glass-card" style="background:#000; font-family:var(--font-mono)">
+            <div style="display:flex; gap:6px; margin-bottom: 10px;">
+                <div style="width:10px; height:10px; border-radius:50%; background:#ef4444;"></div>
+                <div style="width:10px; height:10px; border-radius:50%; background:#eab308;"></div>
+                <div style="width:10px; height:10px; border-radius:50%; background:#22c55e;"></div>
+                <span class="text-muted" style="margin-left: 10px">LIVE SYSTEM LOG - TTY1</span>
+            </div>
+            <p><span class="text-accent">[INFO]</span> Connecting to master-node-alpha-4...</p>
+            <p><span class="text-accent">[INFO]</span> Protocol Handshake: SUCCESS</p>
+            <p><span class="text-pink">[WARN]</span> Latency spike detected in EU-WEST cluster (45ms)</p>
+            <p style="color:var(--text-muted)">[LOGS] Deployment "API_GW_V2" incremented to build #4403</p>
+            <p class="text-accent">_</p>
+        </div>
+    </template>
+
+    <!-- Template 2: COLLAB MANAGEMENT -->
+    <template id="tpl-collabs">
+        <h2>Collaboration</h2>
+        <p class="text-muted" style="margin-bottom: 30px;">System-wide node synchronization and contributor request management.</p>
+
+        <div class="glass-card" style="padding: 0;">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>COLLABORATION ID</th>
+                        <th>TÊN PROJECT</th>
+                        <th>TÊN NGƯỜI GỬI</th>
+                        <th>EMAIL NGƯỜI GỬI</th>
+                        <th>TRANG THÁI</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody id="collab-table-body">
+                    <!-- Javascript Data Render Here -->
+                </tbody>
+            </table>
+        </div>
+    </template>
+
+    <!-- Template 3: DEPLOY NEW PROJECT (FORM + DRAG ZONE CHO WASM) -->
+    <template id="tpl-deploy">
+        <h1 class="text-accent">ADD NEW</h1>
+        <h1 style="font-size: 2.5rem; margin-bottom: 10px;">PROJECT</h1>
+        <p class="text-muted" style="margin-bottom: 30px;">Deploy a new architectural module to the Terminal Horizon ecosystem.</p>
+
+        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 40px;">
+            <div>
+                <!-- Left info -->
+                <div class="glass-card" style="background: rgba(37, 99, 235, 0.05); border-left: 3px solid var(--accent-blue);">
+                    <p style="font-size: 0.85rem; color: var(--text-muted);">ALL INPUTS ARE SANITIZED THROUGH THE ARCHITECT-OS CORE ENGINE.</p>
+                </div>
+            </div>
+            <div>
+                <!-- Right form -->
+                <form id="deploy-form" class="glass-card">
+                    <div class="form-group">
+                        <label class="form-label">Tên Project</label>
+                        <input type="text" class="form-input" id="prj-title" placeholder="e.g. NEURAL_NETWORK_V1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Mô Tả Project</label>
+                        <textarea class="form-input" id="prj-desc" rows="4" placeholder="Enter architectural specifications..." required></textarea>
+                    </div>
+
+                    <div style="display:flex; gap: 20px;">
+                        <div class="form-group" style="flex:1;">
+                            <label class="form-label">Link Github</label>
+                            <input type="text" class="form-input" id="prj-github" placeholder="https://github.com/...">
+                        </div>
+                        <div class="form-group" style="flex:1;">
+                            <label class="form-label">Link Production</label>
+                            <input type="text" class="form-input" id="prj-live" placeholder="https://live-app.io/...">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Upload Ảnh (Processed via C++ WASM)</label>
+                        <div class="drop-zone" id="image-drop-zone">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-accent"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                            <h4 style="color:var(--text-main)">DRAG AND DROP VISUALS</h4>
+                            <p>Maximum payload: 12MB. Bức ảnh sẽ được nén CỤC BỘ bằng WebAssembly ngay tại trình duyệt.</p>
+                            <input type="file" id="file-input" style="display: none;" accept="image/png, image/jpeg, image/webp">
+                        </div>
+                        <div id="wasm-status" class="font-mono text-accent" style="margin-top: 10px; font-size:0.8rem"></div>
+                    </div>
+                    
+                    <div style="display:flex; justify-content: flex-end; gap: 15px; margin-top: 30px;">
+                        <button type="button" class="btn-deploy" style="background:var(--bg-main); border: 1px solid var(--border-highlight); width: auto;">HỦY BỎ</button>
+                        <button type="submit" class="btn-deploy" style="width: auto;">DEPLOY PROJECT</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </template>
+
+    <!-- KHAI BÁO JS (RATING SPA ROUTER VÀ API FETCH) -->
+    <script src="./js/app.js"></script>
+</body>
+</html>

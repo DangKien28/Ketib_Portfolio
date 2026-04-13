@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TKien | ARCHITECT_OS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "secondary": "#7e98ff",
+                "outline-variant": "#484848",
+                "tertiary-container": "#f39cfb",
+                "inverse-primary": "#005bc1",
+                "primary-fixed-dim": "#5091ff",
+                "inverse-surface": "#f9f9f9",
+                "surface": "#0e0e0e",
+                "surface-variant": "#262626",
+                "secondary-fixed": "#c6cfff",
+                "on-tertiary-fixed": "#41004d",
+                "on-primary-fixed": "#000000",
+                "surface-tint": "#84adff",
+                "tertiary-fixed": "#f39cfb",
+                "surface-container-low": "#131313",
+                "tertiary-fixed-dim": "#e48fed",
+                "on-primary-container": "#00214e",
+                "tertiary-dim": "#e48fed",
+                "on-secondary-fixed": "#00298b",
+                "on-secondary": "#00185d",
+                "primary-dim": "#0070ea",
+                "on-surface": "#ffffff",
+                "error-container": "#9f0519",
+                "error": "#ff716c",
+                "surface-dim": "#0e0e0e",
+                "surface-container-highest": "#262626",
+                "on-tertiary": "#6a1f77",
+                "on-surface-variant": "#ababab",
+                "secondary-container": "#1e3da1",
+                "primary-fixed": "#6c9fff",
+                "on-error-container": "#ffa8a3",
+                "inverse-on-surface": "#555555",
+                "on-primary-fixed-variant": "#002a60",
+                "on-secondary-container": "#c4ceff",
+                "primary-container": "#6c9fff",
+                "on-error": "#490006",
+                "surface-container-lowest": "#000000",
+                "on-primary": "#002d64",
+                "background": "#0e0e0e",
+                "surface-bright": "#2c2c2c",
+                "primary": "#84adff",
+                "surface-container": "#191919",
+                "secondary-fixed-dim": "#b3c1ff",
+                "on-tertiary-fixed-variant": "#6a1f77",
+                "secondary-dim": "#7e98ff",
+                "on-background": "#ffffff",
+                "error-dim": "#d7383b",
+                "surface-container-high": "#1f1f1f",
+                "tertiary": "#fab0ff",
+                "outline": "#757575",
+                "on-secondary-fixed-variant": "#2b48ac",
+                "on-tertiary-container": "#60136d"
+              },
+              fontFamily: {
+                "headline": ["Space Grotesk"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: rgba(14, 14, 14, 0.7);
+            backdrop-filter: blur(12px);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 selection:text-primary min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-black/70 backdrop-blur-md shadow-[0_20px_40px_rgba(0,123,255,0.08)] flex justify-between items-center px-6 h-16 w-full">
+<div class="text-xl font-bold tracking-tighter text-blue-500 font-headline">ARCHITECT_OS</div>
+<nav class="hidden md:flex gap-8 font-['Space_Grotesk'] tracking-tight text-sm uppercase">
+<a class="text-gray-400 hover:text-gray-200 transition-colors" href="#">Features</a>
+<a class="text-blue-400 border-b-2 border-blue-400 pb-1" href="#">About Me</a>
+<a class="text-gray-400 hover:text-gray-200 transition-colors" href="#">Contact</a>
+<a class="text-gray-400 hover:text-gray-200 transition-colors" href="#">Projects</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-blue-900/20 p-2 rounded transition-all duration-200 scale-95 active:scale-90" data-icon="dark_mode">dark_mode</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-blue-900/20 p-2 rounded transition-all duration-200 scale-95 active:scale-90" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-blue-900/20 p-2 rounded transition-all duration-200 scale-95 active:scale-90" data-icon="account_circle">account_circle</button>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-4rem)] w-64 bg-[#000000] flex flex-col border-r border-white/5 font-['Inter'] text-xs font-mono hidden md:flex">
+<div class="p-6">
+<h2 class="text-blue-500 font-black text-lg">CONSOLE_LOG</h2>
+<p class="text-on-surface-variant opacity-60">v2.0.4-stable</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-gray-500 px-4 py-3 flex items-center gap-3 hover:text-gray-300 transition-transform duration-150 ease-in-out hover:bg-[#131313]" href="#">
+<span class="material-symbols-outlined text-blue-400" data-icon="terminal">terminal</span>
+<span>Overview</span>
+</a>
+<a class="text-gray-500 px-4 py-3 flex items-center gap-3 hover:text-gray-300 transition-transform duration-150 ease-in-out hover:bg-[#131313]" href="#">
+<span class="material-symbols-outlined text-blue-400" data-icon="group">group</span>
+<span>Collaborator</span>
+</a>
+</nav>
+<div class="p-4 space-y-1">
+<a class="text-gray-500 px-4 py-3 flex items-center gap-3 hover:text-gray-300 transition-transform duration-150 ease-in-out hover:bg-[#131313]" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="text-gray-500 px-4 py-3 flex items-center gap-3 hover:text-gray-300 transition-transform duration-150 ease-in-out hover:bg-[#131313]" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span>Logs</span>
+</a>
+<button class="w-full mt-4 bg-gradient-to-br from-primary to-primary-dim text-on-primary-fixed font-bold py-3 rounded-sm scale-95 active:scale-90 transition-all uppercase tracking-widest text-[10px]">
+                DEPLOY_SYSTEM
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 pt-16 min-h-screen">
+<div class="max-w-[1400px] mx-auto p-6 md:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Center/Left Column: Metrics & Video -->
+<div class="lg:col-span-8 flex flex-col gap-12">
+<!-- System Metrics Dashboard -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-1">
+<div class="bg-surface-container p-6 border-t border-primary/10 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined text-4xl" data-icon="dynamic_feed">dynamic_feed</span>
+</div>
+<p class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant mb-2">System Uptime</p>
+<h3 class="text-4xl font-headline font-bold text-primary">99.99<span class="text-lg">%</span></h3>
+<div class="mt-4 h-1 bg-surface-container-highest w-full rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[99.99%]"></div>
+</div>
+</div>
+<div class="bg-surface-container p-6 border-t border-primary/10 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined text-4xl" data-icon="database">database</span>
+</div>
+<p class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant mb-2">Total Requests</p>
+<h3 class="text-4xl font-headline font-bold text-on-surface">1M<span class="text-primary">+</span></h3>
+<p class="text-xs text-on-surface-variant mt-4 font-mono">Processed via Distributed Mesh</p>
+</div>
+<div class="bg-surface-container p-6 border-t border-primary/10 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined text-4xl" data-icon="speed">speed</span>
+</div>
+<p class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant mb-2">Avg Latency</p>
+<h3 class="text-4xl font-headline font-bold text-tertiary">15<span class="text-lg">ms</span></h3>
+<div class="flex gap-1 mt-4">
+<div class="h-4 w-1 bg-tertiary/20"></div>
+<div class="h-4 w-1 bg-tertiary/20"></div>
+<div class="h-4 w-1 bg-tertiary/40"></div>
+<div class="h-4 w-1 bg-tertiary/60"></div>
+<div class="h-4 w-1 bg-tertiary/100"></div>
+</div>
+</div>
+</section>
+<!-- Video Section -->
+<section>
+<div class="relative group aspect-video bg-surface-container-highest border border-outline-variant/20 overflow-hidden shadow-2xl">
+<img alt="Video Placeholder" class="w-full h-full object-cover opacity-40 grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="Cinematic shot of server room with neon lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYdw30YXmO4IH9ukBSdvamzrkrBni8wEu9EqrZqLpeL4s2abyO9EhwUZ2BaQAhXev4Jf1EznLCGuUg7l5UbF5FIsPUJFjiekngW28icrtyZAImzKALNNs5mfz1AkUj-qtFsrbDnMzqtLlbVwRFCGXG_7wZlkAnwGBGgYxATQX1ZPzM2wHDpzjWB40AVGc_sh9Xw1fDy6dOawS_fflMh1QS2kUkPjP2nEMHN-YblqmJSyu9XKKhZlCSVXhiuLG3C0UPRvQ5ccp5ntLk"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<button class="w-20 h-20 bg-primary/20 backdrop-blur-md rounded-full border border-primary/50 flex items-center justify-center group-hover:scale-110 transition-transform shadow-[0_0_30px_rgba(132,173,255,0.4)]">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+</div>
+<div class="absolute bottom-0 left-0 p-6 w-full bg-gradient-to-t from-black/80 to-transparent">
+<p class="text-xs font-mono text-primary mb-1">RECORDING_SESSION_01</p>
+<h4 class="text-xl font-headline font-bold">Personal Voiceover Video // The Backend Philosophy</h4>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Profile & Skills -->
+<div class="lg:col-span-4 flex flex-col gap-8">
+<!-- Personal Profile -->
+<div class="bg-surface-container p-8 border-l border-primary/20">
+<div class="mb-6">
+<div class="w-32 h-32 bg-surface-container-highest rounded-sm border-2 border-primary/30 p-1 mb-6">
+<img alt="TKien Profile" class="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 transition-all duration-500" data-alt="Professional headshot of a male developer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArDPsE2dqOAqhU-JjAkyeXpRJ9zQjD2DsJo4P19BYgkF3j7FU93sC_KOg66KyQvknModlkbZWpsmGIuNqmFXu1JsPdTjoU3IVPhiX0T1NQRJGbf9Cj2iU_VFyPBqwurOX4UjWKsAoci598uDi7hr9TPqCu0Hp5cLPHd5MtSaKnCcAfNZxs2F1vhT6j-mJ-8j0TyhFx2ZPEqYIjqynz1kyuHiXzHel2A5R9XbD4kMMWTXeSsg8T1iW2j6xj2DBkIYkmx7cqBEg7rQeF"/>
+</div>
+<h1 class="text-5xl font-headline font-black tracking-tighter text-on-surface">TKien</h1>
+<p class="text-primary font-mono text-sm mt-1">Lead Backend Architect</p>
+</div>
+<div class="space-y-4 text-on-surface-variant leading-relaxed text-sm">
+<p>Specializing in high-throughput distributed systems and low-latency API design. I architect infrastructures that scale effortlessly.</p>
+<div class="pt-4 border-t border-outline-variant/20 flex flex-col gap-3">
+<div class="flex justify-between items-center">
+<span class="text-[10px] uppercase font-mono tracking-widest opacity-50">Location</span>
+<span class="text-xs">Global / Remote</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[10px] uppercase font-mono tracking-widest opacity-50">Exp</span>
+<span class="text-xs">8+ Cycles</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[10px] uppercase font-mono tracking-widest opacity-50">Status</span>
+<span class="text-xs flex items-center gap-1"><span class="w-2 h-2 bg-green-500 rounded-full"></span> Available</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Technical Skills -->
+<div class="bg-surface-container-low border border-outline-variant/10 p-6">
+<h3 class="text-xs font-mono uppercase tracking-[0.3em] text-primary mb-6 flex items-center gap-2">
+<span class="w-2 h-2 bg-primary"></span> Core_Stack
+                    </h3>
+<div class="flex flex-wrap gap-2">
+<div class="px-3 py-2 bg-surface border border-outline-variant/30 text-xs font-mono flex items-center gap-2 group hover:border-primary/50 transition-colors">
+<span class="w-1 h-3 bg-primary/40 group-hover:bg-primary transition-colors"></span> Go
+                        </div>
+<div class="px-3 py-2 bg-surface border border-outline-variant/30 text-xs font-mono flex items-center gap-2 group hover:border-primary/50 transition-colors">
+<span class="w-1 h-3 bg-primary/40 group-hover:bg-primary transition-colors"></span> Rust
+                        </div>
+<div class="px-3 py-2 bg-surface border border-outline-variant/30 text-xs font-mono flex items-center gap-2 group hover:border-primary/50 transition-colors">
+<span class="w-1 h-3 bg-primary/40 group-hover:bg-primary transition-colors"></span> Node.js
+                        </div>
+<div class="px-3 py-2 bg-surface border border-outline-variant/30 text-xs font-mono flex items-center gap-2 group hover:border-primary/50 transition-colors">
+<span class="w-1 h-3 bg-primary/40 group-hover:bg-primary transition-colors"></span> AWS
+                        </div>
+<div class="px-3 py-2 bg-surface border border-outline-variant/30 text-xs font-mono flex items-center gap-2 group hover:border-primary/50 transition-colors">
+<span class="w-1 h-3 bg-primary/40 group-hover:bg-primary transition-colors"></span> Kubernetes
+                        </div>
+<div class="px-3 py-2 bg-surface border border-outline-variant/30 text-xs font-mono flex items-center gap-2 group hover:border-primary/50 transition-colors">
+<span class="w-1 h-3 bg-primary/40 group-hover:bg-primary transition-colors"></span> Redis
+                        </div>
+</div>
+<div class="mt-8 bg-black/40 p-4 font-mono text-[10px] text-primary-dim leading-tight">
+<p class="mb-1 text-on-surface-variant opacity-40">// Terminal Output</p>
+<p class="text-primary">&gt; systemctl status skills.service</p>
+<p class="text-green-500">&gt; service: active (running)</p>
+<p>&gt; loading packages... done</p>
+<p>&gt; all systems nominal_</p>
+</div>
+</div>
+</div>
+<!-- Bottom Section: Featured Projects -->
+<section class="lg:col-span-12 mt-12 pb-20">
+<div class="flex items-end justify-between mb-8 border-b border-outline-variant/20 pb-4">
+<div>
+<h2 class="text-3xl font-headline font-bold uppercase tracking-tight">Project nổi bật</h2>
+<p class="text-xs font-mono text-on-surface-variant mt-1">LATEST_DEPLOYMENTS_LOG</p>
+</div>
+<a class="text-primary text-xs font-mono hover:underline flex items-center gap-2" href="#">
+                        View_All_Archives <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Project Card 1 -->
+<div class="bg-surface-container group hover:bg-surface-container-high transition-all duration-300 relative">
+<div class="aspect-video w-full overflow-hidden">
+<img alt="Neural Net V1" class="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500" data-alt="Abstract neural network visualization with blue lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEWiPYGEP9mC9ppADcYVNbpdL3C0mLkv6crYQeCrjTi-1rRWWRRSvZfGL4CsSXAF7HRRzLJU1O1mS8qFjuH7pdrEyf9gvly3JPsed1vv4bLH52ofMbFfGAK1KHAkb1G64-aRuTk51VWOZmlRMmZ285NCl48jt9FopEgNB0eO_RQRKqco7NUOlIg7EwUg_XNk40OHRClmFgfNBJ3n8DkWeZ6CyyNLVIzSKLtPMZx1HnssDlna2jsav8kYXlKWeodcS01tvQXf3It43o"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<span class="px-2 py-1 bg-tertiary-container text-on-tertiary-container text-[10px] font-bold uppercase rounded-none">AI_ENGINE</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="open_in_new">open_in_new</span>
+</div>
+<h4 class="text-xl font-headline font-bold mb-2">Neural_Net_V1</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">High-performance inferencing engine optimized for distributed GPU clusters.</p>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="bg-surface-container group hover:bg-surface-container-high transition-all duration-300 relative">
+<div class="aspect-video w-full overflow-hidden">
+<img alt="Void DB Engine" class="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500" data-alt="3D abstract render of data storage blocks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJoAngLYisaEYPPK0o4nh_p-v-MTuCBI5nvafcv3Nqzq_FzDpXkiDnxXq0QYUkJY5ZMJ_kSlDMQqyhn7mTkLhLqhECeyrnn9Qj8yl66Y7u1gtYse7oX36XbC3nbFbwqWXzMKxgmoKzq_8yHubUdf1u_sCvhP9w_0pmMveyJMtO23yPVI-c0UHPGFcpcV42WHJkrraZR4COOSNLo9RJNiC46A3xouUx2UpodqNGVjgB09fIMKrim3e-tb3cA13r1TUhymoChnQOQQLK"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<span class="px-2 py-1 bg-primary-container text-on-primary-container text-[10px] font-bold uppercase rounded-none">DATABASE</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="open_in_new">open_in_new</span>
+</div>
+<h4 class="text-xl font-headline font-bold mb-2">Void_DB_Engine</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">A custom LSM-tree based storage engine written in Rust for sub-millisecond writes.</p>
+</div>
+</div>
+<!-- Project Card 3 -->
+<div class="bg-surface-container group hover:bg-surface-container-high transition-all duration-300 relative">
+<div class="aspect-video w-full overflow-hidden">
+<img alt="Geo Sync API" class="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500" data-alt="Digital globe visualization with network connections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ_Gj1Gx6ZeYkEnn8F_iwvWO5uE2z6fD2vDzJxeY6qpPEAujXpz1rvYbwaH3eFdC26K5KaKhCib6G-HRgyZBubQkxQ55rKGRbJelP8rhaHzMr_QVzPXqiAF0_lO-i6OXEzdKAaLGFwnl59uYF6xA8DZkVlFKi3vKq77QEGvH6Pad6y8buDRAZmLOMw8uj73IePSqtWXnzSfbr4agA8pIEKMnfIstAggZsPsFUzj9_Edeud5YAckhYAzgS6DN7E99ywImHTHJ30-jWu"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase rounded-none">NETWORK</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="open_in_new">open_in_new</span>
+</div>
+<h4 class="text-xl font-headline font-bold mb-2">Geo_Sync_API</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">Global state synchronization protocol for real-time edge computing applications.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Mobile Bottom Navigation -->
+<nav class="md:hidden fixed bottom-0 w-full bg-surface-container border-t border-outline-variant/20 flex justify-around items-center h-16 z-50">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span class="text-[10px]">Overview</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+<span class="text-[10px]">About Me</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="folder_special">folder_special</span>
+<span class="text-[10px]">Projects</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-[10px]">Settings</span>
+</a>
+</nav>
+</body></html>

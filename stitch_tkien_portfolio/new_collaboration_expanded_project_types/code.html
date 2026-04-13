@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-container": "#60136d",
+              "primary-container": "#6c9fff",
+              "inverse-surface": "#f9f9f9",
+              "surface-container": "#191919",
+              "inverse-on-surface": "#555555",
+              "secondary": "#7e98ff",
+              "outline": "#757575",
+              "secondary-fixed-dim": "#b3c1ff",
+              "surface-tint": "#84adff",
+              "primary": "#84adff",
+              "outline-variant": "#484848",
+              "on-surface": "#ffffff",
+              "on-primary-fixed-variant": "#002a60",
+              "error-dim": "#d7383b",
+              "tertiary-container": "#f39cfb",
+              "primary-fixed": "#6c9fff",
+              "surface-bright": "#2c2c2c",
+              "on-secondary-fixed-variant": "#2b48ac",
+              "on-primary": "#002d64",
+              "primary-dim": "#0070ea",
+              "on-secondary": "#00185d",
+              "on-surface-variant": "#ababab",
+              "background": "#0e0e0e",
+              "surface-variant": "#262626",
+              "on-error": "#490006",
+              "tertiary-dim": "#e48fed",
+              "tertiary-fixed": "#f39cfb",
+              "on-error-container": "#ffa8a3",
+              "surface-container-high": "#1f1f1f",
+              "error-container": "#9f0519",
+              "tertiary-fixed-dim": "#e48fed",
+              "surface": "#0e0e0e",
+              "on-primary-container": "#00214e",
+              "on-primary-fixed": "#000000",
+              "on-tertiary-fixed-variant": "#6a1f77",
+              "inverse-primary": "#005bc1",
+              "surface-container-low": "#131313",
+              "surface-dim": "#0e0e0e",
+              "secondary-container": "#1e3da1",
+              "surface-container-lowest": "#000000",
+              "primary-fixed-dim": "#5091ff",
+              "on-tertiary": "#6a1f77",
+              "secondary-fixed": "#c6cfff",
+              "on-background": "#ffffff",
+              "on-secondary-container": "#c4ceff",
+              "secondary-dim": "#7e98ff",
+              "on-tertiary-fixed": "#41004d",
+              "tertiary": "#fab0ff",
+              "on-secondary-fixed": "#00298b",
+              "error": "#ff716c",
+              "surface-container-highest": "#262626"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0e0e0e;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(25, 25, 25, 0.7);
+            backdrop-filter: blur(12px);
+        }
+        .ghost-border {
+            border-top: 1px solid rgba(72, 72, 72, 0.15);
+        }
+        /* Added for the 'Other' input visibility toggle */
+        #other-input-container {
+            display: none;
+        }
+        .project-type-btn.active #other-input-container {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background selection:bg-primary/30">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-black/70 backdrop-blur-xl shadow-[0px_20px_40px_rgba(0,123,255,0.08)] flex justify-between items-center px-6 h-16 w-full">
+<div class="text-xl font-bold tracking-tighter text-blue-400 font-headline">KINETIC_ARCHITECT</div>
+<div class="hidden md:flex items-center space-x-8 font-headline tracking-tight text-sm uppercase">
+<a class="text-neutral-400 hover:text-blue-200 transition-colors" href="#">Features</a>
+<a class="text-neutral-400 hover:text-blue-200 transition-colors" href="#">About Me</a>
+<a class="text-blue-400 border-b-2 border-blue-400 pb-1" href="#">Contact</a>
+<a class="text-neutral-400 hover:text-blue-200 transition-colors" href="#">Projects</a>
+</div>
+<div class="flex items-center space-x-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500 text-sm">search</span>
+<input class="bg-surface-container border-none text-xs font-label tracking-widest pl-10 pr-4 py-2 w-48 focus:ring-1 focus:ring-primary rounded-none" placeholder="SEARCH_SYSTEM..." type="text"/>
+</div>
+<button class="hover:bg-neutral-800/50 transition-all duration-200 p-2 active:scale-95 text-blue-400">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<button class="hover:bg-neutral-800/50 transition-all duration-200 p-2 active:scale-95 text-blue-400">
+<span class="material-symbols-outlined">terminal</span>
+</button>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-neutral-800/20 bg-neutral-950 flex flex-col pt-20 h-full z-40 hidden lg:flex">
+<div class="px-6 mb-8">
+<div class="text-lg font-black text-blue-500 font-headline">SYSTEM_LOG</div>
+<div class="text-[10px] text-neutral-500 tracking-[0.2em] font-label">v2.0.4-stable</div>
+</div>
+<nav class="flex-1">
+<a class="flex items-center gap-3 text-neutral-500 py-3 px-4 hover:bg-neutral-900/50 transition-all font-label text-xs font-medium tracking-widest uppercase" href="#">
+<span class="material-symbols-outlined text-sm">dashboard</span>
+<span>Overview</span>
+</a>
+<a class="flex items-center gap-3 bg-neutral-900 text-blue-400 border-l-4 border-blue-500 py-3 px-4 transition-all font-label text-xs font-medium tracking-widest uppercase" href="#">
+<span class="material-symbols-outlined text-sm">group</span>
+<span>Collaboration</span>
+</a>
+</nav>
+<div class="p-6 border-t border-neutral-800/20">
+<div class="flex items-center gap-3 mb-6">
+<img alt="Avatar" class="w-8 h-8 rounded-none border border-primary/20" data-alt="Developer profile portrait avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGdrT8y2Umz8RpXOLLlx0gev5-oBw6XHYQqAUWDAeoW7lGjejKRfdAa7oA4fJmxLxBVfKOkcC-jwsLaGCDyfg1TBSYiVeUxA5d3O3Emmu7bFAvFqcj1FegRweJRD9J2QNbGnix6TmjRCAMng48U6xA4BuY0HdIl-usRiASm4kwGX8O8OJpJg6lTmzbfL06Gmmtzns2ec3Sc4cZMN25ZAcbS2yktq7izakjiuYunI5Sl3dBYwKkhJpywoZFfa57RAQKSt9Leu6dCAz4"/>
+<div>
+<div class="text-[10px] font-bold text-white">ARCHITECT_01</div>
+<div class="text-[8px] text-primary">CONNECTED</div>
+</div>
+</div>
+<div class="space-y-1">
+<a class="flex items-center gap-3 text-neutral-500 hover:text-blue-300 py-1 transition-all font-label text-[10px] tracking-widest uppercase" href="#">
+<span class="material-symbols-outlined text-xs">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 text-neutral-500 hover:text-blue-300 py-1 transition-all font-label text-[10px] tracking-widest uppercase" href="#">
+<span class="material-symbols-outlined text-xs">help_outline</span>
+<span>Support</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="lg:pl-64 pt-16 min-h-screen bg-surface-dim">
+<div class="max-w-4xl mx-auto px-6 py-12">
+<!-- Header Section -->
+<header class="mb-12">
+<div class="flex items-center gap-2 mb-2">
+<span class="h-px w-8 bg-primary"></span>
+<span class="text-xs font-label tracking-[0.3em] text-primary uppercase">Initialize New Project</span>
+</div>
+<h1 class="text-5xl font-headline font-bold tracking-tighter mb-4">NEW COLLABORATION</h1>
+<p class="text-on-surface-variant font-body max-w-xl text-sm leading-relaxed">
+                    Submit your project parameters to initiate a technical consultation. Our infrastructure is ready to scale your vision.
+                </p>
+</header>
+<!-- Collaboration Form -->
+<form class="space-y-8">
+<!-- Grid Row 1: Identity -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-[10px] font-label font-bold tracking-widest text-on-surface-variant uppercase ml-1">Họ và Tên</label>
+<input class="w-full bg-surface-container-highest border-none focus:ring-0 border-b border-transparent focus:border-primary px-4 py-4 text-sm font-body rounded-none transition-all placeholder:text-neutral-700" placeholder="COMMANDER NAME" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] font-label font-bold tracking-widest text-on-surface-variant uppercase ml-1">Email</label>
+<input class="w-full bg-surface-container-highest border-none focus:ring-0 border-b border-transparent focus:border-primary px-4 py-4 text-sm font-body rounded-none transition-all placeholder:text-neutral-700" placeholder="IDENTITY@HOST.COM" type="email"/>
+</div>
+</div>
+<!-- Project Name -->
+<div class="space-y-2">
+<label class="text-[10px] font-label font-bold tracking-widest text-on-surface-variant uppercase ml-1">Tên Project</label>
+<input class="w-full bg-surface-container-highest border-none focus:ring-0 border-b border-transparent focus:border-primary px-4 py-4 text-sm font-body rounded-none transition-all placeholder:text-neutral-700" placeholder="PROJECT_CODENAME_ALPHA" type="text"/>
+</div>
+<!-- Project Type Selection -->
+<div class="space-y-4">
+<label class="text-[10px] font-label font-bold tracking-widest text-on-surface-variant uppercase ml-1">Loại Project</label>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<button class="group relative py-6 px-4 bg-surface-container hover:bg-surface-container-high transition-all flex flex-col items-center gap-3 border border-transparent hover:border-primary/30" onclick="toggleOtherInput(false)" type="button">
+<span class="material-symbols-outlined text-primary-fixed-dim">language</span>
+<span class="text-[10px] font-label tracking-widest uppercase">Web</span>
+<div class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-300"></div>
+</button>
+<button class="group relative py-6 px-4 bg-surface-container-highest border border-primary/50 flex flex-col items-center gap-3" onclick="toggleOtherInput(false)" type="button">
+<span class="material-symbols-outlined text-primary">computer</span>
+<span class="text-[10px] font-label tracking-widest uppercase text-primary">Desktop App</span>
+<div class="absolute bottom-0 left-0 w-full h-[2px] bg-primary"></div>
+</button>
+<button class="group relative py-6 px-4 bg-surface-container hover:bg-surface-container-high transition-all flex flex-col items-center gap-3 border border-transparent hover:border-primary/30" onclick="toggleOtherInput(false)" type="button">
+<span class="material-symbols-outlined text-primary-fixed-dim">smartphone</span>
+<span class="text-[10px] font-label tracking-widest uppercase">Mobile App</span>
+<div class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-300"></div>
+</button>
+<button class="group relative py-6 px-4 bg-surface-container hover:bg-surface-container-high transition-all flex flex-col items-center gap-3 border border-transparent hover:border-primary/30" onclick="toggleOtherInput(false)" type="button">
+<span class="material-symbols-outlined text-primary-fixed-dim">sports_esports</span>
+<span class="text-[10px] font-label tracking-widest uppercase">Game</span>
+<div class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-300"></div>
+</button>
+<button class="group relative py-6 px-4 bg-surface-container hover:bg-surface-container-high transition-all flex flex-col items-center gap-3 border border-transparent hover:border-primary/30" onclick="toggleOtherInput(false)" type="button">
+<span class="material-symbols-outlined text-primary-fixed-dim">build</span>
+<span class="text-[10px] font-label tracking-widest uppercase">Tool</span>
+<div class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-300"></div>
+</button>
+<button class="group relative py-6 px-4 bg-surface-container hover:bg-surface-container-high transition-all flex flex-col items-center gap-3 border border-transparent hover:border-primary/30" onclick="toggleOtherInput(false)" type="button">
+<span class="material-symbols-outlined text-primary-fixed-dim">code</span>
+<span class="text-[10px] font-label tracking-widest uppercase">Console App</span>
+<div class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-300"></div>
+</button>
+<button class="group relative py-6 px-4 bg-surface-container hover:bg-surface-container-high transition-all flex flex-col items-center gap-3 border border-transparent hover:border-primary/30" id="other-btn" onclick="toggleOtherInput(true)" type="button">
+<span class="material-symbols-outlined text-primary-fixed-dim">more_horiz</span>
+<span class="text-[10px] font-label tracking-widest uppercase">Other</span>
+<div class="absolute bottom-0 left-0 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-300"></div>
+</button>
+</div>
+<!-- 'Other' Specification Input -->
+<div class="mt-4 hidden" id="other-input-container">
+<label class="text-[10px] font-label font-bold tracking-widest text-primary uppercase ml-1">Vui lòng nhập loại Project</label>
+<input class="w-full bg-surface-container-highest border-none focus:ring-0 border-b border-primary px-4 py-4 text-sm font-body rounded-none transition-all placeholder:text-neutral-700 mt-2" placeholder="SPECIFY_PROJECT_TYPE" type="text"/>
+</div>
+</div>
+<!-- Detailed Description -->
+<div class="space-y-2">
+<label class="text-[10px] font-label font-bold tracking-widest text-on-surface-variant uppercase ml-1">Mô tả chi tiết và yêu cầu của project</label>
+<textarea class="w-full bg-surface-container-highest border-none focus:ring-0 border-b border-transparent focus:border-primary px-4 py-4 text-sm font-body rounded-none transition-all placeholder:text-neutral-700 resize-none" placeholder="Define scope, technical requirements, and objectives..." rows="6"></textarea>
+</div>
+<!-- File Upload -->
+<div class="space-y-2">
+<label class="text-[10px] font-label font-bold tracking-widest text-on-surface-variant uppercase ml-1">Đính kèm file</label>
+<div class="relative group">
+<input class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" type="file"/>
+<div class="w-full border-2 border-dashed border-outline-variant hover:border-primary/50 transition-colors py-10 flex flex-col items-center justify-center gap-3 bg-surface-container-low">
+<span class="material-symbols-outlined text-primary-fixed-dim text-3xl">cloud_upload</span>
+<div class="text-center">
+<p class="text-xs font-label tracking-wider text-on-surface uppercase">Upload technical specifications</p>
+<p class="text-[10px] text-neutral-500 mt-1 uppercase">PDF, DOCX, ZIP (MAX 25MB)</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Submit Button -->
+<div class="pt-6 flex justify-end">
+<button class="group relative px-10 py-4 bg-gradient-to-br from-primary to-primary-dim text-on-primary font-headline font-bold tracking-[0.2em] text-sm active:scale-95 transition-transform flex items-center gap-3" type="submit">
+                        GỬI YÊU CẦU
+                        <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">send</span>
+</button>
+</div>
+</form>
+<!-- Bottom Metadata -->
+<footer class="mt-20 pt-8 border-t border-outline-variant/20 flex flex-col md:flex-row justify-between items-start gap-4">
+<div class="flex items-center gap-6">
+<div class="flex flex-col">
+<span class="text-[8px] font-label tracking-widest text-neutral-500 uppercase">Latency</span>
+<span class="text-[10px] font-mono text-primary uppercase">12ms Stable</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[8px] font-label tracking-widest text-neutral-500 uppercase">Encryption</span>
+<span class="text-[10px] font-mono text-primary uppercase">AES-256-GCM</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[8px] font-label tracking-widest text-neutral-500 uppercase">Location</span>
+<span class="text-[10px] font-mono text-primary uppercase">Zone-7a</span>
+</div>
+</div>
+<div class="text-[10px] text-neutral-600 font-label tracking-[0.2em] uppercase">
+                    © 2024 Kinetic Architect // Terminal Horizon v2.0
+                </div>
+</footer>
+</div>
+</main>
+<script>
+    function toggleOtherInput(show) {
+        const otherContainer = document.getElementById('other-input-container');
+        if (show) {
+            otherContainer.classList.remove('hidden');
+        } else {
+            otherContainer.classList.add('hidden');
+        }
+        
+        // Simplified visual feedback for demo purposes: 
+        // In a real app, you'd manage the active state classes properly on all buttons.
+        const buttons = document.querySelectorAll('.grid-cols-2 button');
+        buttons.forEach(btn => {
+            btn.classList.remove('bg-surface-container-highest', 'border-primary/50');
+            btn.classList.add('bg-surface-container', 'border-transparent');
+            const icon = btn.querySelector('.material-symbols-outlined');
+            const label = btn.querySelector('.font-label');
+            const bar = btn.querySelector('div');
+            
+            icon.className = 'material-symbols-outlined text-primary-fixed-dim';
+            label.classList.remove('text-primary');
+            bar.classList.remove('w-full');
+            bar.classList.add('w-0');
+        });
+
+        const eventBtn = event.currentTarget;
+        eventBtn.classList.remove('bg-surface-container', 'border-transparent');
+        eventBtn.classList.add('bg-surface-container-highest', 'border-primary/50');
+        eventBtn.querySelector('.material-symbols-outlined').className = 'material-symbols-outlined text-primary';
+        eventBtn.querySelector('.font-label').classList.add('text-primary');
+        const bar = eventBtn.querySelector('div');
+        bar.classList.remove('w-0');
+        bar.classList.add('w-full');
+    }
+</script>
+</body></html>

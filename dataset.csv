@@ -1,0 +1,11 @@
+profile,jd,score
+"Backend Developer: C#, Java, Go, PostgreSQL, Microservices, RabbitMQ, Docker", "Tìm Senior Backend Engineer. Yêu cầu kinh nghiệm thiết kế kiến trúc Microservices, thành thạo C# hoặc Go, có kinh nghiệm với Message Broker như RabbitMQ.", 0.95
+"AI Engineer: Python, YOLOv8, Computer Vision, FastAPI, Object Detection", "Tuyển kỹ sư AI/ML, chuyên xử lý ảnh, có khả năng đóng gói và deploy model bằng FastAPI lên môi trường thực tế.", 0.92
+"Lập trình viên C#, .NET Core, SQL Server, State Machine", "Cần tuyển Backend Developer làm việc với hệ sinh thái Microsoft, .NET Core và tối ưu hóa truy vấn cơ sở dữ liệu.", 0.88
+"DevOps Engineer: Docker, Kubernetes, CI/CD pipeline, Azure", "Tuyển chuyên gia DevOps, vận hành hệ thống container trên Azure, thiết lập và giám sát luồng CI/CD.", 0.90
+"Backend Node.js, Express, MongoDB Atlas, API Gateway", "Tìm lập trình viên Backend JS, yêu cầu kinh nghiệm xây dựng API Gateway với Node.js và quản trị NoSQL.", 0.85
+"Sinh viên IT: Nắm vững cấu trúc dữ liệu, thuật toán, C++, GitKraken", "Thực tập sinh Backend, yêu cầu tư duy logic tốt, biết sử dụng Git để quản lý source code.", 0.75
+"Backend Developer: Java, Spring Boot, MySQL", "Tìm kỹ sư Backend làm việc với C#, .NET Core và Oracle DB trong mảng ngân hàng.", 0.40
+"Backend Node.js, Express, MongoDB", "Tuyển Frontend Developer xây dựng giao diện bằng ReactJS, Tailwind CSS và Bootstrap.", 0.25
+"Lập trình viên Mobile, Dart, Flutter, Clean Architecture", "Tìm thợ thiết kế đồ họa 3D, sử dụng Blender và Maya cho dự án game.", 0.05
+"AI Engineer: Python, Computer Vision", "Tuyển chuyên viên Marketing, chạy Ads Facebook và SEO Web.", 0.02
