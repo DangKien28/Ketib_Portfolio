@@ -67,8 +67,9 @@ def process_ai_logic(content: str, action: str) -> dict:
             model='gemini-2.5-flash',
             contents=prompt,
             config=types.GenerateContentConfig(
-                temperature=0.2, # Giảm sáng tạo, ưu tiên tính phân tích an toàn, máy móc
-                max_output_tokens=1024, # Khóa chặt tài nguyên ra, không để bị leak cost/memory
+                temperature=0.2, 
+                max_output_tokens=2048, # Nới lỏng token một chút để không bị ngắt câu tiếng Việt
+                response_mime_type="application/json", # BẮT BUỘC: Ép AI trả về JSON chuẩn, không bọc markdown
             ),
         )
         
