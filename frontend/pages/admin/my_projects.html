@@ -1,0 +1,50 @@
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-12">
+    <div class="space-y-1">
+        <div class="flex items-center gap-2 text-primary-fixed-dim">
+            <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+            <span class="text-[10px] font-['Inter'] font-bold tracking-[0.2em] uppercase">System Repository</span>
+        </div>
+        <h2 class="font-headline text-4xl font-bold tracking-tight text-on-surface">MY PROJECTS</h2>
+    </div>
+    <button class="flex items-center gap-2 bg-gradient-to-br from-primary to-primary-dim text-on-primary-fixed px-6 py-3 rounded-sm font-['Inter'] font-bold text-xs tracking-widest uppercase hover:opacity-90 active:scale-95 transition-all shadow-[0_4px_20px_rgba(132,173,255,0.2)]" onclick="loadAdminPage('add_project')">
+        <span class="material-symbols-outlined text-sm">add_circle</span>
+        Thêm Project
+    </button>
+</div>
+
+<!-- Grid Container Section for Projects -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    <project-card 
+        onclick="loadAdminPage('project_detail')"
+        title="Neural Nexus API"
+        description="Advanced machine learning API layer built with Python and FastAPI for real-time predictions."
+        image="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&auto=format&fit=crop"
+        tag-label="Backend"
+        likes="12"
+        comments="5"
+        repo-link="#"
+        prod-link="#">
+    </project-card>
+
+    <project-card
+        onclick="loadAdminPage('project_detail')"
+        title="Omni Dashboard"
+        description="Centralized cloud management interface leveraging React and .NET Core."
+        image="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop"
+        tag-label="Fullstack"
+        likes="48"
+        comments="16"
+        repo-link="#"
+        prod-link="#">
+    </project-card>
+
+    <project-card
+        onclick="loadAdminPage('project_detail')"
+        tag-label="Frontend" 
+        likes="120" 
+        comments="43"
+        repo-link="#"
+        prod-link="#">
+    </project-card>
+</div>

@@ -24,9 +24,9 @@
     --font-mono: 'Fira Code', monospace;
     
     /* SPACING & RADIUS */
-    --radius-sm: 4px;
-    --radius-md: 8px;
-    --radius-lg: 12px;
+    --radius-sm: 2px;
+    --radius-md: 6px;
+    --radius-lg: 16px;
 }
 
 /* RESET */
@@ -41,8 +41,10 @@ body {
     background-color: var(--bg-main);
     color: var(--text-main);
     display: flex;
-    height: 100vh;
-    overflow: hidden; /* Prevent body scroll, handle scroll in content area */
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-y: auto; /* Cho phép cuộn dọc */
+    overflow-x: hidden;
 }
 
 /* ===== TYPOGRAPHY ===== */
@@ -206,6 +208,14 @@ a { text-decoration: none; color: inherit; }
     box-shadow: 0 8px 30px rgba(0,0,0,0.5);
 }
 
+/* Lõi Giao Diện Tailwind/Overrides mượn từ index.html */
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.glass-panel { background: rgba(14, 14, 14, 0.65); backdrop-filter: blur(28px); border-radius: 20px 2px 20px 2px; border: 1px solid rgba(255,255,255,0.05); box-shadow: inset 0 0 20px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5); }
+.primary-gradient { background: linear-gradient(135deg, #84adff 0%, #0070ea 100%); }
+.ghost-border { border-top: 1px solid rgba(72, 72, 72, 0.15); }
+#fab-cluster { z-index: 100; cursor: grab; }
+#fab-cluster:active { cursor: grabbing; }
+
 /* ==========================================================
    CÁC COMPONENT CỤ THỂ
 ========================================================== */
@@ -291,3 +301,121 @@ a { text-decoration: none; color: inherit; }
 }
 .drop-zone h4 { margin-top: 15px; margin-bottom: 5px;}
 .drop-zone p { color: var(--text-muted); font-size: 0.85rem;}
+
+/* ==========================================================
+   COMPONENT: PROJECT CARD (Tái sử dụng cho overview, projects, about me)
+========================================================== */
+.project-card-wrapper {
+    background-color: var(--bg-card); /* bg-surface-container */
+    border-radius: 20px 2px 20px 2px; border: 1px solid rgba(255,255,255,0.05); box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    cursor: pointer;
+}
+.project-card-wrapper:hover {
+    transform: translateY(-4px) scale(1.01);
+    border-color: rgba(132,173,255,0.3);
+    box-shadow: 0 10px 40px -10px rgba(132,173,255,0.15), inset 0 0 20px rgba(132,173,255,0.05);
+}
+.project-card-image-box {
+    height: 160px; /* h-40 */
+    background-color: #1a1a1a; /* bg-surface-container-highest */
+    position: relative;
+    overflow: hidden;
+}
+.project-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+    filter: grayscale(100%);
+    transition: filter 0.5s ease, opacity 0.5s ease;
+}
+.project-card-wrapper:hover .project-card-img {
+    filter: grayscale(0%);
+    opacity: 0.8;
+}
+.project-card-badge {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+}
+.project-card-badge span {
+    font-size: 9px;
+    padding: 2px 8px;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-transform: uppercase;
+    font-family: var(--font-mono);
+}
+.project-card-content {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.project-card-header {
+    margin-bottom: 16px;
+}
+.project-card-title {
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    color: var(--text-main);
+    letter-spacing: -0.02em;
+}
+.project-card-desc {
+    font-size: 0.75rem; /* text-xs */
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+.project-card-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.project-card-stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 10px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+}
+.project-card-stats > span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.project-card-stats .material-symbols-outlined {
+    font-size: 12px;
+}
+.project-card-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+.project-btn {
+    padding: 8px 0;
+    background-color: #1a1a1a;
+    color: var(--text-main);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    text-decoration: none;
+}
+.project-btn:hover {
+    background-color: #2a2a2a; /* hover:bg-surface-bright */
+}

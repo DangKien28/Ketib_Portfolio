@@ -1,196 +1,252 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html class="dark" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Architect OS | Terminal Horizon</title>
-    <!-- MỚI: Liên kết CSS vừa tạo -->
-    <link rel="stylesheet" href="./css/style.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KINETIC_ARCHITECT | Console</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                "on-surface-variant": "#ababab",
+                "tertiary": "#fab0ff",
+                "primary": "#84adff",
+                "primary-dim": "#0070ea",
+                "surface-container": "#191919",
+                "surface-container-highest": "#262626",
+                "surface-container-low": "#131313",
+                "on-primary-fixed": "#000000",
+                "surface-container-lowest": "#000000",
+                "background": "#0e0e0e",
+                "on-surface": "#ffffff",
+                "outline-variant": "#484848",
+            },
+            fontFamily: {
+                "headline": ["Space Grotesk"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+            },
+            borderRadius: { "DEFAULT": "0px", "sm": "2px", "lg": "4px", "xl": "12px", "2xl": "20px", "3xl": "32px", "full": "9999px" }
+        }
+    }
+}
+</script>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/app.js" defer></script>
+<script src="js/components/projectCard.js" defer></script>
+<script src="js/components/navDropdowns.js" defer></script>
 </head>
-<body>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 relative min-h-screen overflow-x-hidden">
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-        <div class="sidebar-header">
-            <div class="sidebar-logo">ARCHITECT_OS</div>
-            <div class="sidebar-subtitle">v4.0.1-stable</div>
-        </div>
-        
-        <!-- MODULE NAVIGATION -->
-        <ul class="nav-menu">
-            <li><div class="nav-section-title">SYSTEM REPOSITORY</div></li>    
-            <!-- Dùng thuộc tính data-view để Vanilla JS Router biết sẽ đổi sang màn nào -->
-            <li><div class="nav-item active" data-view="overview">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg>
-                Overview
-            </div></li>
-            <li><div class="nav-item" data-view="projects">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
-                My Projects
-            </div></li>
-            <li><div class="nav-item" data-view="collabs">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                Collab Management
-            </div></li>
-        </ul>
+<!-- Background Ambient Glow -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div class="absolute -top-[20%] -left-[10%] w-[50vw] h-[50vh] border-radius-[50%] bg-primary/20 blur-[130px]/10 blur-[120px] transition-all duration-1000 ease-in-out"></div>
+    <div class="absolute top-[40%] -right-[10%] w-[40vw] h-[60vh] border-radius-[50%] bg-tertiary/20 blur-[150px]/10 blur-[130px] transition-all duration-1000 ease-in-out"></div>
+</div>
 
-        <div class="sidebar-footer">
-            <button class="btn-deploy" data-view="deploy">DEPLOY NEW</button>
-            <div style="margin-top:20px;">
-                <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg> Settings</div>
-                <div class="nav-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg> Logs</div>
-            </div>
-        </div>
-    </aside>
-
-    <!-- MAIN APP SHELL -->
-    <div class="main-content">
-        <header class="topbar">
-            <div class="topbar-brand">TERMINAL_HORIZON</div>
-            <input type="text" class="search-bar" placeholder="QUERY_SYSTEM_ASSETS...">
-            <div style="display: flex; align-items: center; gap: 20px;">
-                <span style="font-size: 0.75rem; color: #86efac;">STATUS: OPTIMIZED</span>
-                <div style="width: 32px; height: 32px; background: #333; border-radius: 50%;"></div>
-            </div>
-        </header>
-
-        <!-- CONTAINER HIỂN THỊ CÁC VIEW (Router tiêm HTML vào đây) -->
-        <main class="view-container" id="router-view">
-            <!-- Mặc định tải Overview -->
-        </main>
-    </div>
-
-    <!-- CÁC TEMPLATES HTML (Bị ẩn) ĐƯỢC LOAD BỞI JAVASCRIPT ĐỂ MÔ PHỎNG REACT COMPONENT -->
-    
-    <!-- Template 1: OVERVIEW SCREEN -->
-    <template id="tpl-overview">
-        <h2 style="margin-bottom: 5px;">SYSTEM_SNAPSHOT</h2>
-        <p class="text-muted font-mono" style="margin-bottom: 30px;">REAL-TIME INFRASTRUCTURE METRICS</p>
-        
-        <div class="overview-top-stats">
-            <div class="glass-card glow-hover">
-                <span class="stat-label">Total Active Projects</span>
-                <div class="stat-value">12 <span>+2 THIS_WEEK</span></div>
-            </div>
-            <div class="glass-card glow-hover">
-                <span class="stat-label">Pending Collaborations</span>
-                <div class="stat-value">08 <span>REQUIRES_AUTH</span></div>
-            </div>
-            <div class="glass-card glow-hover">
-                <span class="stat-label">System Uptime</span>
-                <div class="stat-value text-accent" style="color:var(--accent-blue)">99.9 <span style="font-size:1.5rem">%</span> <span>STABLE</span></div>
-            </div>
-        </div>
-        
-        <h3 style="margin-bottom: 20px;">PROJECTS IN PROGRESS</h3>
-        <div class="glass-card" style="margin-bottom: 30px;">
-            <p class="font-mono text-muted">BUILD_ID: #4402 <span class="badge badge-tech" style="float:right;">DEVELOPMENT</span></p>
-            <h3 style="margin-top: 10px;">API Gateway v2</h3>
-            <div style="margin-top: 20px; font-size: 0.8rem; display:flex; justify-content:space-between; color:var(--text-muted)">
-                <span>COMPLETION</span> <span>65%</span>
-            </div>
-            <div style="height: 4px; background: #333; margin-top: 5px; border-radius: 2px;">
-                <div style="height: 100%; width: 65%; background: var(--accent-blue); border-radius: 2px;"></div>
-            </div>
-        </div>
-
-        <div class="glass-card" style="background:#000; font-family:var(--font-mono)">
-            <div style="display:flex; gap:6px; margin-bottom: 10px;">
-                <div style="width:10px; height:10px; border-radius:50%; background:#ef4444;"></div>
-                <div style="width:10px; height:10px; border-radius:50%; background:#eab308;"></div>
-                <div style="width:10px; height:10px; border-radius:50%; background:#22c55e;"></div>
-                <span class="text-muted" style="margin-left: 10px">LIVE SYSTEM LOG - TTY1</span>
-            </div>
-            <p><span class="text-accent">[INFO]</span> Connecting to master-node-alpha-4...</p>
-            <p><span class="text-accent">[INFO]</span> Protocol Handshake: SUCCESS</p>
-            <p><span class="text-pink">[WARN]</span> Latency spike detected in EU-WEST cluster (45ms)</p>
-            <p style="color:var(--text-muted)">[LOGS] Deployment "API_GW_V2" incremented to build #4403</p>
-            <p class="text-accent">_</p>
-        </div>
-    </template>
-
-    <!-- Template 2: COLLAB MANAGEMENT -->
-    <template id="tpl-collabs">
-        <h2>Collaboration</h2>
-        <p class="text-muted" style="margin-bottom: 30px;">System-wide node synchronization and contributor request management.</p>
-
-        <div class="glass-card" style="padding: 0;">
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>COLLABORATION ID</th>
-                        <th>TÊN PROJECT</th>
-                        <th>TÊN NGƯỜI GỬI</th>
-                        <th>EMAIL NGƯỜI GỬI</th>
-                        <th>TRANG THÁI</th>
-                        <th>ACTIONS</th>
-                    </tr>
-                </thead>
-                <tbody id="collab-table-body">
-                    <!-- Javascript Data Render Here -->
-                </tbody>
-            </table>
-        </div>
-    </template>
-
-    <!-- Template 3: DEPLOY NEW PROJECT (FORM + DRAG ZONE CHO WASM) -->
-    <template id="tpl-deploy">
-        <h1 class="text-accent">ADD NEW</h1>
-        <h1 style="font-size: 2.5rem; margin-bottom: 10px;">PROJECT</h1>
-        <p class="text-muted" style="margin-bottom: 30px;">Deploy a new architectural module to the Terminal Horizon ecosystem.</p>
-
-        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 40px;">
-            <div>
-                <!-- Left info -->
-                <div class="glass-card" style="background: rgba(37, 99, 235, 0.05); border-left: 3px solid var(--accent-blue);">
-                    <p style="font-size: 0.85rem; color: var(--text-muted);">ALL INPUTS ARE SANITIZED THROUGH THE ARCHITECT-OS CORE ENGINE.</p>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0e0e0e]/80 backdrop-blur-xl border-b border-white/5 flex items-center justify-between px-6 h-[72px] w-full font-space-grotesk tracking-tight transition-all">
+    <div class="flex items-center gap-10">
+        <div class="text-xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400 cursor-pointer hover:from-purple-400 hover:to-blue-400 transition-all duration-500" onclick="loadPage('overview')">KINETIC_ARCHITECT</div>
+        <nav class="hidden md:flex items-center gap-2">
+            <div class="relative group">
+                <button onclick="loadPage('overview')" class="text-neutral-400 hover:text-white hover:bg-white/5 hover:translate-y-[-1px] px-4 py-2 rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm transition-all duration-300 flex items-center gap-1 text-sm font-medium hover:shadow-[0_0_15px_rgba(255,255,255,0.05)]">Features <span class="material-symbols-outlined text-[16px] group-hover:rotate-180 transition-transform duration-300">expand_more</span></button>
+                <div class="absolute top-full left-0 mt-2 w-56 bg-surface-container-highest/90 backdrop-blur-xl border border-white/10 rounded-tl-2xl rounded-br-2xl rounded-tr-sm rounded-bl-sm opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 p-2 shadow-[0_20px_40px_rgba(0,0,0,0.4)] z-[60] transform scale-95 translate-y-2 group-hover:scale-100 group-hover:translate-y-0">
+                    <a class="block px-4 py-2 hover:bg-primary/20 hover:text-primary rounded-xl text-neutral-300 text-sm cursor-pointer transition-all duration-300 hover:pl-5" onclick="loadPage('architect_compatibility')">Check compatibility</a>
+                    <a class="block px-4 py-2 hover:bg-primary/20 hover:text-primary rounded-xl text-neutral-300 text-sm cursor-pointer transition-all duration-300 hover:pl-5" onclick="loadPage('ai_project_estimator')">Project Estimator</a>
                 </div>
             </div>
+            
+            <a class="relative text-neutral-400 hover:text-white hover:bg-white/5 hover:translate-y-[-1px] px-4 py-2 rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm transition-all duration-300 text-sm font-medium cursor-pointer overflow-hidden group" onclick="loadPage('about_me')">
+                <span class="relative z-10">About Me</span>
+            </a>
+            <a class="relative text-neutral-400 hover:text-white hover:bg-white/5 hover:translate-y-[-1px] px-4 py-2 rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm transition-all duration-300 text-sm font-medium cursor-pointer overflow-hidden group" onclick="loadPage('projects')">
+                <span class="relative z-10">Projects</span>
+            </a>
+            
+            <button onclick="toggleContactModal()" class="ml-2 text-white bg-white/5 hover:bg-primary text-sm cursor-pointer font-bold border border-white/10 hover:border-primary px-5 py-2 rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm hover:shadow-[0_0_20px_rgba(132,173,255,0.4)] hover:-translate-y-0.5 active:scale-95 transition-all duration-300">Contact</button>
+        </nav>
+    </div>
+    
+    <div class="hidden lg:flex flex-1 justify-center px-8">
+        <div class="flex items-center bg-white/5 border border-white/10 rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm px-5 py-2.5 focus-within:border-primary focus-within:bg-primary/5 hover:bg-white/10 transition-all duration-300 w-full max-w-md group shadow-inner focus-within:shadow-[0_0_15px_rgba(132,173,255,0.2)]">
+            <span class="material-symbols-outlined text-neutral-400 group-focus-within:text-primary transition-colors duration-300 text-[20px]" data-icon="search">search</span>
+            <input class="bg-transparent border-none text-sm text-on-surface placeholder:text-neutral-500 focus:ring-0 w-full ml-3 font-body transition-colors duration-300" placeholder="Search projects..." type="text"/>
+        </div>
+    </div>
+    
+    <nav-dropdowns></nav-dropdowns>
+</header>
+
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-[72px] border-r border-white/5 bg-[#0e0e0e]/50 backdrop-blur-3xl flex flex-col py-6 z-40 hidden md:flex transition-all duration-500 hover:bg-[#0e0e0e]/80">
+    <div class="px-6 mb-10">
+        <div class="flex items-center gap-3 group cursor-pointer">
+            <div class="w-10 h-10 rounded-tl-2xl rounded-br-2xl rounded-tr-sm rounded-bl-sm overflow-hidden bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center border border-white/10 shadow-inner group-hover:scale-105 group-hover:shadow-[0_0_20px_rgba(132,173,255,0.3)] transition-all duration-300">
+                <span class="material-symbols-outlined text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 text-lg group-hover:rotate-12 transition-transform duration-500">terminal</span>
+            </div>
             <div>
-                <!-- Right form -->
-                <form id="deploy-form" class="glass-card">
-                    <div class="form-group">
-                        <label class="form-label">Tên Project</label>
-                        <input type="text" class="form-input" id="prj-title" placeholder="e.g. NEURAL_NETWORK_V1" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Mô Tả Project</label>
-                        <textarea class="form-input" id="prj-desc" rows="4" placeholder="Enter architectural specifications..." required></textarea>
-                    </div>
-
-                    <div style="display:flex; gap: 20px;">
-                        <div class="form-group" style="flex:1;">
-                            <label class="form-label">Link Github</label>
-                            <input type="text" class="form-input" id="prj-github" placeholder="https://github.com/...">
-                        </div>
-                        <div class="form-group" style="flex:1;">
-                            <label class="form-label">Link Production</label>
-                            <input type="text" class="form-input" id="prj-live" placeholder="https://live-app.io/...">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="form-label">Upload Ảnh (Processed via C++ WASM)</label>
-                        <div class="drop-zone" id="image-drop-zone">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-accent"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                            <h4 style="color:var(--text-main)">DRAG AND DROP VISUALS</h4>
-                            <p>Maximum payload: 12MB. Bức ảnh sẽ được nén CỤC BỘ bằng WebAssembly ngay tại trình duyệt.</p>
-                            <input type="file" id="file-input" style="display: none;" accept="image/png, image/jpeg, image/webp">
-                        </div>
-                        <div id="wasm-status" class="font-mono text-accent" style="margin-top: 10px; font-size:0.8rem"></div>
-                    </div>
-                    
-                    <div style="display:flex; justify-content: flex-end; gap: 15px; margin-top: 30px;">
-                        <button type="button" class="btn-deploy" style="background:var(--bg-main); border: 1px solid var(--border-highlight); width: auto;">HỦY BỎ</button>
-                        <button type="submit" class="btn-deploy" style="width: auto;">DEPLOY PROJECT</button>
-                    </div>
-                </form>
+                <h3 class="text-white font-black font-inter text-xs uppercase tracking-[0.2em] opacity-90 group-hover:text-primary transition-colors duration-300">CONSOLE_ROOT</h3>
+                <p class="text-[10px] text-neutral-500 font-label tracking-wide mt-0.5 group-hover:text-neutral-400 transition-colors duration-300">v2.4.0-stable</p>
             </div>
         </div>
-    </template>
+    </div>
+    <nav class="flex-1 space-y-3 px-3">
+        <a class="sidebar-link flex items-center gap-3 px-4 py-3.5 mx-1 rounded-xl font-inter text-xs font-semibold uppercase tracking-widest transition-all duration-300 ease-out text-neutral-400 hover:text-white hover:bg-gradient-to-r hover:from-primary/10 hover:to-transparent border-l-2 border-transparent hover:border-primary hover:translate-x-1 cursor-pointer group" onclick="loadPage('overview')" data-page="overview">
+            <span class="material-symbols-outlined text-[20px] transition-transform duration-300 group-hover:scale-110 group-hover:text-primary" data-icon="dashboard">dashboard</span>
+            <span class="group-hover:text-primary transition-colors duration-300">Overview</span>
+        </a>
+        <a class="sidebar-link flex items-center gap-3 px-4 py-3.5 mx-1 rounded-xl font-inter text-xs font-semibold uppercase tracking-widest transition-all duration-300 ease-out text-neutral-400 hover:text-white hover:bg-gradient-to-r hover:from-primary/10 hover:to-transparent border-l-2 border-transparent hover:border-primary hover:translate-x-1 cursor-pointer group" onclick="loadPage('collaboration')" data-page="collaboration">
+            <span class="material-symbols-outlined text-[20px] transition-transform duration-300 group-hover:scale-110 group-hover:text-primary" data-icon="group">group</span>
+            <span class="group-hover:text-primary transition-colors duration-300">Collaboration</span>
+        </a>
+    </nav>
+</aside>
 
-    <!-- KHAI BÁO JS (RATING SPA ROUTER VÀ API FETCH) -->
-    <script src="./js/app.js"></script>
+<!-- Main Content Area where pages load -->
+<main id="main-content" class="md:ml-64 pt-24 pb-12 px-6 md:px-12 transition-all duration-300 opacity-100 translate-y-0 min-h-screen flex flex-col"></main>
+
+<!-- Floating Action Button Cluster -->
+<div id="fab-cluster" class="fixed right-8 top-1/2 z-[100] flex flex-col items-end gap-4 pointer-events-none" style="bottom: auto; top:50vh;">
+    <!-- Main FAB -->
+    <button id="fab-main-btn" class="pointer-events-auto w-14 h-14 rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-[0_0_30px_rgba(132,173,255,0.3)] hover:shadow-[0_0_40px_rgba(132,173,255,0.5)] active:scale-95 transition-all outline outline-offset-2 outline-transparent hover:outline-blue-500/30">
+        <span id="fab-icon" class="material-symbols-outlined text-white text-2xl transition-transform duration-300" style="font-variation-settings: 'FILL' 1;">chat</span>
+    </button>
+    <!-- Hidden options (shown on click) -->
+    <div id="fab-menu" class="flex flex-col gap-3 opacity-0 translate-y-6 transition-all duration-300 pointer-events-none cursor-pointer z-[-1]">
+        <button onclick="openChat('ai')" class="bg-[#262626]/90 backdrop-blur-xl hover:bg-[#333]/90 text-tertiary px-5 py-4 rounded-3xl text-xs font-bold uppercase tracking-[0.15em] flex items-center gap-4 border border-tertiary/20 shadow-[0_20px_40px_rgba(0,0,0,0.5)] w-full justify-end hover:-translate-x-2 transition-transform">
+            Ketib-AI Support
+            <div class="w-8 h-8 rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm bg-tertiary/20 flex items-center justify-center">
+                <span class="material-symbols-outlined text-sm">smart_toy</span>
+            </div>
+        </button>
+        <button onclick="openChat('tkien')" class="bg-[#262626]/90 backdrop-blur-xl hover:bg-[#333]/90 text-primary px-5 py-4 rounded-3xl text-xs font-bold uppercase tracking-[0.15em] flex items-center gap-4 border border-primary/20 shadow-[0_20px_40px_rgba(0,0,0,0.5)] w-full justify-end hover:-translate-x-2 transition-transform">
+            Chat with TKien
+            <div class="w-8 h-8 rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm bg-primary/20 flex items-center justify-center">
+                <span class="material-symbols-outlined text-sm">person</span>
+            </div>
+        </button>
+    </div>
+</div>
+
+<!-- Chat Interface Window -->
+<div id="chat-window" class="fixed bottom-6 right-6 w-[360px] h-[540px] flex flex-col z-[110] transition-all duration-[400ms] ease-[cubic-bezier(0.23,1,0.32,1)] transform translate-y-12 scale-95 opacity-0 pointer-events-none bg-[#111]/90 backdrop-blur-2xl border border-white/10 rounded-[2rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.7)] overflow-hidden">
+    <!-- Chat Header -->
+    <div class="flex items-center justify-between p-5 border-b border-white/5 bg-white/[0.02]">
+        <div class="flex items-center gap-4">
+            <div id="chat-icon-container" class="w-10 h-10 rounded-[1.25rem] shadow-inner flex items-center justify-center">
+                <span id="chat-icon" class="material-symbols-outlined text-sm"></span>
+            </div>
+            <h3 id="chat-title" class="font-headline font-bold text-[13px] tracking-[0.2em] uppercase"></h3>
+        </div>
+        <button onclick="closeChat()" class="text-neutral-500 hover:text-white transition-colors w-8 h-8 flex items-center justify-center rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm hover:bg-white/10 active:scale-90">
+            <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+    </div>
+    
+    <!-- Chat Messages Container -->
+    <div id="chat-messages" class="flex-1 overflow-y-auto p-5 flex flex-col gap-5 font-body text-[14px] custom-scrollbar bg-gradient-to-b from-transparent to-black/20">
+        <!-- Messages get injected here -->
+    </div>
+    
+    <!-- Chat Input Area -->
+    <div class="p-4 border-t border-white/5 bg-[#1a1a1a]/50">
+        <form onsubmit="handleChatSubmit(event)" class="flex items-center gap-3">
+            <input id="chat-input" type="text" placeholder="Message..." autocomplete="off" class="flex-1 bg-white/5 border border-white/10 rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm px-5 py-3 text-[14px] focus:outline-none focus:border-white/20 focus:bg-white/10 transition-all text-white font-body placeholder:text-neutral-500 shadow-inner">
+            <button type="submit" class="w-12 h-12 rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm bg-gradient-to-tr from-blue-500 to-purple-600 hover:shadow-[0_0_20px_rgba(132,173,255,0.4)] text-white flex items-center justify-center transition-all flex-shrink-0 group active:scale-90">
+                <span class="material-symbols-outlined text-[18px] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" style="font-variation-settings: 'FILL' 1;">send</span>
+            </button>
+        </form>
+    </div>
+</div>
+
+<style>
+/* Custom scrollbar for chat */
+.custom-scrollbar::-webkit-scrollbar { width: 6px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #444; }
+</style>
+
+<!-- Full Screen Contact Modal -->
+<div id="contact-modal" class="fixed inset-0 z-[120] flex items-center justify-center pointer-events-none opacity-0 transition-opacity duration-500 bg-black/60 backdrop-blur-md">
+    <!-- Modal Content -->
+    <div id="contact-modal-body" class="relative w-full max-w-4xl mx-4 bg-surface-container-highest/90 border border-outline-variant/30 rounded-3xl shadow-2xl p-8 md:p-12 transform scale-95 translate-y-8 transition-all duration-500 opacity-0 flex flex-col md:flex-row gap-12 overflow-hidden">
+        <!-- Decoration element -->
+        <div class="absolute -top-32 -left-32 w-64 h-64 bg-primary/20 rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm blur-[80px]"></div>
+        
+        <!-- Left Side: Let's Connect -->
+        <div class="relative flex-1 flex flex-col justify-center space-y-6">
+            <div>
+                <h2 class="text-4xl font-headline font-bold mb-2 tracking-tight text-white bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-200">Let's Collaborate.</h2>
+                <p class="text-on-surface-variant font-body">Whether it's an inquiry, idea, or just wanting to talk tech. Reach out right away.</p>
+            </div>
+            
+            <div class="space-y-4">
+                <a href="mailto:contact@ketib.io" class="flex items-center gap-4 text-neutral-300 hover:text-primary transition-colors group p-3 -ml-3 rounded-xl hover:bg-white/5">
+                    <div class="w-10 h-10 rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm bg-white/5 group-hover:bg-primary/20 flex items-center justify-center transition-colors">
+                        <span class="material-symbols-outlined text-[20px]">mail</span>
+                    </div>
+                    <div>
+                        <div class="text-xs text-on-surface-variant mb-0.5">Email Me</div>
+                        <div class="font-medium tracking-wide">contact@ketib.io</div>
+                    </div>
+                </a>
+                
+                <a href="#" class="flex items-center gap-4 text-neutral-300 hover:text-tertiary transition-colors group p-3 -ml-3 rounded-xl hover:bg-white/5">
+                    <div class="w-10 h-10 rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm bg-white/5 group-hover:bg-tertiary/20 flex items-center justify-center transition-colors">
+                        <span class="material-symbols-outlined text-[20px]">link</span>
+                    </div>
+                    <div>
+                        <div class="text-xs text-on-surface-variant mb-0.5">LinkedIn</div>
+                        <div class="font-medium tracking-wide">/in/ketib-portfolio</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Right Side: Instant Chat Selection -->
+        <div class="relative flex-1 flex flex-col justify-center space-y-4 border-t md:border-t-0 md:border-l border-outline-variant/20 pt-8 md:pt-0 md:pl-12">
+            <h3 class="text-xl font-headline font-semibold mb-2">Connect Instantly</h3>
+            
+            <button onclick="toggleContactModal(); openChat('tkien')" class="w-full flex items-center justify-between p-6 bg-surface-container rounded-tl-2xl rounded-br-2xl rounded-tr-sm rounded-bl-sm border border-outline-variant/30 hover:border-primary/50 hover:bg-primary/5 transition-all group active:scale-[0.98]">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm primary-gradient flex items-center justify-center shadow-lg group-hover:shadow-primary/30 transition-shadow">
+                        <span class="material-symbols-outlined text-on-primary-fixed">person</span>
+                    </div>
+                    <div class="text-left">
+                        <div class="font-bold text-white mb-1 group-hover:text-primary transition-colors">Chat with TKien</div>
+                        <div class="text-xs text-on-surface-variant">Direct human connection</div>
+                    </div>
+                </div>
+                <span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors">arrow_forward</span>
+            </button>
+            
+            <button onclick="toggleContactModal(); openChat('ai')" class="w-full flex items-center justify-between p-6 bg-surface-container rounded-tl-2xl rounded-br-2xl rounded-tr-sm rounded-bl-sm border border-outline-variant/30 hover:border-tertiary/50 hover:bg-tertiary/5 transition-all group active:scale-[0.98]">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm bg-gradient-to-br from-tertiary to-pink-500 flex items-center justify-center shadow-lg group-hover:shadow-tertiary/30 transition-shadow">
+                        <span class="material-symbols-outlined text-black">smart_toy</span>
+                    </div>
+                    <div class="text-left">
+                        <div class="font-bold text-white mb-1 group-hover:text-tertiary transition-colors">Ask Ketib-AI</div>
+                        <div class="text-xs text-on-surface-variant">24/7 intelligent assistance</div>
+                    </div>
+                </div>
+                <span class="material-symbols-outlined text-outline-variant group-hover:text-tertiary transition-colors">arrow_forward</span>
+            </button>
+        </div>
+        
+        <!-- Close Button -->
+        <button onclick="toggleContactModal()" class="absolute top-6 right-6 w-10 h-10 rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm bg-black/40 hover:bg-white/10 flex items-center justify-center text-neutral-400 hover:text-white transition-all backdrop-blur-xl border border-white/5 shadow-2xl z-10 active:scale-90">
+            <span class="material-symbols-outlined">close</span>
+        </button>
+    </div>
+</div>
+
 </body>
 </html>

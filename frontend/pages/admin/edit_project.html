@@ -1,0 +1,137 @@
+<div class="max-w-5xl mx-auto">
+    <!-- Breadcrumbs -->
+    <div class="flex items-center gap-2 mb-8 font-['Inter'] text-[0.6875rem] tracking-wider uppercase text-on-surface-variant">
+        <span class="hover:text-primary cursor-pointer" onclick="loadAdminPage('my_projects')">Projects</span>
+        <span class="material-symbols-outlined text-[10px]">arrow_forward_ios</span>
+        <span class="hover:text-primary cursor-pointer" onclick="loadAdminPage('project_detail')">#PROJ-8821</span>
+        <span class="material-symbols-outlined text-[10px]">arrow_forward_ios</span>
+        <span class="text-primary font-bold">Edit Module</span>
+    </div>
+
+    <section class="grid grid-cols-12 gap-8">
+        <!-- Header Column -->
+        <div class="col-span-12 lg:col-span-4">
+            <h2 class="font-['Space_Grotesk'] text-4xl font-bold leading-tight tracking-tighter mb-4">
+                EDIT <span class="text-primary">PROJECT</span>
+            </h2>
+            <p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+                Modify existing architectural module parameters in the Terminal Horizon ecosystem. Reconfigure repositories, production links, or update documentation.
+            </p>
+            <div class="p-4 bg-surface-container-low border-l-2 border-primary-dim">
+                <div class="flex items-start gap-3">
+                    <span class="material-symbols-outlined text-primary" data-icon="info">info</span>
+                    <p class="text-[0.6875rem] uppercase tracking-widest text-on-surface-variant">Changes will propagate to the live environment upon save.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Column -->
+        <div class="col-span-12 lg:col-span-8 space-y-6">
+            <div class="bg-surface-container p-8 relative overflow-hidden ghost-border">
+                <!-- Form Section: Basic Info -->
+                <div class="space-y-8">
+                    <div>
+                        <label class="block font-['Inter'] text-[0.6875rem] tracking-widest uppercase text-on-surface-variant mb-3">Tên Project</label>
+                        <input class="w-full bg-surface-container-highest border-none rounded-none px-4 py-4 text-sm focus:ring-2 focus:ring-primary/50 transition-all font-mono tracking-tight text-white" value="Neural Nexus API" type="text" />
+                    </div>
+
+                    <div>
+                        <label class="block font-['Inter'] text-[0.6875rem] tracking-widest uppercase text-on-surface-variant mb-4">Loại Project</label>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                            <button class="flex items-center justify-center gap-2 py-3 px-4 bg-primary/20 border border-primary text-primary transition-all text-[0.6875rem] uppercase tracking-widest font-bold">
+                                <span class="material-symbols-outlined text-sm" data-icon="terminal">terminal</span>
+                                Backend
+                            </button>
+                            <button class="flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-highest hover:bg-primary/10 border border-outline-variant/30 hover:border-primary transition-all text-[0.6875rem] uppercase tracking-widest font-medium">
+                                <span class="material-symbols-outlined text-sm" data-icon="web">web</span>
+                                Frontend
+                            </button>
+                            <button class="flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-highest hover:bg-primary/10 border border-outline-variant/30 hover:border-primary transition-all text-[0.6875rem] uppercase tracking-widest font-medium">
+                                <span class="material-symbols-outlined text-sm" data-icon="layers">layers</span>
+                                Fullstack
+                            </button>
+                            <button class="flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-highest hover:bg-primary/10 border border-outline-variant/30 hover:border-primary transition-all text-[0.6875rem] uppercase tracking-widest font-medium">
+                                <span class="material-symbols-outlined text-sm" data-icon="smartphone">smartphone</span>
+                                Mobile
+                            </button>
+                            <button class="flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-highest hover:bg-primary/10 border border-outline-variant/30 hover:border-primary transition-all text-[0.6875rem] uppercase tracking-widest font-medium">
+                                <span class="material-symbols-outlined text-sm" data-icon="cloud">cloud</span>
+                                Infrastructure
+                            </button>
+                            <button class="flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-highest hover:bg-primary/10 border border-outline-variant/30 hover:border-primary transition-all text-[0.6875rem] uppercase tracking-widest font-medium">
+                                <span class="material-symbols-outlined text-sm" data-icon="more_horiz">more_horiz</span>
+                                Other
+                            </button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-['Inter'] text-[0.6875rem] tracking-widest uppercase text-on-surface-variant mb-3">Mô tả Project</label>
+                        <textarea class="w-full bg-surface-container-highest border-none rounded-none px-4 py-4 text-sm focus:ring-2 focus:ring-primary/50 transition-all font-mono tracking-tight min-h-[160px] resize-none text-white">Neural Nexus API is an advanced machine learning ingestion and processing layer built specifically for real-time data streaming and predictive modeling. Utilizing a microservice architecture written in Python and FastAPI, this system easily handles over 10,000 requests per second with less than 20ms latency.
+
+It interfaces directly with the central data lake via Apache Kafka and caches heavily accessed query models through Redis to ensure instantaneous retrieval. Core model updates are automated via a robust CI/CD pipeline integrated directly into GitHub Actions.</textarea>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block font-['Inter'] text-[0.6875rem] tracking-widest uppercase text-on-surface-variant mb-3">Link GitHub</label>
+                            <div class="relative group">
+                                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="code">code</span>
+                                <input class="w-full bg-surface-container-highest border-none rounded-none pl-12 pr-4 py-4 text-sm focus:ring-2 focus:ring-primary/50 transition-all font-mono text-white" value="https://github.com/Tkien/neural-nexus" type="text" />
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block font-['Inter'] text-[0.6875rem] tracking-widest uppercase text-on-surface-variant mb-3">Link Production</label>
+                            <div class="relative group">
+                                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="rocket_launch">rocket_launch</span>
+                                <input class="w-full bg-surface-container-highest border-none rounded-none pl-12 pr-4 py-4 text-sm focus:ring-2 focus:ring-primary/50 transition-all font-mono text-white" value="https://api.neural-nexus.io/v1/docs" type="text" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-['Inter'] text-[0.6875rem] tracking-widest uppercase text-on-surface-variant mb-3">Tùy chỉnh Ảnh Cover</label>
+                        <div class="relative w-full aspect-video bg-surface-container-highest rounded-sm overflow-hidden border border-outline-variant/10 group mb-4">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80" alt="Current Cover" class="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity" />
+                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <button class="px-4 py-2 bg-black/60 backdrop-blur-sm border border-white/20 font-bold tracking-widest uppercase text-xs hover:bg-primary/80 transition-colors flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-[16px]">change_circle</span> Change Media
+                                </button>
+                            </div>
+                        </div>
+                        <div class="border-2 border-dashed border-outline-variant/30 bg-surface-container-low hover:bg-surface-container-highest transition-all p-8 text-center group cursor-pointer relative">
+                            <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] pointer-events-none"></div>
+                            <span class="material-symbols-outlined text-3xl text-primary/50 group-hover:text-primary mb-2 transition-colors" data-icon="cloud_upload">cloud_upload</span>
+                            <p class="text-[0.6875rem] uppercase tracking-[0.2em] font-bold mb-1">Drag and Drop to replace</p>
+                            <p class="text-on-surface-variant text-[10px]">Maximum payload: 12MB. Accepted types: .PNG, .JPG, .WEBP</p>
+                            <input class="absolute inset-0 opacity-0 cursor-pointer" type="file" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Actions -->
+                <div class="mt-12 pt-8 border-t border-outline-variant/20 flex items-center justify-between">
+                    <button onclick="window.history.back()" class="px-8 py-3 bg-surface-container-highest text-on-surface-variant hover:text-white transition-all text-[0.6875rem] uppercase tracking-widest font-bold border border-transparent hover:border-outline-variant/30">
+                        Hủy Bỏ
+                    </button>
+                    <button class="px-10 py-4 bg-gradient-to-r from-primary to-primary-dim text-on-primary-fixed text-[0.6875rem] uppercase tracking-[0.2em] font-black rounded-sm shadow-[0_4px_20px_rgba(132,173,255,0.3)] hover:scale-[1.02] active:scale-95 transition-all">
+                        Cập Nhật Project
+                    </button>
+                </div>
+            </div>
+
+            <!-- System Status Log -->
+            <div class="bg-surface-container-lowest p-6 border-l-2 border-primary-dim font-mono">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="w-2 h-2 bg-primary animate-pulse"></span>
+                    <span class="text-[0.625rem] text-primary uppercase tracking-widest">Architect_Log_Buffer</span>
+                </div>
+                <div class="space-y-1">
+                    <p class="text-[0.6875rem] text-on-surface-variant"><span class="text-primary-dim">[14:22:01]</span> FETCHING_PROJECT_DATA (#PROJ-8821)...</p>
+                    <p class="text-[0.6875rem] text-on-surface-variant"><span class="text-primary-dim">[14:22:02]</span> DATA_RETRIEVED_SUCCESSFULLY.</p>
+                    <p class="text-[0.6875rem] text-white"><span class="text-primary-dim">[14:22:05]</span> SESSION_STABLE: READY_FOR_MODIFICATION</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

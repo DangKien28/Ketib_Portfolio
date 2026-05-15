@@ -1,0 +1,161 @@
+<!-- AI Project Estimator Section -->
+<section class="max-w-7xl mx-auto px-4 py-12 animate-fade-in">
+    <!-- Header -->
+    <div class="mb-12 text-center relative z-10">
+        <div class="inline-block mb-3 px-4 py-1.5 rounded-full bg-tertiary/10 border border-tertiary/20">
+            <span class="text-tertiary font-mono text-xs font-bold tracking-widest uppercase">Estimation Engine</span>
+        </div>
+        <h1 class="font-headline text-4xl md:text-6xl font-bold tracking-tighter mb-4">
+            AI PROJECT <span class="text-tertiary">ESTIMATOR</span>
+        </h1>
+        <p class="text-neutral-400 max-w-2xl mx-auto text-lg font-light">
+            Calculate the scope, timeline, and architectural requirements for your AI-integrated microservices product.
+        </p>
+    </div>
+
+    <!-- Main Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 relative z-10">
+        
+        <!-- Configuration Form -->
+        <div class="lg:col-span-8 bg-[#111]/80 backdrop-blur-xl rounded-3xl border border-white/5 p-8 shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+            <div class="flex items-center justify-between mb-8">
+                <h3 class="font-headline font-bold text-2xl flex items-center gap-2">
+                    <span class="material-symbols-outlined text-tertiary">tune</span>
+                    Project Parameters
+                </h3>
+                <button class="text-xs text-neutral-400 hover:text-white border border-white/10 bg-white/5 px-3 py-1 rounded-lg flex items-center gap-1 transition-all">
+                    <span class="material-symbols-outlined text-[14px]">refresh</span> Reset
+                </button>
+            </div>
+            
+            <div class="space-y-8">
+                
+                <!-- Category: AI Complexity -->
+                <div>
+                    <div class="flex justify-between items-end mb-4">
+                        <label class="block text-sm font-bold text-white tracking-wide uppercase">AI Model Complexity</label>
+                        <span class="text-tertiary font-mono text-xs" id="ai-complexity-val">Advanced</span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="p-4 rounded-xl border border-white/10 bg-white/5 cursor-pointer hover:border-tertiary hover:bg-tertiary/5 transition-all">
+                            <h4 class="font-bold text-sm mb-2">Basic Integration</h4>
+                            <p class="text-[11px] text-neutral-500">API wrapping (OpenAI, Anthropic) without custom fine-tuning.</p>
+                        </div>
+                        <div class="p-4 rounded-xl border border-tertiary bg-tertiary/10 cursor-pointer shadow-[0_0_15px_rgba(250,176,255,0.15)] transition-all">
+                            <h4 class="font-bold text-sm mb-2 text-white">Advanced (RAG)</h4>
+                            <p class="text-[11px] text-neutral-300">Retrieval-Augmented Generation, Vector DBs, Semantic Search.</p>
+                        </div>
+                        <div class="p-4 rounded-xl border border-white/10 bg-white/5 cursor-pointer hover:border-tertiary hover:bg-tertiary/5 transition-all">
+                            <h4 class="font-bold text-sm mb-2">Custom Pipeline</h4>
+                            <p class="text-[11px] text-neutral-500">Fine-tuning, Agentic workflows, Model deployment, MLOps.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="h-px bg-white/5 w-full"></div>
+
+                <!-- Category: Backend Scope -->
+                <div>
+                    <label class="block text-sm font-bold text-white mb-4 tracking-wide uppercase">System Architecture</label>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="text-sm font-bold text-neutral-300">Target User Base (MAU)</h4>
+                                <p class="text-xs text-neutral-500">Scalability requirements limit.</p>
+                            </div>
+                            <div class="w-1/2">
+                                <input type="range" min="1" max="100" value="25" class="w-full h-1.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-tertiary">
+                                <div class="flex justify-between text-[10px] text-neutral-500 mt-1">
+                                    <span>&lt; 5k</span>
+                                    <span class="text-white font-bold">~25k</span>
+                                    <span>&gt; 1M+</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h4 class="text-sm font-bold text-neutral-300">Data Synchronization</h4>
+                                <p class="text-xs text-neutral-500">Real-time vs Batch operations.</p>
+                            </div>
+                            <div class="flex bg-surface-container-highest rounded-lg border border-white/10 p-1">
+                                <button class="px-3 py-1 text-xs rounded-md text-neutral-400 hover:text-white transition-all">Batch Processing</button>
+                                <button class="px-3 py-1 text-xs rounded-md bg-white/10 text-white shadow-inner transition-all">Real-time (WebSockets/gRPC)</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="h-px bg-white/5 w-full"></div>
+
+                <!-- Timeline Preference -->
+                <div>
+                    <label class="block text-sm font-bold text-white tracking-wide uppercase mb-4">Delivery Timeline Phase</label>
+                    <div class="flex gap-4">
+                        <label class="flex items-center gap-2 cursor-pointer group">
+                            <div class="w-4 h-4 rounded-full border border-white/20 flex items-center justify-center group-hover:border-tertiary">
+                                <div class="w-2 h-2 rounded-full bg-transparent"></div>
+                            </div>
+                            <span class="text-sm text-neutral-400 group-hover:text-white">Normal (3-6 Months)</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer group">
+                            <div class="w-4 h-4 rounded-full border border-tertiary flex items-center justify-center shadow-[0_0_10px_rgba(250,176,255,0.4)]">
+                                <div class="w-2 h-2 rounded-full bg-tertiary"></div>
+                            </div>
+                            <span class="text-sm text-white font-medium">Accelerated (&lt; 3 Months)</span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Estimation Result Output -->
+        <div class="lg:col-span-4 flex flex-col gap-6">
+            
+            <div class="bg-gradient-to-b from-[#1a1520] to-[#0e0e0e] backdrop-blur-xl rounded-3xl border border-tertiary/20 p-8 shadow-[0_20px_40px_rgba(250,176,255,0.05)] relative overflow-hidden">
+                <div class="absolute -right-20 -top-20 w-40 h-40 bg-tertiary/20 blur-[50px] rounded-full"></div>
+                
+                <h4 class="font-mono text-xs uppercase tracking-[0.2em] text-neutral-400 mb-2">Estimated Output</h4>
+                <div class="h-px w-12 bg-tertiary/50 mb-6"></div>
+
+                <div class="space-y-6">
+                    <div>
+                        <div class="text-xs text-neutral-500 uppercase tracking-widest mb-1">Architecture Base</div>
+                        <div class="font-headline text-lg font-bold text-white">Microservices + RAG AI</div>
+                    </div>
+                    
+                    <div>
+                        <div class="text-xs text-neutral-500 uppercase tracking-widest mb-1">Est. Development Time</div>
+                        <div class="font-headline text-3xl font-bold text-white tracking-tighter">8 - 12 <span class="text-lg text-neutral-500 font-light">Weeks</span></div>
+                    </div>
+                    
+                    <div>
+                        <div class="text-xs text-neutral-500 uppercase tracking-widest mb-1">Recommended Stack</div>
+                        <div class="flex flex-wrap gap-2 mt-2">
+                            <span class="px-2 py-1 text-[10px] bg-tertiary/10 border border-tertiary/20 text-tertiary rounded font-mono">Go</span>
+                            <span class="px-2 py-1 text-[10px] bg-primary/10 border border-primary/20 text-primary rounded font-mono">Node.js</span>
+                            <span class="px-2 py-1 text-[10px] bg-white/5 border border-white/10 text-neutral-300 rounded font-mono">Python</span>
+                            <span class="px-2 py-1 text-[10px] bg-white/5 border border-white/10 text-neutral-300 rounded font-mono">PostgreSQL</span>
+                            <span class="px-2 py-1 text-[10px] bg-white/5 border border-white/10 text-neutral-300 rounded font-mono">Redis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="w-full py-4 mt-8 bg-gradient-to-r from-tertiary to-purple-500 text-black font-bold rounded-xl hover:opacity-90 transition-opacity uppercase tracking-widest">
+                    Request Proposal
+                </button>
+            </div>
+            
+            <!-- Quick Tip -->
+            <div class="bg-surface-container-highest border border-white/5 p-4 rounded-2xl flex items-start gap-3">
+                <span class="material-symbols-outlined text-primary mt-0.5">lightbulb</span>
+                <p class="text-xs text-neutral-400 leading-relaxed">
+                    Estimates are dynamic approximations. A direct consultation will yield a precise architecture blueprint and exact technical scopes.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>

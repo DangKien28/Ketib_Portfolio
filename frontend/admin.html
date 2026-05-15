@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>TERMINAL_HORIZON | Console Admin</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container-high": "#1f1f1f",
+                        "on-error-container": "#ffa8a3",
+                        "background": "#0e0e0e",
+                        "inverse-primary": "#005bc1",
+                        "on-primary-container": "#00214e",
+                        "error": "#ff716c",
+                        "error-container": "#9f0519",
+                        "tertiary": "#fab0ff",
+                        "secondary-container": "#1e3da1",
+                        "on-primary": "#002d64",
+                        "on-tertiary-container": "#60136d",
+                        "on-error": "#490006",
+                        "secondary-fixed": "#c6cfff",
+                        "on-background": "#ffffff",
+                        "primary-dim": "#0070ea",
+                        "surface-container-highest": "#262626",
+                        "on-secondary-container": "#c4ceff",
+                        "on-tertiary": "#6a1f77",
+                        "inverse-surface": "#f9f9f9",
+                        "outline-variant": "#484848",
+                        "on-tertiary-fixed": "#41004d",
+                        "on-primary-fixed": "#000000",
+                        "on-surface": "#ffffff",
+                        "on-surface-variant": "#ababab",
+                        "outline": "#757575",
+                        "inverse-on-surface": "#555555",
+                        "tertiary-dim": "#e48fed",
+                        "surface": "#0e0e0e",
+                        "primary-fixed-dim": "#5091ff",
+                        "primary-container": "#6c9fff",
+                        "on-secondary": "#00185d",
+                        "on-primary-fixed-variant": "#002a60",
+                        "secondary": "#7e98ff",
+                        "secondary-fixed-dim": "#b3c1ff",
+                        "tertiary-fixed-dim": "#e48fed",
+                        "surface-bright": "#2c2c2c",
+                        "on-secondary-fixed-variant": "#2b48ac",
+                        "on-tertiary-fixed-variant": "#6a1f77",
+                        "primary": "#84adff",
+                        "surface-tint": "#84adff",
+                        "surface-container-low": "#131313",
+                        "error-dim": "#d7383b",
+                        "on-secondary-fixed": "#00298b",
+                        "tertiary-fixed": "#f39cfb",
+                        "surface-dim": "#0e0e0e",
+                        "secondary-dim": "#7e98ff",
+                        "surface-container-lowest": "#000000",
+                        "surface-container": "#191919",
+                        "primary-fixed": "#6c9fff",
+                        "tertiary-container": "#f39cfb",
+                        "surface-variant": "#262626"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0px", "sm": "2px", "lg": "4px", "xl": "12px", "2xl": "20px", "3xl": "32px", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ghost-border {
+            border-top: 1px solid rgba(72, 72, 72, 0.15);
+        }
+        body {
+            background-color: #0e0e0e;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/admin.js" defer></script>
+    <script src="js/components/projectCard.js" defer></script>
+    <script src="js/components/navDropdowns.js" defer></script>
+</head>
+<body class="selection:bg-primary/30 selection:text-primary relative min-h-screen overflow-x-hidden">
+<!-- Background Ambient Glow (User Style) -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div class="absolute -top-[20%] -left-[10%] w-[50vw] h-[50vh] border-radius-[50%] bg-primary/20 blur-[130px]/10 blur-[120px] transition-all duration-1000 ease-in-out"></div>
+    <div class="absolute top-[40%] -right-[10%] w-[40vw] h-[60vh] border-radius-[50%] bg-tertiary/20 blur-[150px]/10 blur-[130px] transition-all duration-1000 ease-in-out"></div>
+</div>
+
+<!-- TopNavBar -->
+<header class="bg-[#0e0e0e]/80 backdrop-blur-xl text-blue-400 dark:text-blue-400 font-['Space_Grotesk'] tracking-tight fixed top-0 w-full z-50 border-b border-white/5 transition-all flex justify-between items-center h-[72px] px-6">
+    <div class="flex items-center gap-10">
+        <div class="text-xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400 cursor-pointer hover:from-purple-400 hover:to-blue-400 transition-all duration-500" onclick="loadAdminPage('overview')">KINETIC_ADMIN</div>
+    </div>
+    <div class="hidden md:flex lg:flex flex-1 justify-center px-8">
+        <div class="flex items-center bg-white/5 border border-white/10 rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm px-5 py-2.5 focus-within:border-primary focus-within:bg-primary/5 hover:bg-white/10 transition-all duration-300 w-full max-w-md group shadow-inner focus-within:shadow-[0_0_15px_rgba(132,173,255,0.2)]">
+            <span class="material-symbols-outlined text-neutral-400 group-focus-within:text-primary transition-colors duration-300 text-[20px]" data-icon="search">search</span>
+            <input class="bg-transparent border-none focus:ring-0 text-sm w-full ml-3 font-body transition-colors duration-300 text-on-surface placeholder:text-neutral-500" placeholder="Search parameters..." type="text"/>
+        </div>
+    </div>
+    <!-- Dropdowns -->
+    <nav-dropdowns></nav-dropdowns>
+</header>
+
+<!-- SideNavBar -->
+<aside class="bg-[#000000]/80 backdrop-blur-md text-blue-400 dark:text-blue-400 font-['Inter'] text-xs uppercase tracking-widest fixed left-0 top-[72px] h-[calc(100%-72px)] w-64 flex flex-col py-6 border-r border-white/5 hidden md:flex z-40">
+    <div class="px-6 mb-10 flex items-center gap-3">
+        <div class="w-10 h-10 bg-surface-container-highest flex items-center justify-center rounded-sm">
+            <span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+        </div>
+        <div>
+            <div class="text-[10px] text-gray-500 font-bold">ROOT_USER</div>
+            <div class="text-[9px] text-gray-400 opacity-60">Backend Architect</div>
+        </div>
+    </div>
+    
+    <nav class="flex-1 px-3 space-y-1">
+        <a class="admin-sidebar-link flex items-center px-4 py-3 text-gray-500 hover:text-gray-300 hover:bg-white/5 transition-transform active:scale-[0.98] cursor-pointer" onclick="loadAdminPage('my_projects')" data-page="my_projects">
+            <span class="material-symbols-outlined mr-3" data-icon="terminal">terminal</span>
+            <span>Projects</span>
+        </a>
+        <a class="admin-sidebar-link flex items-center px-4 py-3 text-gray-500 hover:text-gray-300 hover:bg-white/5 transition-transform active:scale-[0.98] cursor-pointer" onclick="loadAdminPage('collab_management')" data-page="collab_management">
+            <span class="material-symbols-outlined mr-3" data-icon="group">group</span>
+            <span>Collaborations</span>
+        </a>
+    </nav>
+    
+    <div class="px-3 mt-auto pt-6 border-t border-white/5 space-y-1">
+        <a class="flex items-center px-4 py-3 text-gray-500 hover:text-gray-300 hover:bg-white/5 transition-transform active:scale-[0.98] cursor-pointer">
+            <span class="material-symbols-outlined mr-3" data-icon="settings">settings</span>
+            <span>Settings</span>
+        </a>
+        <a class="flex items-center px-4 py-3 text-gray-500 hover:text-gray-300 hover:bg-white/5 transition-transform active:scale-[0.98] cursor-pointer" href="index.html">
+            <span class="material-symbols-outlined mr-3" data-icon="public">public</span>
+            <span>Back to Site</span>
+        </a>
+    </div>
+</aside>
+
+<!-- Main Content Canvas -->
+<main id="admin-main-content" class="md:ml-64 pt-[96px] px-6 md:px-10 pb-12 min-h-screen bg-transparent transition-all duration-300 opacity-100 translate-y-0 relative z-20">
+    <!-- Dynamic Content Loads Here -->
+</main>
+
+<!-- AI Assistant Floating Button & Chatbox -->
+<div class="fixed bottom-6 right-6 z-[60] font-['Space_Grotesk'] md:bottom-10 md:right-10 flex flex-col items-end">
+    <!-- Chat Window -->
+    <div id="aiChatWindow" class="hidden mb-4 w-[340px] md:w-[400px] h-[500px] bg-[#111111]/95 backdrop-blur-2xl rounded-sm border border-blue-500/20 shadow-[0_0_40px_rgba(0,123,255,0.15)] flex flex-col overflow-hidden transition-all duration-300 translate-y-4 opacity-0 origin-bottom-right">
+        <!-- Header -->
+        <div class="p-4 border-b border-white/5 bg-black/60 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div id="aiChatHeaderIconWrapper" class="w-8 h-8 rounded-sm bg-gradient-to-tr from-blue-600 to-purple-600 flex items-center justify-center p-0.5">
+                    <div id="aiChatHeaderIcon" class="w-full h-full bg-black rounded-sm flex items-center justify-center text-blue-400">
+                        <span class="material-symbols-outlined text-lg" data-icon="smart_toy">smart_toy</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 id="aiChatHeaderName" class="text-sm font-bold text-white tracking-widest uppercase">Admin AI</h3>
+                    <div class="flex items-center gap-1">
+                        <span id="aiChatHeaderStatusColor" class="w-1.5 h-1.5 bg-blue-500 rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm animate-pulse"></span>
+                        <span id="aiChatHeaderStatusText" class="text-[9px] text-blue-400/70 font-mono tracking-widest">SYSTEM_ONLINE</span>
+                    </div>
+                </div>
+            </div>
+            <button onclick="toggleAIChat()" class="text-white/50 hover:text-white transition-colors">
+                <span class="material-symbols-outlined" data-icon="close">close</span>
+            </button>
+        </div>
+
+        <!-- Messages Area -->
+        <div id="aiChatMessages" class="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
+            <!-- Initial Message -->
+            <div class="flex gap-2">
+                <div class="w-6 h-6 rounded-sm bg-blue-500/20 flex items-center justify-center border border-blue-500/30 flex-shrink-0">
+                    <span class="material-symbols-outlined text-[12px] text-blue-400" data-icon="smart_toy">smart_toy</span>
+                </div>
+                <div class="bg-white/5 border border-white/5 rounded-sm rounded-tl-none p-3 text-xs text-white/80 leading-relaxed font-body">
+                    Welcome to the Terminal Horizon Control Panel. How can I assist you with project tracking or collaboration requests today?
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="p-3 border-t border-white/5 bg-black/60">
+            <div class="flex items-center gap-2 bg-white/5 border border-white/10 rounded-sm p-1 pr-2 focus-within:border-blue-500/50 transition-colors">
+                <input type="text" id="aiChatInput" placeholder="Enter administrative query..." class="flex-1 bg-transparent border-none text-xs text-white placeholder-white/30 focus:ring-0 font-mono" onkeypress="if(event.key === 'Enter') adminSendAiMessage()">
+                <button onclick="adminSendAiMessage()" class="w-8 h-8 rounded-sm bg-blue-500/10 text-blue-400 hover:bg-blue-500 hover:text-white transition-all flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[16px]" data-icon="send">send</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toggle Button -->
+    <button onclick="toggleAIChat()" id="aiChatToggleBtn" class="group relative w-14 h-14 md:w-16 md:h-16 flex items-center justify-center bg-[#111111] hover:bg-blue-900 shadow-[0_0_20px_rgba(0,123,255,0.3)] transition-all duration-300 hover:scale-105 active:scale-95 border border-blue-500/30">
+        <!-- AI Icon -->
+        <span class="material-symbols-outlined text-blue-400 group-hover:text-white text-2xl md:text-3xl transition-colors relative z-10" data-icon="smart_toy">smart_toy</span>
+    </button>
+</div>
+
+<script>
+function toggleAIChat() {
+    const windowEl = document.getElementById('aiChatWindow');
+    if (windowEl.classList.contains('hidden')) {
+        windowEl.classList.remove('hidden');
+        // trigger animation
+        setTimeout(() => {
+            windowEl.classList.remove('opacity-0', 'translate-y-4');
+            windowEl.classList.add('opacity-100', 'translate-y-0');
+        }, 10);
+    } else {
+        windowEl.classList.remove('opacity-100', 'translate-y-0');
+        windowEl.classList.add('opacity-0', 'translate-y-4');
+        setTimeout(() => {
+            windowEl.classList.add('hidden');
+        }, 300);
+    }
+}
+
+function adminSendAiMessage() {
+    const input = document.getElementById('aiChatInput');
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    // Use globally declared currentActiveChat variable
+    const data = DEMO_CHAT_DATA[currentActiveChat] || DEMO_CHAT_DATA['AI_SYS'];
+    const messagesBox = document.getElementById('aiChatMessages');
+    
+    // Render My Message
+    messagesBox.innerHTML += `
+        <div class="flex gap-2 justify-end mt-2">
+            <div class="bg-blue-600 border border-blue-500 rounded-sm rounded-tr-none p-3 text-xs text-white leading-relaxed font-body">
+                ${msg}
+            </div>
+        </div>
+    `;
+    input.value = '';
+    messagesBox.scrollTop = messagesBox.scrollHeight;
+    
+    // Save to history
+    data.history.push({ from: 'me', text: msg });
+
+    // Simulate AI / User response
+    if (currentActiveChat === 'AI_SYS') {
+        setTimeout(() => {
+            const reply = `[SYSTEM_LOG] Analyzing query structure regarding "${msg}". Standby for diagnostic response...`;
+            messagesBox.innerHTML += `
+                <div class="flex gap-2 mt-2">
+                    <div class="w-6 h-6 rounded-sm ${data.wrapperClass} flex items-center justify-center flex-shrink-0">
+                        <div class="w-full h-full bg-black rounded-sm flex items-center justify-center text-blue-400">
+                            ${data.icon}
+                        </div>
+                    </div>
+                    <div class="bg-white/5 border border-white/5 rounded-sm rounded-tl-none p-3 text-xs text-white/80 leading-relaxed font-body">
+                        ${reply}
+                    </div>
+                </div>
+            `;
+            data.history.push({ from: 'them', text: reply });
+            messagesBox.scrollTop = messagesBox.scrollHeight;
+        }, 1000);
+    }
+}
+</script>
+
+    <!-- Messages Dropdown (Multi-Client + AI) -->
+    <div id="messagesPanel" class="fixed top-16 right-6 md:right-24 w-80 max-h-[400px] bg-[#111111]/95 backdrop-blur-2xl border border-white/10 z-[70] shadow-[0_10px_40px_rgba(0,0,0,0.5)] flex flex-col transition-all duration-200 opacity-0 translate-y-[-10px] pointer-events-none rounded-sm font-['Space_Grotesk']">
+        <!-- Header -->
+        <div class="h-12 flex items-center justify-between px-4 border-b border-white/5 bg-black/60 shrink-0">
+            <h2 class="font-bold text-sm text-white tracking-widest uppercase flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary text-[18px]" data-icon="forum">forum</span>
+                MESSAGES
+            </h2>
+        </div>
+
+        <!-- Conversation List -->
+        <div id="conversationList" class="flex-1 overflow-y-auto w-full flex flex-col p-2 space-y-1 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
+            <!-- AI System Convo -->
+            <div class="p-3 bg-blue-500/10 hover:bg-white/5 border border-blue-500/30 rounded-sm cursor-pointer transition-colors flex gap-3 items-center group" onclick="openChat('AI_SYS')">
+                <div class="w-10 h-10 rounded-sm bg-gradient-to-tr from-blue-600 to-purple-600 flex items-center justify-center p-0.5 flex-shrink-0">
+                    <div class="w-full h-full bg-black rounded-sm flex items-center justify-center text-blue-400">
+                        <span class="material-symbols-outlined text-[18px]" data-icon="smart_toy">smart_toy</span>
+                    </div>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex justify-between items-baseline mb-1">
+                        <h4 class="text-xs font-bold text-white tracking-wider truncate uppercase">SYSTEM_AI</h4>
+                        <span class="text-[9px] text-blue-400 font-mono">LIVE</span>
+                    </div>
+                    <p class="text-[10px] text-on-surface-variant truncate font-['Inter']">Awaiting diagnostic input...</p>
+                </div>
+            </div>
+
+            <!-- Client Convo 1 -->
+            <div class="p-3 hover:bg-white/5 border border-transparent hover:border-white/5 rounded-sm cursor-pointer transition-colors flex gap-3 items-center group" onclick="openChat('CLIENT_1')">
+                <div class="w-10 h-10 rounded-sm bg-surface-container-highest border border-outline-variant/30 flex items-center justify-center flex-shrink-0">
+                    <span class="text-xs font-bold text-white">TK</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex justify-between items-baseline mb-1 relative">
+                        <h4 class="text-xs font-bold text-white tracking-wider truncate uppercase pr-4">TRUNG KIEN</h4>
+                        <span class="text-[9px] text-on-surface-variant font-mono">10:45</span>
+                        <span class="absolute top-1 right-0 w-1.5 h-1.5 bg-red-500 rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm"></span>
+                    </div>
+                    <p class="text-[10px] text-white truncate font-['Inter'] font-semibold">Check code deploy?</p>
+                </div>
+            </div>
+
+            <!-- Client Convo 2 -->
+            <div class="p-3 hover:bg-white/5 border border-transparent hover:border-white/5 rounded-sm cursor-pointer transition-colors flex gap-3 items-center group opacity-70" onclick="openChat('CLIENT_2')">
+                <div class="w-10 h-10 rounded-sm bg-surface-container-highest border border-outline-variant/30 flex items-center justify-center flex-shrink-0">
+                    <span class="text-xs font-bold text-white">J</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex justify-between items-baseline mb-1">
+                        <h4 class="text-xs font-bold text-white tracking-wider truncate uppercase">John_D</h4>
+                        <span class="text-[9px] text-on-surface-variant font-mono">Yesterday</span>
+                    </div>
+                    <p class="text-[10px] text-on-surface-variant truncate font-['Inter']">Looks good.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Chat View (Hidden initially) -->
+        <!-- Removed activeChatView to use the bubble instead -->
+    </div>
+
+    <!-- Script for Messages Drawer -->
+    <script>
+        function toggleMessagesPanel() {
+            const panel = document.getElementById('messagesPanel');
+            if (panel.classList.contains('opacity-0')) {
+                panel.classList.remove('opacity-0', 'translate-y-[-10px]', 'pointer-events-none');
+                panel.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                panel.classList.add('opacity-0', 'translate-y-[-10px]', 'pointer-events-none');
+                panel.classList.remove('opacity-100', 'translate-y-0');
+            }
+        }
+
+        // Đóng dropdown khi click ra ngoài
+        document.addEventListener('click', function(event) {
+            const panel = document.getElementById('messagesPanel');
+            const mailBtn = document.querySelector('[data-icon="mail"]');
+            if (!panel.classList.contains('opacity-0') && !panel.contains(event.target) && !mailBtn.contains(event.target)) {
+                panel.classList.add('opacity-0', 'translate-y-[-10px]', 'pointer-events-none');
+                panel.classList.remove('opacity-100', 'translate-y-0');
+            }
+        });
+
+        const DEMO_CHAT_DATA = {
+            'AI_SYS': {
+                name: 'SYSTEM_AI',
+                status: 'SYSTEM_ONLINE',
+                statusColor: 'blue-500',
+                wrapperClass: 'bg-gradient-to-tr from-blue-600 to-purple-600',
+                color: 'blue-500',
+                icon: '<span class="material-symbols-outlined text-[16px]">smart_toy</span>',
+                history: [
+                    { from: 'them', text: 'Welcome to the Terminal Horizon Control Panel. How can I assist you with project tracking or collaboration requests today?' },
+                    { from: 'them', text: 'Diagnostics online. Tracking systems running locally.' }
+                ]
+            },
+            'CLIENT_1': {
+                name: 'TRUNG KIEN',
+                status: 'ACTIVE_CONN',
+                statusColor: 'green-500',
+                wrapperClass: 'bg-surface-container-highest border border-outline-variant/30',
+                color: 'white',
+                icon: '<span class="text-sm font-bold text-white">TK</span>',
+                history: [
+                    { from: 'them', text: 'Check code deploy? The new module seems offline.' },
+                    { from: 'me', text: 'I am investigating the container cluster now.' },
+                    { from: 'them', text: 'Alright, update me when it is fixed.' }
+                ]
+            },
+            'CLIENT_2': {
+                name: 'John_D',
+                status: 'OFFLINE',
+                statusColor: 'gray-500',
+                wrapperClass: 'bg-surface-container-highest border border-outline-variant/30',
+                color: 'gray-400',
+                icon: '<span class="text-sm font-bold text-white">J</span>',
+                history: [
+                    { from: 'them', text: 'Looks good.' }
+                ]
+            }
+        };
+
+        let currentActiveChat = 'AI_SYS';
+
+        function openChat(contactId) {
+            const windowEl = document.getElementById('aiChatWindow');
+            const data = DEMO_CHAT_DATA[contactId];
+            if (!data) return;
+
+            currentActiveChat = contactId;
+
+            // Update Header Info
+            document.getElementById('aiChatHeaderName').innerText = data.name;
+            document.getElementById('aiChatHeaderStatusText').innerText = data.status;
+            
+            const statusColor = document.getElementById('aiChatHeaderStatusColor');
+            statusColor.className = `w-1.5 h-1.5 rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm animate-pulse bg-${data.statusColor}`;
+
+            const iconWrapper = document.getElementById('aiChatHeaderIconWrapper');
+            iconWrapper.className = `w-8 h-8 rounded-sm flex items-center justify-center p-0.5 ${data.wrapperClass}`;
+            
+            const icon = document.getElementById('aiChatHeaderIcon');
+            // If it's a client, remove the inner black background styling and just pass the text
+            if (contactId === 'AI_SYS') {
+                icon.className = "w-full h-full bg-black rounded-sm flex items-center justify-center text-blue-400";
+            } else {
+                icon.className = "w-full h-full flex items-center justify-center";
+            }
+            icon.innerHTML = data.icon;
+            
+            // Populate Messages
+            const chatMessages = document.getElementById('aiChatMessages');
+            chatMessages.innerHTML = '';
+            
+            data.history.forEach(msg => {
+                if (msg.from === 'them') {
+                    chatMessages.innerHTML += `
+                        <div class="flex gap-2 mt-2">
+                            <div class="w-6 h-6 rounded-sm bg-surface-container-highest border border-outline-variant/30 flex items-center justify-center flex-shrink-0 text-${data.color}">
+                                ${contactId === 'AI_SYS' ? '<span class="material-symbols-outlined text-[12px] text-blue-400" data-icon="smart_toy">smart_toy</span>' : data.icon.replace('text-sm', 'text-[10px]')}
+                            </div>
+                            <div class="bg-white/5 border border-white/5 rounded-sm rounded-tl-none p-3 text-xs text-white/80 leading-relaxed font-body">
+                                ${msg.text}
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    chatMessages.innerHTML += `
+                        <div class="flex gap-2 justify-end mt-2">
+                            <div class="bg-blue-600 border border-blue-500 rounded-sm rounded-tr-none p-3 text-xs text-white leading-relaxed font-body">
+                                ${msg.text}
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+
+            // Close dropdown
+            const panel = document.getElementById('messagesPanel');
+            panel.classList.add('opacity-0', 'translate-y-[-10px]', 'pointer-events-none');
+            panel.classList.remove('opacity-100', 'translate-y-0');
+
+            // Open window if hidden
+            if (windowEl.classList.contains('hidden')) {
+                toggleAIChat();
+            } else {
+                // Ensure scrolled to bottom if already open
+                setTimeout(() => chatMessages.scrollTop = chatMessages.scrollHeight, 50);
+            }
+            setTimeout(() => chatMessages.scrollTop = chatMessages.scrollHeight, 100);
+        }
+
+        // Original AI Send replaced by unified send logic inside `<script>` block above
+    </script>
+</body>
+</html>

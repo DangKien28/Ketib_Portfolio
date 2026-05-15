@@ -25,5 +25,9 @@
 			"path": "python-ai"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Ketib_Portfolio",
+		"java.compile.nullAnalysis.mode": "automatic",
+		"liveServer.settings.port": 5501
+	}
 }

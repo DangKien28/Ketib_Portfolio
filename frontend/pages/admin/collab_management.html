@@ -1,0 +1,186 @@
+<!-- Table Container Section -->
+<div class="max-w-7xl mx-auto space-y-8">
+<!-- Page Header & Action -->
+<div class="flex justify-between items-end">
+<div>
+<h2 class="text-4xl font-headline font-bold tracking-tighter text-on-background">Collaboration</h2>
+<p class="text-on-surface-variant mt-2 max-w-lg text-sm leading-relaxed">System-wide node synchronization and contributor request management. Monitor and authorize pending architectural integrations.</p>
+</div>
+</div>
+<!-- Data Table Module -->
+<div class="bg-surface-container border border-outline-variant/10 rounded-sm overflow-hidden shadow-2xl">
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high text-[10px] font-bold uppercase tracking-widest text-on-surface-variant border-b border-outline-variant/20">
+<th class="px-6 py-4">Collaboration ID</th>
+<th class="px-6 py-4">Tên Project</th>
+<th class="px-6 py-4">Tên người gửi</th>
+<th class="px-6 py-4">Email người gửi</th>
+<th class="px-6 py-4">Loại Project</th>
+<th class="px-6 py-4">Thời gian gửi</th>
+<th class="px-6 py-4">Trạng thái</th>
+<th class="px-6 py-4 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="text-sm font-body">
+<!-- Row 1: Pending -->
+<tr class="bg-surface hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5 font-mono text-primary text-xs">#COL-9082</td>
+<td class="px-6 py-5 font-medium text-on-surface">Neural Mesh API</td>
+<td class="px-6 py-5">
+    <div class="flex items-center gap-2">
+        <span>Alex Rivera</span>
+        <button onclick="if(window.toggleMessagesPanel && document.getElementById('messagesPanel').classList.contains('translate-x-full')) window.toggleMessagesPanel(); if(window.openChat) window.openChat('CLIENT_1')" class="flex items-center justify-center p-1 bg-blue-500/10 hover:bg-blue-500 hover:text-white text-blue-400 rounded-sm border border-blue-500/30 transition-colors group" title="Inbox">
+            <span class="material-symbols-outlined text-[14px]" data-icon="inbox">inbox</span>
+        </button>
+    </div>
+</td>
+<td class="px-6 py-5 text-on-surface-variant">arivera@mesh.io</td>
+<td class="px-6 py-5"><span class="bg-surface-container-highest px-2 py-0.5 text-[10px] rounded-none">Backend Integration</span></td>
+<td class="px-6 py-5 text-on-surface-variant">2023-10-24 14:20</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 text-[10px] font-bold uppercase tracking-tighter bg-tertiary-container/10 text-tertiary-container border border-tertiary-container/20">
+                    Đang chờ duyệt
+                  </span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2 text-on-surface-variant">
+<button class="hover:text-primary transition-colors" title="Xem"><span class="material-symbols-outlined text-lg" data-icon="visibility">visibility</span></button>
+<button class="hover:text-primary transition-colors" title="Duyệt"><span class="material-symbols-outlined text-lg" data-icon="check_circle">check_circle</span></button>
+<button class="hover:text-error transition-colors" title="Hủy"><span class="material-symbols-outlined text-lg" data-icon="cancel">cancel</span></button>
+<button class="hover:text-primary transition-colors" title="Thông báo hoàn thành"><span class="material-symbols-outlined text-lg" data-icon="verified">verified</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Approved -->
+<tr class="bg-surface-container-low hover:bg-surface-container transition-colors group">
+<td class="px-6 py-5 font-mono text-primary text-xs">#COL-8911</td>
+<td class="px-6 py-5 font-medium text-on-surface">Vault-Sync Core</td>
+<td class="px-6 py-5">
+    <div class="flex items-center gap-2">
+        <span>Sarah Chen</span>
+        <button onclick="if(window.toggleMessagesPanel && document.getElementById('messagesPanel').classList.contains('translate-x-full')) window.toggleMessagesPanel(); if(window.openChat) window.openChat('CLIENT_2')" class="flex items-center justify-center p-1 bg-blue-500/10 hover:bg-blue-500 hover:text-white text-blue-400 rounded-sm border border-blue-500/30 transition-colors group" title="Inbox">
+            <span class="material-symbols-outlined text-[14px]" data-icon="inbox">inbox</span>
+        </button>
+    </div>
+</td>
+<td class="px-6 py-5 text-on-surface-variant">s.chen@vault.dev</td>
+<td class="px-6 py-5"><span class="bg-surface-container-highest px-2 py-0.5 text-[10px] rounded-none">Security Layer</span></td>
+<td class="px-6 py-5 text-on-surface-variant">2023-10-22 09:45</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 text-[10px] font-bold uppercase tracking-tighter bg-primary/10 text-primary border border-primary/20">
+                    Đã duyệt
+                  </span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2 text-on-surface-variant">
+<button class="hover:text-primary transition-colors" title="Xem"><span class="material-symbols-outlined text-lg" data-icon="visibility">visibility</span></button>
+<button class="text-primary/40 cursor-not-allowed" disabled=""><span class="material-symbols-outlined text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span></button>
+<button class="hover:text-error transition-colors" title="Hủy"><span class="material-symbols-outlined text-lg" data-icon="cancel">cancel</span></button>
+<button class="hover:text-primary transition-colors" title="Thông báo hoàn thành"><span class="material-symbols-outlined text-lg" data-icon="verified">verified</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 3: In Progress -->
+<tr class="bg-surface hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-5 font-mono text-primary text-xs">#COL-8872</td>
+<td class="px-6 py-5 font-medium text-on-surface">Data Streamer 01</td>
+<td class="px-6 py-5">
+    <div class="flex items-center gap-2">
+        <span>Marcus Thorne</span>
+        <button onclick="if(window.toggleMessagesPanel && document.getElementById('messagesPanel').classList.contains('translate-x-full')) window.toggleMessagesPanel(); if(window.openChat) window.openChat('CLIENT_1')" class="flex items-center justify-center p-1 bg-blue-500/10 hover:bg-blue-500 hover:text-white text-blue-400 rounded-sm border border-blue-500/30 transition-colors group" title="Inbox">
+            <span class="material-symbols-outlined text-[14px]" data-icon="inbox">inbox</span>
+        </button>
+    </div>
+</td>
+<td class="px-6 py-5 text-on-surface-variant">m.thorne@data-ops.net</td>
+<td class="px-6 py-5"><span class="bg-surface-container-highest px-2 py-0.5 text-[10px] rounded-none">Infrastructure</span></td>
+<td class="px-6 py-5 text-on-surface-variant">2023-10-21 16:12</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 text-[10px] font-bold uppercase tracking-tighter bg-secondary-container/20 text-secondary-dim border border-secondary-container/40">
+                    Đang thực hiện
+                  </span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2 text-on-surface-variant">
+<button class="hover:text-primary transition-colors" title="Xem"><span class="material-symbols-outlined text-lg" data-icon="visibility">visibility</span></button>
+<button class="text-primary/20 cursor-not-allowed" disabled=""><span class="material-symbols-outlined text-lg" data-icon="check_circle">check_circle</span></button>
+<button class="hover:text-error transition-colors" title="Hủy"><span class="material-symbols-outlined text-lg" data-icon="cancel">cancel</span></button>
+<button class="hover:text-primary transition-colors" title="Thông báo hoàn thành"><span class="material-symbols-outlined text-lg" data-icon="verified">verified</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Completed -->
+<tr class="bg-surface-container-low hover:bg-surface-container transition-colors group">
+<td class="px-6 py-5 font-mono text-primary text-xs">#COL-8750</td>
+<td class="px-6 py-5 font-medium text-on-surface">Edge Compute Hub</td>
+<td class="px-6 py-5">
+    <div class="flex items-center gap-2">
+        <span>Lina Vogt</span>
+        <button onclick="if(window.toggleMessagesPanel && document.getElementById('messagesPanel').classList.contains('translate-x-full')) window.toggleMessagesPanel(); if(window.openChat) window.openChat('CLIENT_2')" class="flex items-center justify-center p-1 bg-blue-500/10 hover:bg-blue-500 hover:text-white text-blue-400 rounded-sm border border-blue-500/30 transition-colors group" title="Inbox">
+            <span class="material-symbols-outlined text-[14px]" data-icon="inbox">inbox</span>
+        </button>
+    </div>
+</td>
+<td class="px-6 py-5 text-on-surface-variant">l.vogt@edge.io</td>
+<td class="px-6 py-5"><span class="bg-surface-container-highest px-2 py-0.5 text-[10px] rounded-none">Architecture</span></td>
+<td class="px-6 py-5 text-on-surface-variant">2023-10-18 11:30</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-1 text-[10px] font-bold uppercase tracking-tighter bg-primary-dim/20 text-primary border border-primary-dim/30">
+                    Đã hoàn thành
+                  </span>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2 text-on-surface-variant">
+<button class="hover:text-primary transition-colors" title="Xem"><span class="material-symbols-outlined text-lg" data-icon="visibility">visibility</span></button>
+<button class="text-primary/20 cursor-not-allowed" disabled=""><span class="material-symbols-outlined text-lg" data-icon="check_circle">check_circle</span></button>
+<button class="text-error/20 cursor-not-allowed" disabled=""><span class="material-symbols-outlined text-lg" data-icon="cancel">cancel</span></button>
+<button class="text-primary" title="Đã thông báo hoàn thành"><span class="material-symbols-outlined text-lg" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer -->
+<div class="bg-surface-container-high px-6 py-4 flex items-center justify-between border-t border-outline-variant/20">
+<div class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">Showing 4 of 128 synchronization events</div>
+<div class="flex items-center gap-1">
+<button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined text-xl" data-icon="chevron_left">chevron_left</span></button>
+<span class="px-3 py-1 bg-primary text-on-primary-fixed text-xs font-bold rounded-sm">01</span>
+<button class="px-3 py-1 hover:bg-surface-container text-xs transition-all">02</button>
+<button class="px-3 py-1 hover:bg-surface-container text-xs transition-all">03</button>
+<span class="px-2 text-on-surface-variant">...</span>
+<button class="p-1 hover:text-primary transition-colors"><span class="material-symbols-outlined text-xl" data-icon="chevron_right">chevron_right</span></button>
+</div>
+</div>
+</div>
+<!-- System Status Cards (Bento Grid Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-low p-6 rounded-sm border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Request Velocity</span>
+<span class="material-symbols-outlined text-primary" data-icon="bolt">bolt</span>
+</div>
+<div class="text-3xl font-headline font-bold text-on-surface">2.4<span class="text-primary-dim">/hr</span></div>
+<p class="text-[10px] text-primary mt-2">▲ 12% from last cycle</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-sm border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Avg. Response Time</span>
+<span class="material-symbols-outlined text-tertiary" data-icon="schedule">schedule</span>
+</div>
+<div class="text-3xl font-headline font-bold text-on-surface">18.5<span class="text-tertiary-dim">m</span></div>
+<p class="text-[10px] text-on-surface-variant mt-2">Optimal threshold maintained</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-sm border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Trust Protocol</span>
+<span class="material-symbols-outlined text-secondary" data-icon="verified_user">verified_user</span>
+</div>
+<div class="text-3xl font-headline font-bold text-on-surface">99.8<span class="text-secondary-dim">%</span></div>
+<p class="text-[10px] text-on-surface-variant mt-2">Secure node verification active</p>
+</div>
+</div>
+</div>

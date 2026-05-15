@@ -1,0 +1,117 @@
+<div class="max-w-5xl mx-auto">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 mb-8 font-['Inter'] text-[0.6875rem] tracking-wider uppercase text-on-surface-variant">
+<span class="hover:text-primary cursor-pointer">Projects</span>
+<span class="material-symbols-outlined text-[10px]">arrow_forward_ios</span>
+<span class="text-primary font-bold">New Module</span>
+</div>
+<section class="grid grid-cols-12 gap-8">
+<!-- Header Column -->
+<div class="col-span-12 lg:col-span-4">
+<h2 class="font-['Space_Grotesk'] text-4xl font-bold leading-tight tracking-tighter mb-4">
+                        ADD NEW <span class="text-primary">PROJECT</span>
+</h2>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+                        Deploy a new architectural module to the Terminal Horizon ecosystem. Initialize repositories, production links, and visual documentation.
+                    </p>
+<div class="p-4 bg-surface-container-low border-l-2 border-primary-dim">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="info">info</span>
+<p class="text-[0.6875rem] uppercase tracking-widest text-on-surface-variant">All inputs are sanitized through the Architect-OS core engine.</p>
+</div>
+</div>
+</div>
+<!-- Form Column -->
+<div class="col-span-12 lg:col-span-8 space-y-6">
+<div class="bg-surface-container p-8 relative overflow-hidden ghost-border">
+<!-- Form Section: Basic Info -->
+<div class="space-y-8">
+<div>
+<label class="block font-['Inter'] text-[0.6875rem] tracking-widest uppercase text-on-surface-variant mb-3">Tên Project</label>
+<input class="w-full bg-surface-container-highest border-none rounded-none px-4 py-4 text-sm focus:ring-2 focus:ring-primary/50 transition-all font-mono tracking-tight" placeholder="e.g. NEURAL_NETWORK_V1" type="text"/>
+</div>
+<div>
+<label class="block font-['Inter'] text-[0.6875rem] tracking-widest uppercase text-on-surface-variant mb-4">Loại Project</label>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+<button class="flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-highest hover:bg-primary/10 border border-outline-variant/30 hover:border-primary transition-all text-[0.6875rem] uppercase tracking-widest font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="terminal">terminal</span>
+                                        Backend
+                                    </button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 bg-primary/20 border border-primary text-primary transition-all text-[0.6875rem] uppercase tracking-widest font-bold">
+<span class="material-symbols-outlined text-sm" data-icon="web">web</span>
+                                        Frontend
+                                    </button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-highest hover:bg-primary/10 border border-outline-variant/30 hover:border-primary transition-all text-[0.6875rem] uppercase tracking-widest font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="layers">layers</span>
+                                        Fullstack
+                                    </button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-highest hover:bg-primary/10 border border-outline-variant/30 hover:border-primary transition-all text-[0.6875rem] uppercase tracking-widest font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="smartphone">smartphone</span>
+                                        Mobile
+                                    </button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-highest hover:bg-primary/10 border border-outline-variant/30 hover:border-primary transition-all text-[0.6875rem] uppercase tracking-widest font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="cloud">cloud</span>
+                                        Infrastructure
+                                    </button>
+<button class="flex items-center justify-center gap-2 py-3 px-4 bg-surface-container-highest hover:bg-primary/10 border border-outline-variant/30 hover:border-primary transition-all text-[0.6875rem] uppercase tracking-widest font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="more_horiz">more_horiz</span>
+                                        Other
+                                    </button>
+</div>
+</div>
+<div>
+<label class="block font-['Inter'] text-[0.6875rem] tracking-widest uppercase text-on-surface-variant mb-3">Mô tả Project</label>
+<textarea class="w-full bg-surface-container-highest border-none rounded-none px-4 py-4 text-sm focus:ring-2 focus:ring-primary/50 transition-all font-mono tracking-tight min-h-[120px] resize-none" placeholder="Enter architectural specifications and project mission statement..."></textarea>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block font-['Inter'] text-[0.6875rem] tracking-widest uppercase text-on-surface-variant mb-3">Link GitHub</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="code">code</span>
+<input class="w-full bg-surface-container-highest border-none rounded-none pl-12 pr-4 py-4 text-sm focus:ring-2 focus:ring-primary/50 transition-all font-mono" placeholder="https://github.com/..." type="text"/>
+</div>
+</div>
+<div>
+<label class="block font-['Inter'] text-[0.6875rem] tracking-widest uppercase text-on-surface-variant mb-3">Link Production</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="rocket_launch">rocket_launch</span>
+<input class="w-full bg-surface-container-highest border-none rounded-none pl-12 pr-4 py-4 text-sm focus:ring-2 focus:ring-primary/50 transition-all font-mono" placeholder="https://live-app.io/..." type="text"/>
+</div>
+</div>
+</div>
+<div>
+<label class="block font-['Inter'] text-[0.6875rem] tracking-widest uppercase text-on-surface-variant mb-3">Upload Ảnh</label>
+<div class="border-2 border-dashed border-outline-variant/30 bg-surface-container-low hover:bg-surface-container-highest transition-all p-12 text-center group cursor-pointer relative">
+<div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] pointer-events-none"></div>
+<span class="material-symbols-outlined text-4xl text-primary/50 group-hover:text-primary mb-4 transition-colors" data-icon="cloud_upload">cloud_upload</span>
+<p class="text-[0.6875rem] uppercase tracking-[0.2em] font-bold mb-1">Drag and Drop Visuals</p>
+<p class="text-on-surface-variant text-xs">Maximum payload: 12MB. Accepted types: .PNG, .JPG, .WEBP</p>
+<input class="absolute inset-0 opacity-0 cursor-pointer" type="file"/>
+</div>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="mt-12 pt-8 border-t border-outline-variant/20 flex items-center justify-between">
+<button class="px-8 py-3 bg-surface-container-highest text-on-surface-variant hover:text-white transition-all text-[0.6875rem] uppercase tracking-widest font-bold">
+                                Hủy Bỏ
+                            </button>
+<button class="px-10 py-4 bg-gradient-to-r from-primary to-primary-dim text-on-primary-fixed text-[0.6875rem] uppercase tracking-[0.2em] font-black rounded-sm shadow-[0_4px_20px_rgba(132,173,255,0.3)] hover:scale-[1.02] active:scale-95 transition-all">
+                                Lưu Project
+                            </button>
+</div>
+</div>
+<!-- System Status Log -->
+<div class="bg-surface-container-lowest p-6 border-l-2 border-secondary font-mono">
+<div class="flex items-center gap-3 mb-4">
+<span class="w-2 h-2 bg-secondary rounded-full animate-pulse"></span>
+<span class="text-[0.625rem] text-secondary uppercase tracking-widest">Architect_Log_Buffer</span>
+</div>
+<div class="space-y-1">
+<p class="text-[0.6875rem] text-on-surface-variant"><span class="text-secondary">[14:22:01]</span> INITIALIZING_FORM_LISTENER...</p>
+<p class="text-[0.6875rem] text-on-surface-variant"><span class="text-secondary">[14:22:04]</span> AWAITING_USER_INPUT_PARAMETERS...</p>
+<p class="text-[0.6875rem] text-primary"><span class="text-secondary">[14:22:05]</span> SESSION_STABLE: READY_FOR_DEPLOYMENT</p>
+</div>
+</div>
+</div>
+</section>
+</div>

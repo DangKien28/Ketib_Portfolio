@@ -1,0 +1,227 @@
+﻿<div class="flex flex-col justify-center w-full max-w-6xl mx-auto min-h-[80vh] py-12 my-auto mt-0">
+    <!-- Header Section -->
+    <header class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 border-b border-white/10 pb-6 relative">
+        <div class="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-primary"></div>
+        <div class="space-y-2 pl-4 border-l-2 border-primary">
+            <h1 class="text-4xl md:text-5xl font-bold font-headline tracking-tighter text-on-surface uppercase drop-shadow-[0_0_10px_rgba(132,173,255,0.3)]">Collaboration</h1>
+            <p class="text-primary/70 font-mono text-[11px] tracking-widest max-w-xl uppercase">
+                // System_Active: Manage pipeline parameters & cross-functional engineering nodes.
+            </p>
+        </div>
+        <button onclick="document.getElementById('new-collaboration-modal').classList.remove('hidden')" class="group relative bg-[#0B0B0E] border border-primary text-primary px-6 py-3 font-mono text-[11px] uppercase tracking-widest font-bold flex items-center gap-2 hover:bg-primary hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(132,173,255,0.15)] hover:shadow-[0_0_30px_rgba(132,173,255,0.4)] overflow-hidden">
+            <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[150%] skew-x-[-30deg] group-hover:translate-x-[150%] transition-transform duration-700"></div>
+            <span class="material-symbols-outlined relative z-10 text-[18px]" data-icon="add">add</span>
+            <span class="relative z-10">New_Collab</span>
+        </button>
+    </header>
+
+    <!-- Table Container with Edge UI -->
+    <div class="bg-[#0A0A0C]/90 backdrop-blur-xl border border-white/10 relative shadow-[0_0_30px_rgba(0,0,0,0.8)]">
+        <!-- Corner decorations -->
+        <div class="absolute -top-px -left-px w-3 h-3 border-t-2 border-l-2 border-white/40"></div>
+        <div class="absolute -top-px -right-px w-3 h-3 border-t-2 border-r-2 border-white/40"></div>
+        <div class="absolute -bottom-px -left-px w-3 h-3 border-b-2 border-l-2 border-white/40"></div>
+        <div class="absolute -bottom-px -right-px w-3 h-3 border-b-2 border-r-2 border-white/40"></div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-white/[0.03] border-b border-white/10">
+                        <th class="px-6 py-4 text-[10px] uppercase tracking-widest font-mono font-bold text-primary">Collab ID</th>
+                        <th class="px-6 py-4 text-[10px] uppercase tracking-widest font-mono font-bold text-on-surface-variant">Project Name</th>
+                        <th class="px-6 py-4 text-[10px] uppercase tracking-widest font-mono font-bold text-on-surface-variant">Ngày gửi yêu cầu</th>
+                        <th class="px-6 py-4 text-[10px] uppercase tracking-widest font-mono font-bold text-on-surface-variant">Ngày thực thi</th>
+                        <th class="px-6 py-4 text-[10px] uppercase tracking-widest font-mono font-bold text-on-surface-variant text-center">Status</th>
+                        <th class="px-6 py-4 text-[10px] uppercase tracking-widest font-mono font-bold text-on-surface-variant text-right">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-white/5 font-mono text-xs">
+                    <tr class="hover:bg-primary/[0.03] transition-colors duration-300 group border-l-2 border-transparent hover:border-blue-500">
+                        <td class="px-6 py-4 text-blue-400 group-hover:text-blue-300 transition-colors">#CLB-8821</td>
+                        <td class="px-6 py-4 font-semibold text-white/90">Neural_Mesh_v4</td>
+                        <td class="px-6 py-4 text-white/40">Oct 24, 2023</td>
+                        <td class="px-6 py-4 text-white/40">---</td>
+                        <td class="px-6 py-4 text-center">
+                            <span class="px-3 py-1 bg-white/5 text-[9px] font-bold uppercase tracking-widest text-on-surface-variant border border-white/10 shadow-inner">Wait</span>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <div class="flex justify-end gap-2 opacity-60 group-hover:opacity-100 transition-opacity">
+                                <button class="p-1.5 hover:bg-blue-500/20 text-blue-400 transition-colors border border-transparent hover:border-blue-500/30" title="View"><span class="material-symbols-outlined text-[16px]">visibility</span></button>
+                                <button class="p-1.5 hover:bg-blue-500/20 text-on-surface-variant hover:text-white transition-colors border border-transparent hover:border-blue-500/30" title="Edit"><span class="material-symbols-outlined text-[16px]">edit</span></button>
+                                <button class="p-1.5 hover:bg-red-500/20 text-red-500 transition-colors border border-transparent hover:border-red-500/30" title="Delete"><span class="material-symbols-outlined text-[16px]">delete</span></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="bg-primary/[0.02] hover:bg-primary/[0.05] transition-colors duration-300 group border-l-2 border-primary/40 hover:border-blue-400">
+                        <td class="px-6 py-4 text-blue-400 group-hover:text-blue-300 transition-colors">#CLB-7740</td>
+                        <td class="px-6 py-4 font-semibold text-white/90">Quantum_Ledger_API</td>
+                        <td class="px-6 py-4 text-white/40">Oct 20, 2023</td>
+                        <td class="px-6 py-4 text-white/40">Oct 22, 2023</td>
+                        <td class="px-6 py-4 text-center">
+                            <span class="px-3 py-1 bg-primary/10 text-[9px] font-bold uppercase tracking-widest text-primary border border-primary/20 shadow-[0_0_10px_rgba(132,173,255,0.15)] relative overflow-hidden inline-block">In_Progress</span>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <div class="flex justify-end gap-2 opacity-80 group-hover:opacity-100 transition-opacity">
+                                <button class="p-1.5 hover:bg-blue-500/20 text-blue-400 transition-colors border border-transparent hover:border-blue-500/30" title="View"><span class="material-symbols-outlined text-[16px]">visibility</span></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="hover:bg-primary/[0.03] transition-colors duration-300 group border-l-2 border-transparent hover:border-tertiary">
+                        <td class="px-6 py-4 text-blue-400 group-hover:text-blue-300 transition-colors">#CLB-6501</td>
+                        <td class="px-6 py-4 font-semibold text-white/90">Core_Identity_v2</td>
+                        <td class="px-6 py-4 text-white/40">Oct 12, 2023</td>
+                        <td class="px-6 py-4 text-white/40">Oct 14, 2023</td>
+                        <td class="px-6 py-4 text-center">
+                            <span class="px-3 py-1 bg-tertiary/10 text-[9px] font-bold uppercase tracking-widest text-tertiary border border-tertiary/30 shadow-[0_0_10px_rgba(250,176,255,0.1)]">Done</span>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <div class="flex justify-end gap-3 items-center opacity-60 group-hover:opacity-100 transition-opacity">
+                                <button class="p-1.5 hover:bg-blue-500/20 text-blue-400 transition-colors border border-transparent hover:border-blue-500/30" title="View"><span class="material-symbols-outlined text-[16px]">visibility</span></button>
+                                <button class="text-[9px] font-bold uppercase tracking-widest text-black bg-primary border-none px-4 py-1.5 hover:bg-white hover:text-black transition-all shadow-[0_0_15px_rgba(132,173,255,0.4)]">Pay</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-6 flex justify-between items-center text-on-surface-variant">
+        <div class="flex items-center gap-3 text-[10px] font-mono tracking-widest border border-white/10 bg-[#0A0A0C]/50 px-4 py-2 uppercase">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
+            System_Online
+        </div>
+        <div class="flex gap-2 font-mono text-xs">
+            <button class="w-8 h-8 flex items-center justify-center border border-white/10 hover:border-primary hover:text-primary transition-colors bg-[#0A0A0C]/50 text-white/50">
+                <span class="material-symbols-outlined text-[16px]" data-icon="chevron_left">chevron_left</span>
+            </button>
+            <button class="w-8 h-8 flex items-center justify-center border border-primary bg-primary/10 text-primary font-bold shadow-[0_0_10px_rgba(132,173,255,0.2)]">1</button>
+            <button class="w-8 h-8 flex items-center justify-center border border-white/10 hover:border-primary hover:text-primary transition-colors bg-[#0A0A0C]/50 text-white/50">
+                <span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Trace Logs Section -->
+    <section class="mt-12 flex-1hidden md:block">
+        <div class="flex items-center justify-between mb-4 border-b border-white/10 pb-2">
+            <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-primary text-[18px]" data-icon="terminal">terminal</span>
+                <h2 class="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-white/80">Sys_Trace_Logs</h2>
+            </div>
+            <span class="text-[10px] font-mono text-primary/50 tracking-widest">LAST_SYNC: 12:44:01 UTC</span>
+        </div>
+        <div class="bg-[#050505] border border-white/5 p-4 font-mono text-[11px] leading-loose terminal-scroll h-40 overflow-y-auto shadow-inner relative">
+            <div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary/50 to-transparent"></div>
+            <div class="space-y-1.5 pl-3">
+                <p class="text-white/40"><span class="text-primary/70">[09:21:40]</span> <span class="text-white/70">SYSTEM_INIT_SEQUENCER_START</span></p>
+                <p class="text-white/40"><span class="text-primary/70">[09:21:42]</span> <span class="text-white/70">LOADING_ENCRYPTED_KERNELS... <span class="text-green-400">DONE</span></span></p>
+                <p class="text-white/40"><span class="text-primary/70">[09:21:44]</span> <span class="text-blue-400 font-bold">HANDSHAKE_INIT</span> :: REMOTE_HOST=192.168.1.104</p>
+                <p class="text-white/40"><span class="text-primary/70">[12:44:01]</span> <span class="text-blue-400 font-bold">HEARTBEAT_STABLE</span> :: ALL_SYSTEMS_GO</p>
+                <p class="text-white/40 animate-pulse"><span class="text-primary/70">[12:44:02]</span> <span class="text-white/90 bg-white/20 px-1.5">_</span></p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- New Collaboration Modal -->
+<div id="new-collaboration-modal" class="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-md hidden w-full h-full overflow-y-auto flex flex-col items-center pt-32 pb-12 px-4">
+    <div class="relative w-full max-w-4xl bg-[#09090b] border border-white/20 shadow-[0_0_50px_rgba(132,173,255,0.1)] p-8 md:p-12 my-auto box-border" style="clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%);">
+        <div class="absolute -top-px -left-px w-5 h-5 border-t-2 border-l-2 border-primary"></div>
+        <div class="absolute top-0 right-0 w-32 h-1 bg-gradient-to-r from-transparent to-primary"></div>
+        <div class="absolute bottom-0 left-0 w-32 h-1 bg-gradient-to-l from-transparent to-primary"></div>
+        
+        <div class="absolute top-6 right-6 z-[110]">
+            <button onclick="document.getElementById('new-collaboration-modal').classList.add('hidden')" class="p-2 text-white/50 border border-white/10 bg-black hover:text-white hover:border-primary hover:bg-primary/10 transition-all">
+                <span class="material-symbols-outlined text-[24px]">close</span>
+            </button>
+        </div>
+
+        <header class="mb-12 border-l-2 border-primary pl-4">
+            <div class="flex items-center gap-2 mb-2">
+                <span class="text-[10px] font-mono tracking-[0.3em] text-primary uppercase">Initialize//New_Project</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-headline font-bold mb-4 tracking-tighter uppercase drop-shadow-[0_0_10px_rgba(132,173,255,0.3)]">New_Collaboration</h1>
+            <p class="text-white/50 font-mono text-[11px] max-w-xl leading-relaxed uppercase tracking-widest">
+                Submit your project parameters to initiate a technical consultation.
+            </p>
+        </header>
+
+        <form class="space-y-8 font-mono">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-2 group">
+                    <label class="text-[10px] font-bold tracking-widest text-[#ababab] uppercase group-focus-within:text-primary transition-colors">Họ và Tên</label>
+                    <input class="w-full bg-black/40 border border-white/10 focus:ring-0 focus:border-primary px-4 py-3 text-sm text-white transition-all placeholder:text-white/20" placeholder="ENTER NAME..." type="text"/>
+                </div>
+                <div class="space-y-2 group">
+                    <label class="text-[10px] font-bold tracking-widest text-[#ababab] uppercase group-focus-within:text-primary transition-colors">Email</label>
+                    <input class="w-full bg-black/40 border border-white/10 focus:ring-0 focus:border-primary px-4 py-3 text-sm text-white transition-all placeholder:text-white/20" placeholder="IDENTITY@HOST.COM" type="email"/>
+                </div>
+            </div>
+            
+            <div class="space-y-2 group">
+                <label class="text-[10px] font-bold tracking-widest text-[#ababab] uppercase group-focus-within:text-primary transition-colors">Tên Project</label>
+                <input class="w-full bg-black/40 border border-white/10 focus:ring-0 focus:border-primary px-4 py-3 text-sm text-white transition-all placeholder:text-white/20" placeholder="PROJECT_ALPHA_V1" type="text"/>
+            </div>
+
+            <div class="space-y-4">
+                <label class="text-[10px] font-bold tracking-widest text-[#ababab] uppercase">Loại Project</label>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    <button class="py-4 px-2 bg-black/40 border border-white/10 hover:border-primary/50 hover:bg-primary/5 transition-all flex flex-col items-center gap-2 group" onclick="toggleOtherInput(false)" type="button">
+                        <span class="material-symbols-outlined text-[20px] text-white/40 group-hover:text-primary transition-colors">language</span>
+                        <span class="text-[9px] tracking-widest uppercase text-white/60 group-hover:text-primary transition-colors">Web</span>
+                    </button>
+                    <button class="py-4 px-2 bg-primary/10 border border-primary flex flex-col items-center gap-2 relative overflow-hidden" onclick="toggleOtherInput(false)" type="button">
+                        <div class="absolute inset-0 bg-primary/20 animate-pulse"></div>
+                        <span class="material-symbols-outlined text-[20px] text-primary relative z-10">computer</span>
+                        <span class="text-[9px] tracking-widest uppercase text-primary relative z-10 font-bold">Desktop</span>
+                    </button>
+                    <button class="py-4 px-2 bg-black/40 border border-white/10 hover:border-primary/50 hover:bg-primary/5 transition-all flex flex-col items-center gap-2 group" onclick="toggleOtherInput(false)" type="button">
+                        <span class="material-symbols-outlined text-[20px] text-white/40 group-hover:text-primary transition-colors">smartphone</span>
+                        <span class="text-[9px] tracking-widest uppercase text-white/60 group-hover:text-primary transition-colors">Mobile</span>
+                    </button>
+                    <button class="py-4 px-2 bg-black/40 border border-white/10 hover:border-primary/50 hover:bg-primary/5 transition-all flex flex-col items-center gap-2 group" id="other-btn" onclick="toggleOtherInput(true)" type="button">
+                        <span class="material-symbols-outlined text-[20px] text-white/40 group-hover:text-primary transition-colors">more_horiz</span>
+                        <span class="text-[9px] tracking-widest uppercase text-white/60 group-hover:text-primary transition-colors">Other</span>
+                    </button>
+                </div>
+                <div class="hidden" id="other-input-container">
+                    <input class="w-full bg-primary/5 border border-primary focus:ring-0 px-4 py-3 text-sm text-primary transition-all placeholder:text-primary/50 mt-2" placeholder="SPECIFY..." type="text"/>
+                </div>
+            </div>
+
+            <div class="space-y-2 group">
+                <label class="text-[10px] font-bold tracking-widest text-[#ababab] uppercase group-focus-within:text-primary transition-colors">Mô tả chi tiết</label>
+                <textarea class="w-full bg-black/40 border border-white/10 focus:ring-0 focus:border-primary px-4 py-3 text-sm text-white transition-all placeholder:text-white/20 resize-none" placeholder="Define requirements, architecture thoughts..." rows="4"></textarea>
+            </div>
+
+            <div class="space-y-2 group">
+                <label class="text-[10px] font-bold tracking-widest text-[#ababab] uppercase group-hover:text-primary transition-colors">Đính kèm file</label>
+                <div class="relative group/upload">
+                    <input class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" type="file"/>
+                    <div class="w-full border-2 border-dashed border-white/20 group-hover/upload:border-primary/50 group-hover/upload:bg-primary/5 transition-colors py-8 flex flex-col items-center justify-center gap-2 bg-black/20">
+                        <span class="material-symbols-outlined text-white/30 text-[24px] group-hover/upload:text-primary transition-colors">cloud_upload</span>
+                        <div class="text-center">
+                            <p class="text-[10px] tracking-widest text-white/70 uppercase">Upload Manifest</p>
+                            <p class="text-[9px] text-white/30 mt-1 uppercase">PDF, ZIP (MAX 25MB)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-4 flex justify-end">
+                <button class="group relative bg-[#0e0e0e] border border-primary text-primary px-8 py-3 font-mono text-[11px] uppercase tracking-widest font-bold flex items-center gap-3 hover:bg-primary hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(132,173,255,0.15)] hover:shadow-[0_0_30px_rgba(132,173,255,0.4)] overflow-hidden" type="submit">
+                    <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-[150%] skew-x-[-30deg] group-hover:translate-x-[150%] transition-transform duration-700"></div>
+                    <span class="relative z-10">GỬI YÊU CẦU</span>
+                    <span class="material-symbols-outlined relative z-10 text-[18px] group-hover:translate-x-1 transition-transform" data-icon="send">send</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+

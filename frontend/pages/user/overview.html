@@ -1,0 +1,128 @@
+<!-- Hero Section -->
+<section class="mb-16 relative overflow-hidden bg-surface-container rounded-sm p-12 ghost-border">
+<div class="relative z-10 max-w-2xl">
+<h1 class="font-headline text-5xl md:text-7xl font-bold tracking-tighter mb-6 leading-tight">
+                    ENGINEERING <span class="text-primary">KINETIC</span> INFRASTRUCTURE
+                </h1>
+<p class="text-on-surface-variant mb-8 text-lg font-light leading-relaxed">
+                    Collaborate with a backend specialist focused on high-availability systems and AI-integrated architectural design.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<input class="bg-surface-container-highest border-none text-on-surface px-6 py-4 flex-1 focus:ring-1 focus:ring-primary rounded-none placeholder:text-neutral-600 font-label" placeholder="ENTER_EMAIL_FOR_SYNC" type="email"/>
+<button class="primary-gradient px-8 py-4 font-bold text-on-primary-fixed uppercase tracking-widest text-sm rounded-sm active:scale-95 transition-all">
+                        Send Link
+                    </button>
+</div>
+</div>
+<!-- Decorative Element -->
+<div class="absolute -right-24 -bottom-24 w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
+</section>
+<!-- TK Architecture Section -->
+<style>
+/* TK Architecture Interactive Shapes */
+.tk-collab-shape { clip-path: polygon(45% 42%, 45% 58%, 25% 50%, 25% 50%, 25% 50%); }
+.tk-collab-shape:hover { clip-path: polygon(45% 35%, 45% 65%, 15% 65%, 5% 50%, 15% 35%); }
+.tk-collab-text { opacity: 0; transform: translateX(20px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+.tk-collab-shape:hover .tk-collab-text { opacity: 1; transform: translateX(0); }
+.tk-architect-shape { clip-path: polygon(45% 25%, 85% 5%, 80% 20%, 75% 35%, 45% 50%); }
+.tk-architect-shape:hover { clip-path: polygon(45% 25%, 80% 25%, 90% 37.5%, 80% 50%, 45% 50%); }
+.tk-architect-text { transform-origin: left center; transform: rotate(-26.5deg) translateX(15px); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); color: #111; }
+.tk-architect-shape:hover .tk-architect-text { transform: rotate(0deg) translateX(40px); color: #ffffff; }
+.tk-estimator-shape { clip-path: polygon(45% 50%, 75% 65%, 80% 80%, 85% 95%, 45% 75%); }
+.tk-estimator-shape:hover { clip-path: polygon(45% 50%, 80% 50%, 90% 62.5%, 80% 75%, 45% 75%); }
+.tk-estimator-text { transform-origin: left center; transform: rotate(26.5deg) translateX(15px); transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); color: #111; }
+.tk-estimator-shape:hover .tk-estimator-text { transform: rotate(0deg) translateX(40px); color: #ffffff; }
+</style>
+<section class="mb-20 relative w-full max-w-4xl mx-auto h-[350px] md:h-[500px] lg:h-[600px] rounded-xl overflow-visible tk-container">
+    <div class="absolute inset-0 w-full h-full">
+        <div class="absolute inset-0 bg-[#5A9BD5] transition-all duration-500 z-10 hover:brightness-110 cursor-pointer"
+             style="clip-path: polygon(5% 10%, 45% 10%, 45% 95%, 30% 65%, 30% 25%, 15% 25%);" onclick="loadPage('collaboration')"></div>
+        <div class="absolute inset-0 bg-[#4d8ac8] hover:bg-[#3b73a8] shadow-[0_0_20px_rgba(90,155,213,0.3)] cursor-pointer transition-all duration-500 z-30 tk-collab-shape"
+             onclick="loadPage('collaboration')">
+            <div class="absolute top-[50%] left-[12%] lg:left-[14%] -translate-y-1/2 pointer-events-none tk-collab-text w-[30%] lg:w-[30%] flex justify-center text-center">
+                <h2 class="font-headline text-lg md:text-xl lg:text-2xl font-bold text-white leading-tight drop-shadow-[0_4px_12px_rgba(0,0,0,1)] z-10 whitespace-nowrap">Collab with<br>TKien now</h2>
+            </div>
+        </div>
+        <div class="absolute inset-0 bg-[#64a5df] hover:bg-[#4a89c7] shadow-[0_0_20px_rgba(90,155,213,0.3)] cursor-pointer transition-all duration-500 z-20 tk-architect-shape"
+             onclick="loadPage('architect_compatibility')">
+            <div class="absolute top-[37.5%] left-[47%] -translate-y-1/2 pointer-events-none tk-architect-text whitespace-nowrap">
+                <h3 class="font-headline text-sm md:text-lg lg:text-xl font-bold tracking-wide drop-shadow-[0_2px_8px_rgba(255,255,255,0.4)]">Architect Compatibility</h3>
+            </div>
+        </div>
+        <div class="absolute inset-0 bg-[#5091d0] hover:bg-[#3a75ad] shadow-[0_0_20px_rgba(90,155,213,0.3)] cursor-pointer transition-all duration-500 z-20 tk-estimator-shape"
+             onclick="loadPage('ai_project_estimator')">
+            <div class="absolute top-[62.5%] left-[47%] -translate-y-1/2 pointer-events-none tk-estimator-text whitespace-nowrap">
+                <h3 class="font-headline text-sm md:text-lg lg:text-xl font-bold tracking-wide drop-shadow-[0_2px_8px_rgba(255,255,255,0.4)]">AI Project Estimator</h3>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    
+<!-- Featured Projects Section -->
+<section>
+<div class="flex items-baseline justify-between mb-8">
+<h2 class="font-headline text-3xl font-bold tracking-tighter">Outstanding projects</h2>
+<div class="h-px bg-outline-variant/20 flex-1 mx-8 hidden md:block"></div>
+<a class="text-primary text-xs uppercase font-bold tracking-widest hover:underline" href="#">View All Node_Logs</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Project Card 1 -->
+<div onclick="loadPage('project_detail')" class="cursor-pointer bg-[#111]/80 backdrop-blur-xl rounded-3xl border border-white/5 hover:border-blue-500/30 overflow-hidden group transition-all duration-400 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,123,255,0.15)] relative">
+<div class="h-48 bg-neutral-900 border-b border-white/5 overflow-hidden">
+<img class="w-full h-full object-cover grayscale opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100" data-alt="Data center server racks with blue glowing lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyzZFEM54JjT4LKoV0PR41b7Neffc7cH3mlzIRHlOlGEVRSVotwgNsOIoEkImYNAqRvwxnB4KBn--pAcbnJlHiYDYSYuCTyZQ1f8xcNv2ZEBkrze7isuDn-T-dEHgkQQOOnYS0PnEBjT4PLkdjxV7-Dq_lndex3dSYWQriLBU7a0prI0ZMiJqRygLeaHiybqObHud0DzLkfM28mUqysmQMC9Ua2Ij2woHIxIP_JVE5kniS6CReltyQK_FiZfcJQx1w6-rVrMQfrENP"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline font-bold text-lg text-white group-hover:text-blue-400 transition-colors duration-300">NEURAL_NET_V1</h3>
+<span class="text-[10px] bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 px-3 py-1 font-bold uppercase tracking-widest">Active</span>
+</div>
+<p class="text-sm text-neutral-400 mb-6 line-clamp-2 leading-relaxed">Scalable microservices architecture handling over 1M requests per second with sub-10ms latency.</p>
+<div class="flex gap-2">
+<span class="text-[9px] bg-white/5 border border-white/10 rounded-md px-2.5 py-1 text-neutral-300 font-mono font-bold tracking-widest">GO_LANG</span>
+<span class="text-[9px] bg-white/5 border border-white/10 rounded-md px-2.5 py-1 text-neutral-300 font-mono font-bold tracking-widest">K8S</span>
+<span class="text-[9px] bg-white/5 border border-white/10 rounded-md px-2.5 py-1 text-neutral-300 font-mono font-bold tracking-widest">GRPC</span>
+</div>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div onclick="loadPage('project_detail')" class="cursor-pointer bg-[#111]/80 backdrop-blur-xl rounded-3xl border border-white/5 hover:border-tertiary/30 overflow-hidden group transition-all duration-400 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(250,176,255,0.15)] relative">
+<div class="h-48 bg-neutral-900 border-b border-white/5 overflow-hidden">
+<img class="w-full h-full object-cover grayscale opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100" data-alt="Abstract 3D digital landscape with geometric shapes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkxDBHjqdKMABu-oSI7AxTwJSyJPvv3ulob7JeSZJ1uyKVvTHW0tHPMcfPKWnfnqFtm1CRjFr-RuanVSUlsczDKhLYqwToc4D4RO6xs9aVPui5CzKqDwjbqOWaMAa6qA5pXxWqfdEtqvL63IifL-ctBGTLGeDhtSTRcgMVQNBWHTAmXRj7eK8b92GkunEa1OzjdOLes5ZeQzrEqCKMPw2eRIWz1HN2_7uVknTIFt745CPSEtWmX3R9D4ZDbY26n-_cQxvScxS779NT"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline font-bold text-lg text-white group-hover:text-tertiary transition-colors duration-300">VOID_DB_ENGINE</h3>
+<span class="text-[10px] bg-tertiary/10 border border-tertiary/20 rounded-full text-tertiary px-3 py-1 font-bold uppercase tracking-widest">Staging</span>
+</div>
+<p class="text-sm text-neutral-400 mb-6 line-clamp-2 leading-relaxed">Custom high-performance key-value store optimized for low-memory environments.</p>
+<div class="flex gap-2">
+<span class="text-[9px] bg-white/5 border border-white/10 rounded-md px-2.5 py-1 text-neutral-300 font-mono font-bold tracking-widest">RUST</span>
+<span class="text-[9px] bg-white/5 border border-white/10 rounded-md px-2.5 py-1 text-neutral-300 font-mono font-bold tracking-widest">DOCKER</span>
+</div>
+</div>
+</div>
+<!-- Project Card 3 -->
+<div onclick="loadPage('project_detail')" class="cursor-pointer bg-[#111]/80 backdrop-blur-xl rounded-3xl border border-white/5 hover:border-primary/30 overflow-hidden group transition-all duration-400 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,112,234,0.15)] relative">
+<div class="h-48 bg-neutral-900 border-b border-white/5 overflow-hidden">
+<img class="w-full h-full object-cover grayscale opacity-70 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100" data-alt="Satellite view of Earth with digital communication lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSkQjpsHkXmxYwB33O0TALWlfwNPi2spuLaoED5SULDSWaJ86MkP-caPG7pcsBwoeseLDB3vgpuF_FvR58pLxh5q2yeqm6_GgEfQMMXqDIoG8SMYC07BkSTPgg2ZX1jzWODOyx1KnjBPrUeoNJWZi12l4WKMC5ZZ4EMEGTsGXlMbQerLdi--C-Rl7_xpp2JdtCEr9UxiWkaeHWuIvQeTI9cUiH3iGczNpoVe36_bQMPNzEz5K_n5OCI55KvNBzXWW1KPUCtj7w7MX8"/>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline font-bold text-lg text-white group-hover:text-primary transition-colors duration-300">GEO_SYNC_API</h3>
+<span class="text-[10px] bg-primary-dim/10 border border-primary-dim/20 rounded-full text-blue-300 px-3 py-1 font-bold uppercase tracking-widest">Deployed</span>
+</div>
+<p class="text-sm text-neutral-400 mb-6 line-clamp-2 leading-relaxed">Global real-time data synchronization across multi-region cloud clusters.</p>
+<div class="flex gap-2">
+<span class="text-[9px] bg-white/5 border border-white/10 rounded-md px-2.5 py-1 text-neutral-300 font-mono font-bold tracking-widest">NODE_JS</span>
+<span class="text-[9px] bg-white/5 border border-white/10 rounded-md px-2.5 py-1 text-neutral-300 font-mono font-bold tracking-widest">AWS</span>
+<span class="text-[9px] bg-white/5 border border-white/10 rounded-md px-2.5 py-1 text-neutral-300 font-mono font-bold tracking-widest">REDIS</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+
+
